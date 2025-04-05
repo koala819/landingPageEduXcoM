@@ -1,1 +1,70 @@
 @import "tailwindcss";
+@theme {
+  /* Thème clair (par défaut) */
+  --color-primary: oklch(0.68 0.1479 237.32);
+  --color-primary-dark: oklch(0.59 0.1389 241.97);
+  --color-secondary: oklch(0.77 0.1647 70.08);
+  --color-secondary-dark: oklch(0.67 0.159 58.32);
+
+  /* Texte */
+  --color-dark: oklch(0.21 0.0398 265.75);
+  --color-dark-light: oklch(0.55 0.0407 257.42);
+  --color-dark-lighter: oklch(0.7 0.022 261.33);
+
+  /* Arrière-plan */
+  --color-light: oklch(0.99 0.002 265);
+  --color-light-alt: oklch(0.97 0.0069 247.9);
+  --color-light-dark: oklch(0.93 0.013 255.51);
+
+  /* États */
+  --color-success: oklch(0.72 0.19 149.58);
+  --color-error: oklch(0.64 0.24 25.33);
+  --color-warning: oklch(0.80 0.18 86.05);
+  --color-info: oklch(0.62 0.21 259.82);
+
+  /* Bordures */
+  --color-border: oklch(0.87 0.01 258.34);
+
+  /* Personnalisation des breakpoints */
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+  --breakpoint-xl: 80rem;
+
+  /* Personnalisation des polices */
+  --font-sans: 'DM Sans', sans-serif;
+
+  /* Personnalisation des rayons */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  /* Ombres */
+  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+/* Définition de la variante dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Classes d'utilité personnalisées */
+@layer utilities {
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .dark .text-primary {
+    color: var(--color-primary-dark);
+  }
+
+  .dark .bg-primary {
+    background-color: var(--color-primary-dark);
+  }
+
+}

@@ -1,0 +1,51 @@
+---
+import NavLink from './NavLink.astro';
+
+interface NavItem {
+  href: string;
+  text: string;
+}
+
+const navItems: NavItem[] = [
+  { href: '#features', text: 'Fonctionnalités' },
+  { href: '#testimonials', text: 'Témoignages' },
+  { href: '#pricing', text: 'Tarifs' },
+  { href: '#contact', text: 'Contact' },
+];
+---
+
+<header class="fixed top-0 left-0 w-full z-[1000] bg-white dark:bg-dark shadow-md">
+  <div class="container mx-auto px-5">
+    <nav class="flex justify-between items-center py-5">
+      <a href="#" class="text-3xl font-extrabold text-primary dark:text-primary-dark flex items-center gap-2.5">
+        <span class="text-4xl">🎓</span> Edu<span class="text-secondary dark:text-secondary-dark">XcoM</span>
+      </a>
+
+      <ul class="hidden md:flex items-center gap-10">
+        {navItems.map((item) => (
+          <NavLink href={item.href} text={item.text} />
+        ))}
+      </ul>
+
+      <a href="#demo" class="hidden md:inline-block bg-primary dark:bg-primary-dark text-white dark:text-dark font-semibold py-3.5 px-7 rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary-dark dark:hover:bg-primary hover:-translate-y-[3px] hover:shadow-lg">
+        Essai gratuit
+      </a>
+
+      <div class="md:hidden text-2xl cursor-pointer">☰</div>
+      <button id="theme-toggle" class="p-2 rounded-md bg-light-alt dark:bg-dark-light transition-colors duration-200">
+        <span class="block dark:hidden">🌙</span>
+        <span class="hidden dark:block">☀️</span>
+      </button>
+    </nav>
+    <script>
+      const themeToggle = document.getElementById('theme-toggle');
+
+      function toggleTheme() {
+        document.documentElement.classList.toggle('dark');
+        localStorage.theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light';
+      }
+
+      themeToggle?.addEventListener('click', toggleTheme);
+    </script>
+  </div>
+</header>
