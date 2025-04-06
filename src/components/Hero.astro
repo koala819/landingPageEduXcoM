@@ -5,88 +5,80 @@ import eduxcomTableauBordAdministratifDesktopUrl from '../assets/eduxcom-tableau
 import eduxcomTableauBordAdministratifMobile from '../assets/eduxcom-tableau-bord-administratif-mobile.webp';
 import eduxcomTableauBordAdministratifMobileUrl from '../assets/eduxcom-tableau-bord-administratif-mobile.webp?url';
 ---
-<!-- Hero Section -->
-<section class="pt-20 md:pt-24 lg:pt-28 pb-12 md:pb-16 px-4">
-  <div class="container mx-auto">
-    <div class="flex flex-col lg:flex-row lg:items-center">
-      <!-- Text Content optimisé pour SEO -->
-      <div class="lg:w-1/2 mb-10 lg:mb-0">
-        <span class="inline-block py-1 px-3 rounded-full bg-primary bg-opacity-10 text-primary dark:text-primary-dark text-sm font-medium mb-4">
-          Logiciel de gestion scolaire tout-en-un
-        </span>
-        <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-dark dark:text-light">
-          Simplifiez la gestion de votre établissement scolaire
-        </h1>
-        <p class="text-lg md:text-xl text-dark-light dark:text-dark-lighter mb-8">
-          EduXcoM est une <strong>plateforme éducative open source</strong> qui connecte enseignants, élèves et parents pour une <strong>gestion d'école en ligne</strong> fluide et efficace.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <a href="#demo" class="bg-primary dark:bg-primary-dark text-white dark:text-dark font-semibold py-3 px-6 rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary-dark dark:hover:bg-primary hover:-translate-y-[2px] hover:shadow-md text-center">
-            Demander une démo
-          </a>
-          <a href="#features" class="bg-light-alt dark:bg-dark-light text-dark dark:text-light font-semibold py-3 px-6 rounded-lg cursor-pointer transition-all duration-300 hover:bg-light-dark dark:hover:bg-dark hover:-translate-y-[2px] hover:shadow-md text-center">
-            Découvrir les fonctionnalités
-          </a>
-        </div>
-      </div>
 
-      <!-- Images -->
-      <div class="lg:w-1/2 lg:pl-10 relative h-full flex items-center">
-        <div class="relative w-full">
+<section class="flex flex-col lg:flex-row lg:items-center pt-20 md:pt-24 lg:pt-28">
+  <!-- Text Content -->
+  <aside class="lg:w-1/2 mb-10 lg:mb-0">
+    <span
+      class="inline-block py-1 px-3 rounded-full bg-primary bg-opacity-10 text-primary dark:text-primary-dark text-sm font-medium mb-4"
+    >
+      Logiciel de gestion scolaire tout-en-un
+    </span>
+    <h1
+      class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-4 text-dark dark:text-light"
+    >
+      Simplifiez la gestion de votre établissement scolaire
+    </h1>
+    <p class="text-lg md:text-xl text-dark-light dark:text-dark-lighter mb-8">
+      EduXcoM est une <strong>plateforme éducative open source</strong> qui connecte enseignants, élèves
+      et parents pour une <strong>gestion d'école en ligne</strong> fluide et efficace.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4">
+      <a
+        href="#demo"
+        class="bg-primary dark:bg-primary-dark text-white dark:text-dark font-semibold py-3 px-6 rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary-dark dark:hover:bg-primary hover:-translate-y-[2px] hover:shadow-md text-center"
+      >
+        Demander une démo
+      </a>
+      <a
+        href="#features"
+        class="bg-light-alt dark:bg-dark-light text-dark dark:text-light font-semibold py-3 px-6 rounded-lg cursor-pointer transition-all duration-300 hover:bg-light-dark dark:hover:bg-dark hover:-translate-y-[2px] hover:shadow-md text-center"
+      >
+        Découvrir les fonctionnalités
+      </a>
+    </div>
+  </aside>
 
-          <!-- Image laptop -->
-          <a href={eduxcomTableauBordAdministratifDesktopUrl} class="block overflow-hidden rounded-lg" target="_blank" aria-label="Voir l'image en taille réelle">
-            <Image
-              src={eduxcomTableauBordAdministratifDesktop}
-              alt="Tableau de bord administratif EduXcoM sur ordinateur portable"
-              width={800}
-              height={500}
-              quality={90}
-              format="webp"
-              class="w-full h-auto rounded-lg hover:cursor-zoom-in hover:drop-shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-            />
-          </a>
+  <!-- Images -->
+  <aside class="lg:w-1/2 lg:pl-10 relative h-full flex items-center">
+    <div class="relative w-full">
+      <!-- Image laptop -->
+      <a
+        href={eduxcomTableauBordAdministratifDesktopUrl}
+        class="block overflow-hidden rounded-lg"
+        target="_blank"
+        aria-label="Voir l'image en taille réelle"
+      >
+        <Image
+          src={eduxcomTableauBordAdministratifDesktop}
+          alt="Tableau de bord administratif EduXcoM sur ordinateur portable"
+          width={800}
+          height={500}
+          quality={90}
+          format="webp"
+          class="w-full h-auto rounded-lg hover:cursor-zoom-in hover:drop-shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+        />
+      </a>
 
-          <!-- Image smartphone -->
-          <div class="absolute right-[-19px] bottom-[-150px]">
-            <a href={eduxcomTableauBordAdministratifMobileUrl} class="block" target="_blank" aria-label="Voir l'image en taille réelle">
-              <Image
-                src={eduxcomTableauBordAdministratifMobile}
-                alt="Interface mobile EduXcoM pour la gestion scolaire"
-                width={150}
-                height={200}
-                quality={90}
-                format="webp"
-                class="rounded-lg hover:cursor-zoom-in hover:drop-shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
-              />
-            </a>
-          </div>
-        </div>
+      <!-- Image smartphone -->
+      <div class="absolute right-[-19px] bottom-[-150px]">
+        <a
+          href={eduxcomTableauBordAdministratifMobileUrl}
+          class="block"
+          target="_blank"
+          aria-label="Voir l'image en taille réelle"
+        >
+          <Image
+            src={eduxcomTableauBordAdministratifMobile}
+            alt="Interface mobile EduXcoM pour la gestion scolaire"
+            width={150}
+            height={200}
+            quality={90}
+            format="webp"
+            class="rounded-lg hover:cursor-zoom-in hover:drop-shadow-xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
+          />
+        </a>
       </div>
     </div>
-
-    <!-- Feature Cards avec mots-clés SEO -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-16">
-      <!-- Card 1 -->
-      <div class="bg-white dark:bg-dark p-6 rounded-xl shadow-md transition-transform duration-300 hover:-translate-y-2">
-        <div class="text-3xl mb-4">👨‍🏫</div>
-        <h2 class="text-xl font-semibold mb-2">Solution numérique pour enseignants</h2>
-        <p class="text-dark-light dark:text-dark-lighter">Gestion simplifiée des notes, devoirs et présences avec notre application de gestion pédagogique</p>
-      </div>
-
-      <!-- Card 2 -->
-      <div class="bg-white dark:bg-dark p-6 rounded-xl shadow-md transition-transform duration-300 hover:-translate-y-2">
-        <div class="text-3xl mb-4">📊</div>
-        <h2 class="text-xl font-semibold mb-2">Système d'information scolaire</h2>
-        <p class="text-dark-light dark:text-dark-lighter">Tableaux de bord intuitifs et statistiques détaillées pour une gestion d'établissement optimisée</p>
-      </div>
-
-      <!-- Card 3 -->
-      <div class="bg-white dark:bg-dark p-6 rounded-xl shadow-md transition-transform duration-300 hover:-translate-y-2">
-        <div class="text-3xl mb-4">👨‍👩‍👧‍👦</div>
-        <h2 class="text-xl font-semibold mb-2">Outil communication parents-professeurs</h2>
-        <p class="text-dark-light dark:text-dark-lighter">Suivi des élèves en ligne et communication directe entre les parents et l'équipe éducative</p>
-      </div>
-    </div>
-  </div>
+  </aside>
 </section>
