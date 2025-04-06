@@ -1,29 +1,33 @@
 @import 'tailwindcss';
 @theme {
   /* Thème clair (par défaut) */
-  --color-primary: oklch(0.58 0.1479 237.32);
-  --color-primary-dark: oklch(0.49 0.1389 241.97);
-  --color-secondary: oklch(0.77 0.1647 70.08);
-  --color-secondary-dark: oklch(0.67 0.159 58.32);
+  --color-primary: oklch(0.44 0.103151 241.6728);
+  --color-primary-dark: oklch(0.68 0.1721 245.3);
+  --color-secondary: oklch(0.43 0.1333 140.29);
+  --color-secondary-dark: oklch(0.87 0.2164 139.38);
 
   /* Texte */
-  --color-dark: oklch(0.15 0.0398 265.75);
-  --color-dark-light: oklch(0.45 0.0407 257.42);
+  --color-dark: oklch(0.12 0.04 265.75);
+  --color-light: oklch(0.99 0.002 265);
   --color-dark-lighter: oklch(0.7 0.022 261.33);
 
   /* Arrière-plan */
   --color-light: oklch(0.99 0.002 265);
-  --color-light-alt: oklch(0.97 0.0069 247.9);
   --color-light-dark: oklch(0.93 0.013 255.51);
 
   /* États */
-  --color-success: oklch(0.72 0.19 149.58);
-  --color-error: oklch(0.64 0.24 25.33);
-  --color-warning: oklch(0.8 0.18 86.05);
-  --color-info: oklch(0.62 0.21 259.82);
+  --color-success: oklch(0.44 0.1147 150.57);
+  --color-success-dark: oklch(0.72 0.19 149.58);
+  --color-error: oklch(0.47 0.192269 28.446);
+  --color-error-dark: oklch(0.7 0.1926 22.11);
+  --color-warning: oklch(0.48 0.226788 324.685);
+  --color-warning-dark: oklch(0.72 0.2851 327.32);
+  --color-info: oklch(0.47 0.1996 260.79);
+  --color-info-dark: oklch(0.67 0.1725 259.61);
 
   /* Bordures */
-  --color-border: oklch(0.87 0.01 258.34);
+  --color-border: oklch(0.46 0.047 281.32);
+  --color-border-dark: oklch(0.87 0.01 258.34);
 
   /* Personnalisation des breakpoints */
   --breakpoint-sm: 30rem;
@@ -48,22 +52,3 @@
 
 /* Définition de la variante dark */
 @custom-variant dark (&:where(.dark, .dark *));
-
-/* Classes d'utilité personnalisées */
-@layer utilities {
-  .text-primary {
-    color: var(--color-primary);
-  }
-
-  .bg-primary {
-    background-color: var(--color-primary);
-  }
-
-  .dark .text-primary {
-    color: var(--color-primary-dark);
-  }
-
-  .dark .bg-primary {
-    background-color: var(--color-primary-dark);
-  }
-}
