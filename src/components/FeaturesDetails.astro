@@ -12,6 +12,16 @@ import interfaceParentsMobileUrl from '../assets/eduxcom-tableau-bord-famille-mo
 import interfaceAdminTablet from '../assets/eduxcom-tableau-bord-administratif-tablet.webp';
 import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administratif-tablet.webp?url';
 import Badge from './Badge.astro';
+
+import { getImage } from 'astro:assets';
+
+// Générer une version plus petite et optimisée
+const optimizedEnseignantDesktop = await getImage({
+  src: interfaceEnseignantDesktop,
+  width: 500,
+  format: 'webp',
+  quality: 80,
+});
 ---
 
 <section id="features" class="py-16">
@@ -67,13 +77,9 @@ import Badge from './Badge.astro';
           target="_blank"
           aria-label="Voir l'image en taille réelle"
         >
-          <Image
-            src={interfaceEnseignantDesktop}
+          <img
+            src={optimizedEnseignantDesktop.src}
             alt="Interface du logiciel EduXcoM pour la gestion des cours et évaluations par les enseignants"
-            width={800}
-            height={500}
-            quality={90}
-            format="webp"
             class="w-full h-auto rounded-lg hover:cursor-zoom-in"
           />
         </a>
