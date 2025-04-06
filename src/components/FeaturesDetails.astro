@@ -11,6 +11,7 @@ import interfaceParentsMobile from '../assets/eduxcom-tableau-bord-famille-mobil
 import interfaceParentsMobileUrl from '../assets/eduxcom-tableau-bord-famille-mobile.webp?url';
 import interfaceAdminTablet from '../assets/eduxcom-tableau-bord-administratif-tablet.webp';
 import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administratif-tablet.webp?url';
+import Badge from './Badge.astro';
 ---
 
 <section id="features" class="py-16">
@@ -18,13 +19,9 @@ import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administrati
   <article
     class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch min-h-[600px] py-20"
   >
-    <div class="order-2 md:order-1 flex flex-col justify-center">
+    <aside class="order-2 md:order-1 flex flex-col justify-center">
       <FeatureAnimation direction="left" client:visible>
-        <div
-          class="inline-block px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
-        >
-          Interface enseignants
-        </div>
+        <Badge title="Interface enseignants" />
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Plateforme numérique pour professeurs</h2>
         <p class="text-dark-light dark:text-dark-lighter text-lg mb-6">
           Une solution complète permettant aux enseignants d'optimiser leur temps et d'améliorer le
@@ -60,9 +57,9 @@ import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administrati
           </li>
         </ul>
       </FeatureAnimation>
-    </div>
+    </aside>
 
-    <div class="order-1 md:order-2 flex items-center justify-center">
+    <aside class="order-1 md:order-2 flex items-center justify-center">
       <ImageAnimation client:visible>
         <a
           href={interfaceEnseignantDesktopUrl}
@@ -81,14 +78,14 @@ import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administrati
           />
         </a>
       </ImageAnimation>
-    </div>
+    </aside>
   </article>
 
   <!-- Article 2: Outil Communication Parents -->
   <article
     class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch min-h-[600px] py-20 bg-slate-50 dark:bg-slate-900/30 rounded-3xl"
   >
-    <div class="order-1 flex justify-center items-center">
+    <aside class="order-1 flex justify-center items-center">
       <ImageAnimation client:visible>
         <div class="relative w-64 h-[550px] overflow-hidden">
           <a
@@ -107,15 +104,11 @@ import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administrati
           </a>
         </div>
       </ImageAnimation>
-    </div>
+    </aside>
 
-    <div class="order-2 flex flex-col justify-center">
+    <aside class="order-2 flex flex-col justify-center">
       <FeatureAnimation direction="right" client:visible>
-        <div
-          class="inline-block px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
-        >
-          Application mobile parents
-        </div>
+        <Badge title="Application mobile parents" />
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Suivi scolaire pour les familles</h2>
         <p class="text-dark-light dark:text-dark-lighter text-lg mb-6">
           Notre plateforme renforce le lien école-famille grâce à un accès instantané aux
@@ -151,20 +144,17 @@ import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administrati
           </li>
         </ul>
       </FeatureAnimation>
-    </div>
+    </aside>
   </article>
 
   <!-- Article 3: Système d'Information Scolaire -->
   <article
     class="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-stretch min-h-[600px] py-20"
   >
-    <div class="order-2 md:order-1 flex flex-col justify-center">
+    <aside class="order-2 md:order-1 flex flex-col justify-center">
       <FeatureAnimation direction="left" client:visible>
-        <div
-          class="inline-block px-3 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
-        >
-          Administration scolaire
-        </div>
+        <Badge title=" Administration scolaire" />
+
         <h2 class="text-2xl md:text-3xl font-bold mb-4">Gestion complète d'établissement</h2>
         <p class="text-dark-light dark:text-dark-lighter text-lg mb-6">
           Notre système d'information centralise toutes les données administratives et pédagogiques
@@ -200,9 +190,9 @@ import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administrati
           </li>
         </ul>
       </FeatureAnimation>
-    </div>
+    </aside>
 
-    <div class="order-1 md:order-2 flex items-center justify-center">
+    <aside class="order-1 md:order-2 flex items-center justify-center">
       <ImageAnimation client:visible>
         <div class="relative overflow-hidden">
           <a
@@ -221,6 +211,6 @@ import interfaceAdminTabletUrl from '../assets/eduxcom-tableau-bord-administrati
           </a>
         </div>
       </ImageAnimation>
-    </div>
+    </aside>
   </article>
 </section>
