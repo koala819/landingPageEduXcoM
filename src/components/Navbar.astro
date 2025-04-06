@@ -1,5 +1,4 @@
 ---
-import NavLink from './NavLink.astro';
 import { Image } from 'astro:assets';
 import logoSrc from '../assets/LogoEduXcom.svg';
 
@@ -20,62 +19,91 @@ const navItems: NavItem[] = [
   <div class="container mx-auto px-4">
     <nav class="flex justify-between items-center py-4">
       <!-- Logo -->
-      <a href="#" class="text-2xl md:text-3xl font-extrabold text-primary dark:text-primary-dark flex items-center gap-2">
+      <a
+        href="#"
+        class="text-2xl md:text-3xl font-extrabold text-primary dark:text-primary-dark flex items-center gap-2"
+      >
         <Image src={logoSrc} alt="EduXcoM Logo" width="36" height="36" />
         Edu<span class="text-secondary dark:text-secondary-dark">XcoM</span>
       </a>
 
       <!-- Mobile Menu Button -->
-      <button id="mobile-menu-button" class="md:hidden text-2xl cursor-pointer" aria-label="Toggle menu">
+      <button
+        id="mobile-menu-button"
+        class="md:hidden text-2xl cursor-pointer"
+        aria-label="Toggle menu"
+      >
         <span id="menu-icon">☰</span>
       </button>
 
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
         <ul class="flex items-center gap-8">
-          {navItems.map((item) => (
-            <li class="group">
-              <a href={item.href} class="font-medium relative transition-colors duration-300 hover:text-primary dark:hover:text-primary-dark">
-                {item.text}
-                <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-primary dark:bg-primary-dark transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            </li>
-          ))}
+          {
+            navItems.map((item) => (
+              <li class="group">
+                <a
+                  href={item.href}
+                  class="font-medium relative transition-colors duration-300 hover:text-primary dark:hover:text-primary-dark"
+                >
+                  {item.text}
+                  <span class="absolute bottom-[-4px] left-0 w-0 h-0.5 bg-primary dark:bg-primary-dark transition-all duration-300 group-hover:w-full" />
+                </a>
+              </li>
+            ))
+          }
         </ul>
 
         <!-- Desktop Theme Toggle -->
-        <button id="theme-toggle-desktop" class="p-2 rounded-md bg-light-alt dark:bg-dark-light transition-colors duration-200">
+        <button
+          id="theme-toggle-desktop"
+          class="p-2 rounded-md bg-light-alt dark:bg-dark-light transition-colors duration-200"
+        >
           <span class="block dark:hidden">🌙</span>
           <span class="hidden dark:block">☀️</span>
         </button>
 
-        <a href="#demo" class="bg-primary dark:bg-primary-dark text-white dark:text-dark font-semibold py-2.5 px-5 rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary-dark dark:hover:bg-primary hover:-translate-y-[2px] hover:shadow-md">
+        <a
+          href="#demo"
+          class="bg-primary dark:bg-primary-dark text-white dark:text-dark font-semibold py-2.5 px-5 rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary-dark dark:hover:bg-primary hover:-translate-y-[2px] hover:shadow-md"
+        >
           Demander une démo
         </a>
       </div>
     </nav>
 
     <!-- Mobile Navigation Menu (Hidden by default) -->
-    <div id="mobile-menu" class="hidden py-4 md:hidden h-screen bg-white dark:bg-dark shadow-md rounded-lg">
+    <div
+      id="mobile-menu"
+      class="hidden py-4 md:hidden h-screen bg-white dark:bg-dark shadow-md rounded-lg"
+    >
       <div class="flex justify-center w-full p-5">
-        <button id="theme-toggle-mobile" class="p-2 rounded-md bg-light-alt dark:bg-dark-light transition-colors duration-200">
+        <button
+          id="theme-toggle-mobile"
+          class="p-2 rounded-md bg-light-alt dark:bg-dark-light transition-colors duration-200"
+        >
           <span class="block dark:hidden">🌙</span>
           <span class="hidden dark:block">☀️</span>
         </button>
       </div>
       <ul class="flex flex-col gap-4 mb-6">
-        {navItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class="block font-medium py-2 transition-colors duration-300 hover:text-primary dark:hover:text-primary-dark"
-            >
-              {item.text}
-            </a>
-          </li>
-        ))}
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="block font-medium py-2 transition-colors duration-300 hover:text-primary dark:hover:text-primary-dark"
+              >
+                {item.text}
+              </a>
+            </li>
+          ))
+        }
       </ul>
-      <a href="#demo" class="block text-center bg-primary dark:bg-primary-dark text-white dark:text-dark font-semibold py-2.5 px-5 rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary-dark dark:hover:bg-primary">
+      <a
+        href="#demo"
+        class="block text-center bg-primary dark:bg-primary-dark text-white dark:text-dark font-semibold py-2.5 px-5 rounded-lg cursor-pointer transition-all duration-300 hover:bg-primary-dark dark:hover:bg-primary"
+      >
         Demander une démo
       </a>
     </div>
@@ -101,7 +129,7 @@ const navItems: NavItem[] = [
 
     // Close mobile menu when clicking on a link
     const mobileLinks = mobileMenu?.querySelectorAll('a');
-    mobileLinks?.forEach(link => {
+    mobileLinks?.forEach((link) => {
       link.addEventListener('click', () => {
         mobileMenu?.classList.add('hidden');
         if (menuIcon) menuIcon.textContent = '☰';
