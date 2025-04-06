@@ -1,0 +1,49 @@
+---
+const { title = 'EduXcoM - Plateforme de gestion scolaire open source', ...props } = Astro.props;
+---
+
+<link rel="sitemap" href="/sitemap-index.xml" />
+<title>{title}</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta
+  name="description"
+  content="EduXcoM est une plateforme éducative open source qui connecte enseignants, élèves et parents pour une gestion d'école en ligne fluide et efficace."
+/>
+<meta
+  name="keywords"
+  content="plateforme éducative, gestion scolaire, logiciel école, suivi pédagogique, open source"
+/>
+
+<!-- Préchargement des polices -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+  rel="stylesheet"
+/>
+
+<!-- Open Graph tags -->
+<meta property="og:title" content="EduXcoM - Plateforme de gestion scolaire open source" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://landing-page-edu-x-com.vercel.app/" />
+<meta
+  property="og:description"
+  content="EduXcoM est une plateforme éducative open source qui connecte enseignants, élèves et parents pour une gestion d'école en ligne fluide et efficace."
+/>
+<meta
+  property="og:image"
+  content="https://landing-page-edu-x-com.vercel.app/images/eduxcom-og-image.jpg"
+/>
+<meta property="og:image:alt" content="Bannière EduXcoM" />
+
+<!-- JSON-LD simplifié -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "EduXcoM",
+    "description": "Plateforme éducative open source",
+    "url": "https://landing-page-edu-x-com.vercel.app/"
+  }
+</script>

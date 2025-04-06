@@ -49,3 +49,19 @@
 
 /* Définition de la variante dark */
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* Styles globaux */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
