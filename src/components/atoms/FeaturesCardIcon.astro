@@ -1,25 +1,15 @@
 ---
-import { BookOpen } from "lucide-react";
-import { ChartLine } from "lucide-react";
-import { Users } from "lucide-react";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   iconName: string;
 }
 
 const { iconName } = Astro.props;
-
-const iconComponents: { [key: string]: any } = {
-  BookOpen,
-  ChartLine,
-  Users,
-};
-
-const IconComponent = (iconComponents[iconName] as typeof BookOpen) || BookOpen;
 ---
 
 <div
   class="text-light bg-primary mb-6 flex h-12 w-12 items-center justify-center rounded-lg"
 >
-  <IconComponent />
+  <Icon name={iconName} class="text-3xl" />
 </div>

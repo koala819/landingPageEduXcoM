@@ -1,7 +1,8 @@
 ---
-import "../styles/global.css";
-import Head from "../components/atoms/Head.astro";
-import Navbar from "../components/atoms/Navbar.astro";
+import "@/styles/global.css";
+import Head from "@/components/atoms/Head.astro";
+import Navbar from "@/components/atoms/Navbar.astro";
+import LightBox from "@/components/atoms/LightBox.astro";
 
 const { ...props } = Astro.props;
 ---
@@ -10,13 +11,29 @@ const { ...props } = Astro.props;
 <html lang="fr">
   <head>
     <Head {...props} />
-    <script>
-      // Initialiser le thème immédiatement pour éviter le flash
+    <script is:inline>
+      // Optimisation: Initialiser le thème immédiatement pour éviter le flash
+      // Utilisation de is:inline pour garantir l'exécution immédiate sans bundling
+      const DARK_SCHEME_QUERY = "(prefers-color-scheme: dark)";
       const isDark =
         localStorage.theme === "dark" ||
         (!("theme" in localStorage) &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches);
+          window.matchMedia(DARK_SCHEME_QUERY).matches);
       document.documentElement.classList.toggle("dark", isDark);
+
+      // Précharger les polices et ressources critiques
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(() => {
+          // Précharger les images importantes pendant le temps d'inactivité
+          const preloadLinks = document.querySelectorAll(
+            'link[rel="preload"][as="image"]'
+          );
+          preloadLinks.forEach(link => {
+            const img = new Image();
+            img.src = link.href;
+          });
+        });
+      }
     </script>
   </head>
   <body
@@ -24,10 +41,16 @@ const { ...props } = Astro.props;
   >
     <Navbar />
     <slot />
+    <LightBox />
     <script>
-      // Script client pour gérer les changements de thème après chargement
+      // Optimisation: Utiliser type="module" pour le chargement asynchrone
       import { initTheme } from "../scripts/theme.js";
-      document.addEventListener("DOMContentLoaded", initTheme);
+      // Initialiser le thème après le chargement complet
+      if (document.readyState === "complete") {
+        initTheme();
+      } else {
+        window.addEventListener("load", initTheme);
+      }
     </script>
   </body>
 </html>

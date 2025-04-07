@@ -1,11 +1,5 @@
 ---
-import { Crown } from "lucide-react";
-import { FlaskConical } from "lucide-react";
-import { HeartHandshake } from "lucide-react";
-import { LockKeyhole } from "lucide-react";
-import { Palette } from "lucide-react";
-import { Pin } from "lucide-react";
-import { WandSparkles } from "lucide-react";
+import { Icon } from "astro-icon/components";
 
 export interface Props {
   title: string;
@@ -15,17 +9,6 @@ export interface Props {
 }
 
 const { title, content, iconName, rotate = "0deg" } = Astro.props;
-
-const iconComponents: { [key: string]: any } = {
-  Crown,
-  FlaskConical,
-  HeartHandshake,
-  LockKeyhole,
-  Palette,
-  WandSparkles,
-};
-
-const IconComponent = (iconComponents[iconName] as typeof Crown) || Crown;
 ---
 
 <div
@@ -34,14 +17,14 @@ const IconComponent = (iconComponents[iconName] as typeof Crown) || Crown;
 >
   <!-- "Punaise" en haut -->
   <div class="absolute -top-3 left-1/2">
-    <Pin />
+    <Icon name="pin" class="text-3xl" />
   </div>
 
   <div class="mb-4 flex items-center">
     <div
       class="text-primary dark:text-[#002638]-dark mr-4 flex h-10 w-10 items-center justify-center"
     >
-      <IconComponent />
+      <Icon name={iconName} class="text-3xl" />
     </div>
     <h3
       class="text-lg font-extrabold text-gray-800 uppercase dark:text-[#21212C]"

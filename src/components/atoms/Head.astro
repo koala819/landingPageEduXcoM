@@ -1,60 +1,104 @@
 ---
-const { title = "EduXcoM - Plateforme de gestion scolaire open source" } =
-  Astro.props;
+// Optimisation: Extraire les valeurs communes pour la réutilisation
+const siteName = "EduXcoM";
+const siteDescription = "Plateforme de gestion scolaire open source";
+const fullDescription = `${siteName} est une plateforme éducative open source qui connecte enseignants, élèves et parents pour une gestion d'école en ligne fluide et efficace.`;
+const siteUrl = "https://landing-page-edu-x-com.vercel.app/";
+const ogImageUrl = `${siteUrl}images/eduxcom-og-image.jpg`;
+
+const {
+  title = `${siteName} - ${siteDescription}`,
+  description = fullDescription,
+  image = ogImageUrl,
+  canonicalUrl = siteUrl,
+} = Astro.props;
 ---
 
-<link rel="sitemap" href="/sitemap-index.xml" />
-<title>{title}</title>
+<!-- Métadonnées de base -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta
-  name="description"
-  content="EduXcoM est une plateforme éducative open source qui connecte enseignants, élèves et parents pour une gestion d'école en ligne fluide et efficace."
-/>
+<title>{title}</title>
+<meta name="description" content={description} />
 <meta
   name="keywords"
   content="plateforme éducative, gestion scolaire, logiciel école, suivi pédagogique, open source"
 />
+<link rel="canonical" href={canonicalUrl} />
+<link rel="sitemap" href="/sitemap-index.xml" />
 
-<!-- Préchargement des polices -->
+<!-- Optimisation: Préchargement des polices avec stratégie optimisée -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   rel="preload"
   as="style"
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
 />
 <link
   rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+  href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
   media="print"
   onload="this.media='all'"
 />
+<noscript>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap"
+  />
+</noscript>
 
-<!-- Open Graph tags -->
-<meta
-  property="og:title"
-  content="EduXcoM - Plateforme de gestion scolaire open source"
+<!-- Préchargement des ressources critiques -->
+<link rel="preload" as="image" href="/src/assets/LogoEduXcom.svg" />
+<link
+  rel="preload"
+  as="image"
+  href="/src/assets/pictures/eduxcom-tableau-bord-administratif-desktop.webp"
+  fetchpriority="high"
 />
+
+<!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://landing-page-edu-x-com.vercel.app/" />
-<meta
-  property="og:description"
-  content="EduXcoM est une plateforme éducative open source qui connecte enseignants, élèves et parents pour une gestion d'école en ligne fluide et efficace."
-/>
-<meta
-  property="og:image"
-  content="https://landing-page-edu-x-com.vercel.app/images/eduxcom-og-image.jpg"
-/>
-<meta property="og:image:alt" content="Bannière EduXcoM" />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={image} />
+<meta property="og:image:alt" content={`Bannière ${siteName}`} />
+<meta property="og:site_name" content={siteName} />
 
-<!-- JSON-LD simplifié -->
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalUrl} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+
+<!-- Données structurées JSON-LD améliorées -->
 <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "name": "EduXcoM",
-    "description": "Plateforme éducative open source",
-    "url": "https://landing-page-edu-x-com.vercel.app/"
+    "name": "${siteName}",
+    "description": "${siteDescription}",
+    "url": "${siteUrl}",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "${siteUrl}?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+</script>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "${siteName}",
+    "applicationCategory": "EducationalApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    },
+    "description": "${fullDescription}"
   }
 </script>

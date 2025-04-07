@@ -1,0 +1,72 @@
+---
+const { direction = "up", delay = 0, className = "" } = Astro.props;
+---
+
+<div
+  class:list={["animated-section", className]}
+  data-direction={direction}
+  data-delay={delay}
+>
+  <slot />
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll(".animated-section");
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target as HTMLElement;
+            const delay = parseFloat(el.dataset.delay?.toString() ?? "0");
+
+            setTimeout(() => {
+              el.classList.add("visible");
+            }, delay * 1000);
+
+            observer.unobserve(el);
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+        rootMargin: "50px",
+      }
+    );
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+<style>
+  .animated-section {
+    opacity: 0;
+    transition:
+      opacity 0.6s ease-out,
+      transform 0.6s ease-out;
+  }
+
+  .animated-section[data-direction="up"] {
+    transform: translateY(20px);
+  }
+
+  .animated-section[data-direction="down"] {
+    transform: translateY(-20px);
+  }
+
+  .animated-section[data-direction="left"] {
+    transform: translateX(20px);
+  }
+
+  .animated-section[data-direction="right"] {
+    transform: translateX(-20px);
+  }
+
+  .animated-section.visible {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+</style>

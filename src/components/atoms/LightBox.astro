@@ -1,0 +1,237 @@
+---
+
+---
+
+<div class="app-lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="portal"></div>
+  <button class="close-button" aria-label="Fermer la lightbox" tabindex="-1">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+      <line x1="9" x2="15" y1="9" y2="15"></line>
+      <line x1="15" x2="9" y1="9" y2="15"></line>
+    </svg>
+  </button>
+  <div class="caption"></div>
+</div>
+
+<script>
+  // Sélectionner les éléments
+  const lightbox = document.querySelector(".app-lightbox") as HTMLElement;
+  const portal = lightbox?.querySelector(".portal") as HTMLElement;
+  const closeButton = lightbox?.querySelector(".close-button") as HTMLElement;
+  const caption = lightbox?.querySelector(".caption") as HTMLElement;
+  let lastFocusedElement: Element | null = null;
+
+  // Fonction pour ouvrir la lightbox
+  function openLightbox(trigger: Element) {
+    // Sauvegarder l'élément qui avait le focus
+    lastFocusedElement = document.activeElement;
+
+    // Copier le contenu de l'image dans le portail
+    portal.innerHTML = trigger.innerHTML;
+
+    // Obtenir l'image et son alt pour la légende
+    const img = portal.querySelector("img");
+    if (img) {
+      // Ajuster la taille de l'image
+      setTimeout(() => {
+        const ratio = img.naturalWidth / img.naturalHeight;
+        img.sizes = `${window.innerHeight * ratio}px`;
+      }, 50);
+
+      // Définir la légende à partir de l'attribut alt
+      caption.textContent = img.alt || "";
+    }
+
+    // Activer la lightbox et bloquer le défilement
+    lightbox.classList.add("is-active");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.documentElement.classList.add("scrollIsLocked");
+    document.body.style.overflow = "hidden";
+
+    // Donner le focus au bouton de fermeture
+    closeButton.setAttribute("tabindex", "0");
+    setTimeout(() => closeButton.focus(), 50);
+  }
+
+  // Fonction pour fermer la lightbox
+  function closeLightbox() {
+    lightbox.classList.remove("is-active");
+    lightbox.setAttribute("aria-hidden", "true");
+    document.documentElement.classList.remove("scrollIsLocked");
+    document.body.style.overflow = "";
+    closeButton.setAttribute("tabindex", "-1");
+
+    // Remettre le focus sur l'élément qui l'avait avant
+    if (lastFocusedElement) {
+      (lastFocusedElement as HTMLElement).focus();
+    }
+  }
+
+  // Ajouter les écouteurs d'événements aux déclencheurs
+  const lbTriggers = document.querySelectorAll('[data-lightbox="true"]');
+  lbTriggers.forEach(trigger => {
+    // Rendre les déclencheurs accessibles au clavier
+    if (!trigger.getAttribute("tabindex")) {
+      trigger.setAttribute("tabindex", "0");
+    }
+    if (!trigger.getAttribute("role")) {
+      trigger.setAttribute("role", "button");
+    }
+    if (!trigger.getAttribute("aria-label")) {
+      const img = trigger.querySelector("img");
+      if (img && img.alt) {
+        trigger.setAttribute("aria-label", `Agrandir: ${img.alt}`);
+      } else {
+        trigger.setAttribute("aria-label", "Agrandir l'image");
+      }
+    }
+
+    // Écouteurs d'événements
+    trigger.addEventListener("click", () => openLightbox(trigger));
+    (trigger as HTMLElement).addEventListener("keydown", (e: KeyboardEvent) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        openLightbox(trigger);
+      }
+    });
+  });
+
+  // Écouteurs pour fermer la lightbox
+  lightbox.addEventListener("click", e => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  closeButton.addEventListener("click", closeLightbox);
+
+  // Gestion de la touche Escape
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && lightbox.classList.contains("is-active")) {
+      closeLightbox();
+    }
+  });
+
+  // Gérer le redimensionnement de la fenêtre
+  window.addEventListener("resize", () => {
+    if (lightbox.classList.contains("is-active")) {
+      const img = portal.querySelector("img");
+      if (img) {
+        const ratio = img.naturalWidth / img.naturalHeight;
+        img.sizes = `${window.innerHeight * ratio}px`;
+      }
+    }
+  });
+</script>
+
+<style>
+  .app-lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    cursor: zoom-out;
+    background-color: rgba(0, 0, 0, 0.85);
+    opacity: 0;
+    transition: opacity 0.35s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-lightbox.is-active {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  .portal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    max-height: 85vh;
+    transition:
+      opacity 0.35s,
+      transform 0.35s;
+    transform: scale(0.2);
+  }
+
+  .portal :global(img) {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 85vh;
+    object-fit: contain;
+  }
+
+  .is-active .portal {
+    transform: scale(1);
+  }
+
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .close-button:hover,
+  .close-button:focus {
+    background: rgba(255, 255, 255, 0.4);
+    outline: none;
+  }
+
+  .close-button:focus {
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+  }
+
+  .caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(4px);
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+    max-width: 80%;
+  }
+
+  /* Appliquer le curseur zoom-in aux éléments déclencheurs */
+  :global([data-lightbox="true"]) {
+    cursor: zoom-in;
+  }
+
+  /* Bloquer le défilement de la page */
+  :global(.scrollIsLocked) {
+    overflow: hidden;
+  }
+</style>
