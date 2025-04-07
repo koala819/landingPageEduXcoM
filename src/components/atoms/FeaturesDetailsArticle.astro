@@ -1,6 +1,5 @@
 ---
 import GreenCheck from "@/components/atoms/GreenCheck.astro";
-import ImageLightbox from "@/components/react/ImageLightbox";
 import Badge from "@/components/atoms/Badge.astro";
 import FadeInSection from "@/components/react/FadeInSection";
 import { Image } from "astro:assets";
@@ -17,7 +16,6 @@ export interface Props {
   description: string;
   features: Feature[];
   imageSrc: ImageMetadata;
-  imageUrl: string;
   imageAlt: string;
   direction?: "left" | "right";
   reverse?: boolean;
@@ -29,7 +27,6 @@ const {
   description,
   features,
   imageSrc,
-  imageUrl,
   imageAlt,
   direction = "left",
   reverse = false,
@@ -83,41 +80,21 @@ function renderTextWithStrong(text: string, strongParts: string[] = []) {
   </aside>
 
   <aside
-    class={`${reverse ? "order-2 md:order-1 " : "  order-2"} flex items-center justify-center pb-16`}
+    class={`${reverse ? "order-2 md:order-1 " : "order-2"} flex items-center justify-center pb-16`}
   >
-    <!-- <ImageAnimation client:visible> -->
-
-    <!-- <ImageLightbox
-      client:visible
-      src={imageUrl}
-      alt="Tableau de bord administratif EduXcoM sur ordinateur portable"
-    > -->
-    <Image
-      src={imageSrc}
-      alt={imageAlt}
-      widths={[400, 800, 1200]}
-      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
-      quality={85}
-      format="webp"
-      loading="eager"
-      class="h-full w-full transform rounded-lg object-cover transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
-    />
-
-    <!-- Overlay qui apparaît au survol -->
-    <!-- <Overlay title="Agrandir" /> -->
-    <!-- </ImageLightbox> -->
-    <!-- <a
-      href={imageUrl}
-      class="block overflow-hidden"
-      target="_blank"
-      aria-label="Voir l'image en taille réelle"
+    <div
+      class="relative h-full max-h-[500px] w-full overflow-hidden rounded-lg"
     >
-      <img
+      <Image
         src={imageSrc}
         alt={imageAlt}
-        class="h-auto w-full rounded-lg hover:cursor-zoom-in"
+        widths={[400, 800, 1200]}
+        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+        quality={85}
+        format="webp"
+        loading="eager"
+        class="h-auto w-full rounded-lg object-contain transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
       />
-    </a> -->
-    <!-- </ImageAnimation> -->
+    </div>
   </aside>
 </article>

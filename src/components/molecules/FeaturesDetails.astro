@@ -1,41 +1,10 @@
 ---
-// import { getImage } from "astro:assets";
 import FeaturesDetailsArticle from "@/components/atoms/FeaturesDetailsArticle.astro";
 
-// Import des images
 import interfaceEnseignantDesktop from "@/assets/pictures/eduxcom-tableau-bord-enseignant-desktop.webp";
-import interfaceEnseignantDesktopUrl from "@/assets/pictures/eduxcom-tableau-bord-enseignant-desktop.webp?url";
 import interfaceParentsMobile from "@/assets/pictures/eduxcom-tableau-bord-famille-mobile.webp";
-import interfaceParentsMobileUrl from "@/assets/pictures/eduxcom-tableau-bord-famille-mobile.webp?url";
 import interfaceAdminTablet from "@/assets/pictures/eduxcom-tableau-bord-administratif-tablet.webp";
-import interfaceAdminTabletUrl from "@/assets/pictures/eduxcom-tableau-bord-administratif-tablet.webp?url";
 
-// Optimisation des images
-// const optimizedEnseignantDesktop = await getImage({
-//   src: interfaceEnseignantDesktop,
-//   width: 500,
-//   height: 300,
-//   format: "webp",
-//   // quality: 80,
-// });
-
-// const optimizedParentsMobile = await getImage({
-//   src: interfaceParentsMobile,
-//   width: 200,
-//   height: 300,
-//   format: "webp",
-//   // quality: 80,
-// });
-
-// const optimizedAdminTablet = await getImage({
-//   src: interfaceAdminTablet,
-//   width: 480,
-//   height: 300,
-//   format: "webp",
-//   // quality: 80,
-// });
-
-// Définition des fonctionnalités pour l'interface enseignants
 const teacherFeatures = [
   {
     text: "Gestion des cahiers de notes et calculs automatiques des moyennes pondérées pour chaque élève",
@@ -55,7 +24,6 @@ const teacherFeatures = [
   },
 ];
 
-// Définition des fonctionnalités pour l'application parents
 const parentFeatures = [
   {
     text: "Consultez les notes et évaluations de votre enfant dès leur publication par les enseignants",
@@ -75,7 +43,6 @@ const parentFeatures = [
   },
 ];
 
-// Définition des fonctionnalités pour l'administration
 const adminFeatures = [
   {
     text: "Tableaux de bord analytiques pour suivre les indicateurs de performance de l'établissement",
@@ -97,20 +64,19 @@ const adminFeatures = [
 ---
 
 <section id="features" class="py-16">
-  <!-- Article 1: Interface Enseignants -->
+  <!-- Article 1: Enseignants -->
   <FeaturesDetailsArticle
     badgeTitle="Interface enseignants"
     title="Plateforme numérique pour professeurs"
     description="Une solution complète permettant aux enseignants d'optimiser leur temps et d'améliorer le suivi pédagogique des élèves au quotidien."
     features={teacherFeatures}
     imageSrc={interfaceEnseignantDesktop}
-    imageUrl={interfaceEnseignantDesktopUrl}
     imageAlt="Interface du logiciel EduXcoM pour la gestion des cours et évaluations par les enseignants"
     direction="left"
     reverse={true}
   />
 
-  <!-- Article 2: Application Parents (décommenté par rapport à l'original) -->
+  <!-- Article 2: Parents  -->
 
   <FeaturesDetailsArticle
     badgeTitle="Application mobile parents"
@@ -118,7 +84,6 @@ const adminFeatures = [
     description="Notre plateforme renforce le lien école-famille grâce à un accès instantané aux informations scolaires de vos enfants, où que vous soyez."
     features={parentFeatures}
     imageSrc={interfaceParentsMobile}
-    imageUrl={interfaceParentsMobileUrl}
     imageAlt="Application mobile EduXcoM pour le suivi scolaire par les parents"
     direction="right"
     reverse={false}
@@ -131,7 +96,6 @@ const adminFeatures = [
     description="Notre système d'information centralise toutes les données administratives et pédagogiques pour une gestion optimisée de votre établissement scolaire."
     features={adminFeatures}
     imageSrc={interfaceAdminTablet}
-    imageUrl={interfaceAdminTabletUrl}
     imageAlt="Tableau de bord administratif du logiciel de gestion scolaire EduXcoM"
     direction="left"
     reverse={true}
