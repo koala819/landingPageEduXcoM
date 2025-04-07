@@ -9,11 +9,14 @@ import favicons from 'astro-favicons';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://landing-page-edu-x-com.vercel.app/',
+  integrations: [react(), favicons()],
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      noExternal: ['framer-motion'],
+    },
   },
-  site: 'https://landing-page-edu-x-com.vercel.app/',
   base: '/',
   trailingSlash: 'always',
-  integrations: [react(), favicons()],
 });
