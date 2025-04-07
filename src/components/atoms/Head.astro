@@ -1,5 +1,7 @@
 ---
-// Optimisation: Extraire les valeurs communes pour la réutilisation
+import logoSrc from "@/assets/LogoEduXcom.svg";
+import dashboardSrc from "@/assets/pictures/eduxcom-tableau-bord-administratif-desktop.webp";
+
 const siteName = "EduXcoM";
 const siteDescription = "Plateforme de gestion scolaire open source";
 const fullDescription = `${siteName} est une plateforme éducative open source qui connecte enseignants, élèves et parents pour une gestion d'école en ligne fluide et efficace.`;
@@ -48,13 +50,8 @@ const {
 </noscript>
 
 <!-- Préchargement des ressources critiques -->
-<link rel="preload" as="image" href="/src/assets/LogoEduXcom.svg" />
-<link
-  rel="preload"
-  as="image"
-  href="/src/assets/pictures/eduxcom-tableau-bord-administratif-desktop.webp"
-  fetchpriority="high"
-/>
+<link rel="preload" as="image" href={logoSrc.src} />
+<link rel="preload" as="image" href={dashboardSrc.src} fetchpriority="high" />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
