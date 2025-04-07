@@ -13,9 +13,6 @@ export default defineConfig({
   integrations: [react(), favicons()],
   vite: {
     plugins: [tailwindcss()],
-    ssr: {
-      noExternal: ['framer-motion'],
-    },
   },
   base: '/',
   trailingSlash: 'always',

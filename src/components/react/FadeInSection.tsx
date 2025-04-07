@@ -1,5 +1,4 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, {  useEffect, useRef, useState } from 'react';
 
 interface FadeInSectionProps {
   children: React.ReactNode;
@@ -8,40 +7,72 @@ interface FadeInSectionProps {
   className?: string;
 }
 
+// Utilisation d'un import dynamique pour Framer Motion
 const FadeInSection = ({
   children,
   delay = 0,
-  direction = 'up',
-  className = '',
+  direction = "up",
+  className = ""
 }: FadeInSectionProps) => {
-  const variants = {
-    hidden: {
-      opacity: 0,
-      y: direction === 'up' ? 20 : direction === 'down' ? -20 : 0,
-      x: direction === 'left' ? 20 : direction === 'right' ? -20 : 0,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      transition: {
-        duration: 0.6,
-        ease: 'easeOut',
-        delay: delay,
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
       },
-    },
+      { threshold: 0.1 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  // Style initial basé sur la direction
+  const getInitialStyle = () => {
+    if (!isClient) return {}; // Ne pas appliquer de transform pendant le rendu côté serveur
+
+    if (direction === "up") return { opacity: 0, transform: `translateY(20px)` };
+    if (direction === "down") return { opacity: 0, transform: `translateY(-20px)` };
+    if (direction === "left") return { opacity: 0, transform: `translateX(20px)` };
+    if (direction === "right") return { opacity: 0, transform: `translateX(-20px)` };
+    return { opacity: 0 };
   };
 
+  // Style de transition
+  const transitionStyle = isVisible
+    ? {
+        opacity: 1,
+        transform: 'translate(0, 0)',
+        transition: `opacity 0.6s ease-out ${delay}s, transform 0.6s ease-out ${delay}s`
+      }
+    : {};
+
   return (
-    <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: '-50px' }}
-      variants={variants}
+    <div
+      ref={ref}
       className={className}
+      style={{
+        ...getInitialStyle(),
+        ...transitionStyle
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };
 
