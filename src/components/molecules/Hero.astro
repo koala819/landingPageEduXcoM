@@ -67,6 +67,8 @@ import Overlay from "@/components/atoms/Overlay.astro";
                 quality={85}
                 format="webp"
                 loading="eager"
+                decoding="async"
+                fetchpriority="high"
                 class="h-full w-full transform rounded-lg object-cover transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
               />
 
