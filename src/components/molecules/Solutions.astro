@@ -1,0 +1,103 @@
+---
+import PostIt from "@/components/atoms/PostIt.astro";
+
+const postIts = [
+  {
+    title: "Interface intuitive",
+    content:
+      "Prise en main facile pour tous les utilisateurs, même les moins habitués à l'informatique.",
+    icon: "FlaskConical",
+    rotate: "-1deg",
+  },
+  //   {
+  //     title: "Multilingue",
+  //     content:
+  //       "Support complet en français, arabe et anglais. Ajoutez d'autres langues selon vos besoins.",
+  //     icon: "languages",
+  //     rotate: "2deg",
+  //   },
+  {
+    title: "Support dédié",
+    content:
+      "Notre équipe technique est disponible 6j/7 pour vous accompagner et répondre à vos questions.",
+    icon: "HeartHandshake",
+    rotate: "-2deg",
+  },
+  {
+    title: "Sécurité des données",
+    content:
+      "Protection conforme au RGPD avec chiffrement de bout en bout pour toutes les données sensibles.",
+    icon: "LockKeyhole",
+    rotate: "1.5deg",
+  },
+  {
+    title: "Mises à jour régulières",
+    content:
+      "Améliorations constantes intégrant vos retours pour une plateforme qui évolue avec vos besoins.",
+    icon: "WandSparkles",
+    rotate: "-1.5deg",
+  },
+  {
+    title: "Personnalisable",
+    content:
+      "Adaptez les fonctionnalités et l'interface selon les besoins spécifiques de votre établissement.",
+    icon: "Palette",
+    rotate: "1deg",
+  },
+];
+---
+
+<section id="solutions" class="py-12 md:py-16">
+  <!-- Tableau noir / Titre principal -->
+  <div
+    class="bg-dark-background dark:bg-dark text-light dark:text-light-dark chalk-board relative mb-12 overflow-hidden rounded-lg p-8 shadow-lg md:p-10"
+  >
+    <div class="relative z-10">
+      <h1
+        class="font-chalk relative mb-6 text-center text-3xl font-bold md:text-4xl"
+      >
+        Une solution tout-en-un pour votre établissement
+        <span
+          class="bg-light dark:bg-light-dark mx-auto mt-4 block h-0.5 w-48 opacity-60"
+        ></span>
+      </h1>
+      <p
+        class="font-chalk mx-auto max-w-3xl text-center text-lg leading-relaxed md:text-xl"
+      >
+        EduXcoM est bien plus qu'un simple logiciel de gestion scolaire. C'est
+        une plateforme complète qui connecte tous les acteurs de l'éducation
+        pour une gestion fluide et efficace.
+      </p>
+    </div>
+  </div>
+
+  <div class="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      postIts.map(postIt => (
+        <PostIt
+          title={postIt.title}
+          content={postIt.content}
+          iconName={postIt.icon}
+          rotate={postIt.rotate}
+        />
+      ))
+    }
+  </div>
+</section>
+<link
+  href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
+  rel="stylesheet"
+/>
+
+<style>
+  .chalk-board {
+    background: url("../../assets/chalkboard-texture.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+  .font-chalk {
+    font-family: "Gloria Hallelujah", cursive;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+  }
+</style>

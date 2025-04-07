@@ -80,21 +80,17 @@ function renderTextWithStrong(text: string, strongParts: string[] = []) {
   </aside>
 
   <aside
-    class={`${reverse ? "order-2 md:order-1 " : "order-2"} flex items-center justify-center pb-16`}
+    class={`${reverse ? "order-2 md:order-1" : "order-2"} flex items-center justify-center pb-16`}
   >
-    <div
-      class="relative h-full max-h-[500px] w-full overflow-hidden rounded-lg"
-    >
-      <Image
-        src={imageSrc}
-        alt={imageAlt}
-        widths={[400, 800, 1200]}
-        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
-        quality={85}
-        format="webp"
-        loading="eager"
-        class="h-auto w-full rounded-lg object-contain transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
-      />
-    </div>
+    <Image
+      src={imageSrc}
+      alt={imageAlt}
+      widths={[400, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+      quality={85}
+      format="webp"
+      loading="eager"
+      class="h-auto w-full rounded-lg object-contain transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
+    />
   </aside>
 </article>

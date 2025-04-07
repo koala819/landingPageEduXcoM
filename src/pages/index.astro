@@ -3,14 +3,16 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import Hero from "@/components/molecules/Hero.astro";
 import FeaturesOverview from "@/components/organisms/FeaturesOverview.astro";
 import FeaturesDetails from "@/components/molecules/FeaturesDetails.astro";
+import Solutions from "@/components/molecules/Solutions.astro";
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
 ---
 
 <MainLayout title={pageTitle}>
-  <div class="container mx-auto">
+  <div id="home" class="container mx-auto">
     <Hero />
     <FeaturesOverview />
     <FeaturesDetails />
+    <Solutions />
   </div>
 </MainLayout>
