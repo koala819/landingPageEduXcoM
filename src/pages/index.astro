@@ -1,8 +1,8 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
-import Hero from "../components/Hero.astro";
-import FeaturesOverview from "../components/FeaturesOverview.astro";
-// import FeaturesDetails from '../components/FeaturesDetails.astro';
+import MainLayout from "@/layouts/MainLayout.astro";
+import Hero from "@/components/molecules/Hero.astro";
+import FeaturesOverview from "@/components/organisms/FeaturesOverview.astro";
+import FeaturesDetails from "@/components/molecules/FeaturesDetails.astro";
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
 ---
@@ -11,6 +11,6 @@ const pageTitle =
   <div class="container mx-auto">
     <Hero />
     <FeaturesOverview />
-    <!-- <FeaturesDetails /> -->
+    <FeaturesDetails />
   </div>
 </MainLayout>
