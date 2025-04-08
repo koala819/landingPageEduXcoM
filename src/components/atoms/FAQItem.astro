@@ -10,10 +10,10 @@ const { items } = Astro.props;
 
 <div class="space-y-3">
   {
-    items.map((item, index) => (
+    items.map(item => (
       <div
         class="group dark:bg-dark-background flex flex-col rounded-lg bg-white shadow-sm"
-        tabindex={index + 1}
+        tabindex="0"
       >
         <div class="text-dark dark:text-dark-lighter hover:bg-primary hover:text-light flex cursor-pointer items-center justify-between p-6 text-lg font-medium transition-all duration-300">
           <span>{item.question}</span>
