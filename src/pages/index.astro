@@ -1,7 +1,7 @@
 ---
 import Hero from "@/components/molecules/Hero.astro";
 import FeaturesOverview from "@/components/organisms/FeaturesOverview.astro";
-// import FeaturesDetails from "@/components/molecules/FeaturesDetails.astro";
+import Solutions from "@/components/molecules/Solutions.astro";
 
 import MainLayout from "@/layouts/MainLayout.astro";
 import FeatureTeacher from "@/components/atoms/FeatureTeacher.astro";
@@ -17,6 +17,7 @@ const pageTitle =
     <div class="section-container">
       <Hero />
     </div>
+
     <div id="features" class="features-container">
       <div class="section-container">
         <FeaturesOverview />
@@ -30,6 +31,10 @@ const pageTitle =
       <div class="section-container">
         <FeatureAdmin />
       </div>
+    </div>
+
+    <div class="section-container">
+      <Solutions />
     </div>
   </div>
 </MainLayout>

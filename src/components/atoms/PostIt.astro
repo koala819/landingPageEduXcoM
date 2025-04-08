@@ -26,13 +26,11 @@ const { title, content, iconName, rotate = "0deg" } = Astro.props;
     >
       <Icon name={iconName} class="text-3xl" />
     </div>
-    <h3
-      class="text-lg font-extrabold text-gray-800 uppercase dark:!text-[#21212C]"
-    >
+    <h3>
       {title}
     </h3>
   </div>
-  <p class="text-center text-lg font-medium text-gray-700 dark:text-[#21212C]">
+  <p>
     {content}
   </p>
 </div>
