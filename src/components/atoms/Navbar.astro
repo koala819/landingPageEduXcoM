@@ -1,6 +1,5 @@
 ---
-import { Image } from "astro:assets";
-import logoSrc from "@/assets/LogoEduXcom.svg";
+import { Icon } from "astro-icon/components";
 
 interface NavItem {
   href: string;
@@ -25,14 +24,12 @@ const navItems: NavItem[] = [
         href="#home"
         class="text-primary dark:text-primary-dark flex items-center gap-2 text-2xl font-extrabold lg:text-3xl"
       >
-        <Image
-          src={logoSrc}
-          loading="eager"
-          alt="EduXcoM Logo"
-          width="36"
-          height="36"
+        <Icon
+          name="logo-EduXcoM"
+          class="text-primary dark:text-primary-dark text-6xl"
         />
-        Edu<span class="text-secondary dark:text-secondary-dark">XcoM</span>
+        Edu
+        <span class="text-secondary dark:text-secondary-dark">XcoM</span>
       </a>
 
       <!-- Mobile Menu Button -->
