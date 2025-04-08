@@ -1,0 +1,166 @@
+---
+import FAQGroup from "@/components/molecules/FAQGroup.astro";
+
+interface FAQ {
+  id: number;
+  title: string;
+  items: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+const faqs: FAQ[] = [
+  {
+    id: 1,
+    title: "Questions générales",
+    items: [
+      {
+        question: "Qu'est-ce qu'EduXcoM exactement ?",
+        answer:
+          "EduXcoM est une plateforme éducative open source complète qui connecte enseignants, élèves et parents. Elle offre des outils de gestion pour les établissements scolaires, incluant la gestion des notes, des devoirs, des présences, ainsi que des fonctionnalités de communication entre tous les acteurs de l'éducation.",
+      },
+      {
+        question: "EduXcoM convient-il à tout type d'établissement scolaire ?",
+        answer:
+          "Oui, EduXcoM est conçu pour s'adapter à différents types d'établissements : écoles primaires, collèges, lycées et même certains établissements d'enseignement supérieur. La plateforme est personnalisable selon les besoins spécifiques de votre structure.",
+      },
+      {
+        question: "La plateforme est-elle accessible sur tous les appareils ?",
+        answer:
+          "Absolument. EduXcoM est accessible depuis n'importe quel navigateur web sur ordinateur, et dispose également d'applications mobiles pour smartphones et tablettes iOS et Android, permettant un accès permanent pour tous les utilisateurs.",
+      },
+    ],
+  },
+  {
+    id: 2,
+    title: "Installation et déploiement",
+    items: [
+      {
+        question:
+          "Comment puis-je mettre en place EduXcoM dans mon établissement ?",
+        answer:
+          "Après avoir demandé une démo et choisi la formule qui vous convient, notre équipe vous accompagne dans tout le processus d'installation. Nous proposons une formation initiale pour les administrateurs et un support technique durant la phase de déploiement.",
+      },
+      {
+        question:
+          "Combien de temps faut-il pour déployer complètement la solution ?",
+        answer:
+          "En moyenne, le déploiement complet prend entre 2 et 4 semaines, selon la taille de votre établissement et vos besoins spécifiques. Ce délai inclut l'installation, la personnalisation, l'importation des données et la formation des utilisateurs principaux.",
+      },
+      {
+        question: "Que signifie 'open source' dans votre description ?",
+        answer:
+          "Notre plateforme est basée sur des technologies open source, ce qui garantit transparence et évolutivité. Cela signifie que le code source est accessible et peut être audité, mais aussi que la plateforme peut être étendue et adaptée aux besoins spécifiques de chaque établissement.",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "Fonctionnalités et utilisation",
+    items: [
+      {
+        question:
+          "Comment les enseignants gèrent-ils les notes et évaluations ?",
+        answer:
+          "Les enseignants disposent d'un cahier de notes numérique intuitif où ils peuvent créer différents types d'évaluations, attribuer des coefficients, et entrer les notes. Le système calcule automatiquement les moyennes pondérées et génère des rapports personnalisables.",
+      },
+      {
+        question:
+          "Comment fonctionne le système de communication entre parents et enseignants ?",
+        answer:
+          "La plateforme intègre une messagerie sécurisée permettant aux parents de communiquer directement avec les enseignants et l'administration. Les conversations sont organisées par sujet et accessibles à tout moment, facilitant ainsi un dialogue constructif.",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Sécurité et confidentialité",
+    items: [
+      {
+        question: "Nos données sont-elles sécurisées sur EduXcoM ?",
+        answer:
+          "Absolument. Toutes les données sont protégées par un chiffrement de bout en bout, et notre système est entièrement conforme aux exigences du RGPD. Nous effectuons des audits de sécurité réguliers pour garantir la protection des informations sensibles.",
+      },
+      {
+        question: "Qui a accès aux données des élèves ?",
+        answer:
+          "L'accès aux données est strictement contrôlé par un système de permissions avancé. Seules les personnes autorisées (enseignants concernés, administration et parents de l'élève) peuvent accéder aux informations d'un élève spécifique.",
+      },
+      {
+        question: "Réalisez-vous des sauvegardes régulières des données ?",
+        answer:
+          "Oui, notre système effectue des sauvegardes automatiques quotidiennes. En cas d'incident, nous pouvons restaurer rapidement l'ensemble des données sans perte d'information.",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Tarification et support",
+    items: [
+      {
+        question: "Comment fonctionne la tarification d'EduXcoM ?",
+        answer:
+          "Nous proposons différentes formules adaptées à la taille et aux besoins de votre établissement. La tarification est généralement basée  sur le nombre d'élèves et les modules activés. Contactez-nous pour obtenir un devis personnalisé.",
+      },
+      {
+        question: "Le support technique est-il inclus dans l'abonnement ?",
+        answer:
+          "Oui, tous nos forfaits incluent un accès au support technique. Notre équipe est disponible 6 jours sur 7 pour répondre à vos questions et résoudre rapidement tout problème éventuel.",
+      },
+      {
+        question: "Proposez-vous des formations pour les utilisateurs ?",
+        answer:
+          "Absolument. Nous offrons des sessions de formation initiale pour les administrateurs et les enseignants. Des webinaires et tutoriels sont également disponibles en permanence dans notre centre de ressources en ligne.",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "Évolutions et mises à jour",
+    items: [
+      {
+        question: "À quelle fréquence la plateforme est-elle mise à jour ?",
+        answer:
+          "Nous publions des mises à jour mineures mensuellement et des mises à jour majeures avec de nouvelles fonctionnalités environ trois fois par an. Toutes les mises à jour sont incluses dans votre abonnement.",
+      },
+      {
+        question:
+          "Comment pouvons-nous suggérer de nouvelles fonctionnalités ?",
+        answer:
+          "Nous encourageons activement les retours de nos utilisateurs. Vous pouvez soumettre vos suggestions via notre portail utilisateur, et notre équipe produit les évalue régulièrement pour les intégrer dans notre feuille de route.",
+      },
+    ],
+  },
+];
+---
+
+<section id="faq" class="py-16">
+  <div class="container mx-auto px-4 md:px-6">
+    <h2 class="text-dark dark:text-light mb-10 text-center text-3xl font-bold">
+      Foire Aux Questions
+    </h2>
+
+    {
+      faqs.map(faq => (
+        <FAQGroup
+          id={`faq-category-${faq.id}`}
+          title={faq.title}
+          items={faq.items}
+        />
+      ))
+    }
+
+    <div class="bg-light-dark dark:bg-dark mt-12 rounded-lg p-8 text-center">
+      <p class="text-dark dark:text-light mb-4 text-xl">
+        Vous avez d'autres questions ?
+      </p>
+      <a
+        href="#contact"
+        class="bg-primary text-light hover:bg-primary-dark inline-block rounded-md px-6 py-3 font-medium transition-colors duration-300"
+      >
+        Contactez-nous
+      </a>
+    </div>
+  </div>
+</section>

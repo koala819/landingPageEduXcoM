@@ -1,0 +1,18 @@
+---
+import FAQItem from "@/components/atoms/FAQItem.astro";
+interface Props {
+  id: string;
+  title: string;
+  items: {
+    question: string;
+    answer: string;
+  }[];
+}
+
+const { id, title, items } = Astro.props;
+---
+
+<div id={id} class="mb-4">
+  <h3 class="pb-2">{title}</h3>
+  <FAQItem items={items} />
+</div>
