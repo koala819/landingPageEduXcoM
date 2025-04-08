@@ -14,6 +14,6 @@ const { iconName, title, descriptif } = Astro.props;
   class="dark:bg-dark-background relative overflow-hidden rounded-xl bg-white p-6 shadow-md transition-transform duration-300 hover:-translate-y-2"
 >
   <CardIcon iconName={iconName} />
-  <h2 class="mb-2 text-xl font-semibold">{title}</h2>
-  <p class="text-dark-light dark:text-dark-lighter">{descriptif}</p>
+  <h2>{title}</h2>
+  <p class="my-4">{descriptif}</p>
 </div>

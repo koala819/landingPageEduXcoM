@@ -2,27 +2,27 @@
 import FeatureCard from "@/components/molecules/FeatureCard.astro";
 ---
 
-<section
-  class="mt-40 grid grid-cols-1 gap-6 md:grid-cols-2 lg:mt-40 lg:grid-cols-3"
->
-  <!-- Card 1 -->
-  <FeatureCard
-    iconName="book-open"
-    title="Solution numérique pour enseignants"
-    descriptif="Gestion simplifiée des notes, devoirs et présences avec notre application de gestion pédagogique"
-  />
+<section id="features" class="flex min-h-screen items-center justify-center">
+  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <!-- Card 1 -->
+    <FeatureCard
+      iconName="book-open"
+      title="Solution numérique pour enseignants"
+      descriptif="Gestion simplifiée des notes, devoirs et présences avec notre application de gestion pédagogique"
+    />
 
-  <!-- Card 2 -->
-  <FeatureCard
-    iconName="chart-line"
-    title="Système d'information scolaire"
-    descriptif="Tableaux de bord intuitifs et statistiques détaillées pour une gestion d'établissement optimisée"
-  />
+    <!-- Card 2 -->
+    <FeatureCard
+      iconName="chart-line"
+      title="Système d'information scolaire"
+      descriptif="Tableaux de bord intuitifs et statistiques détaillées pour une gestion d'établissement optimisée"
+    />
 
-  <!-- Card 3 -->
-  <FeatureCard
-    iconName="users"
-    title="Outil communication parents-professeurs"
-    descriptif="Suivi des élèves en ligne et communication directe entre les parents et l'équipe éducative"
-  />
+    <!-- Card 3 -->
+    <FeatureCard
+      iconName="users"
+      title="Outil communication parents-professeurs"
+      descriptif="Suivi des élèves en ligne et communication directe entre les parents et l'équipe éducative"
+    />
+  </div>
 </section>
