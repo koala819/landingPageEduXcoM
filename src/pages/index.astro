@@ -8,6 +8,7 @@ import FeatureTeacher from "@/components/atoms/FeatureTeacher.astro";
 import FeatureParent from "@/components/atoms/FeatureParent.astro";
 import FeatureAdmin from "@/components/atoms/FeatureAdmin.astro";
 import Testimonials from "@/components/atoms/Testimonials.astro";
+import CTA from "@/components/atoms/CTA.astro";
 
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
@@ -39,6 +40,15 @@ const pageTitle =
     </div>
     <div class="section-container">
       <Testimonials />
+    </div>
+    <div class="section-container">
+      <CTA
+        title="Prêt à transformer votre établissement ?"
+        appel="Réservez une démonstration gratuite avec l'un de nos experts et découvrez comment EduXcoM vous fait gagner du temps."
+        btn="Demander une démo personnalisée"
+        imageUrl="https://images.unsplash.com/photo-1494386346843-e12284507169?q=80&w=1964"
+        alt="mains tenant des lumières"
+      />
     </div>
   </div>
 </MainLayout>
