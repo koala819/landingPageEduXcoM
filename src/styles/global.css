@@ -52,8 +52,11 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* Styles globaux */
+
 html {
+  scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -62,18 +65,35 @@ body {
 
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-h2,
-h3 {
-  @apply text-primary dark:text-primary-dark text-5xl font-bold;
+/* Définition de la typographie */
+h1 {
+  @apply text-primary dark:text-primary-dark text-4xl leading-tight font-black uppercase lg:text-5xl;
+}
+
+h2 {
+  @apply text-primary dark:text-primary-dark text-3xl font-bold md:text-4xl;
 }
 
 h3 {
-  @apply text-2xl;
+  @apply text-primary dark:text-primary-dark text-2xl font-bold;
+}
+
+p {
+  @apply text-dark dark:text-dark-lighter text-base md:text-lg;
+}
+
+/* Styles de boutons */
+.btn-primary {
+  @apply bg-primary dark:bg-primary-dark text-light dark:text-dark hover:bg-primary-dark hover:text-dark dark:hover:bg-primary dark:hover:text-light cursor-pointer rounded-lg px-6 py-3 text-center font-semibold transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md;
+}
+
+.btn-secondary {
+  @apply bg-secondary dark:bg-secondary-dark text-light dark:text-dark hover:bg-secondary-dark hover:text-dark dark:hover:text-light cursor-pointer rounded-lg px-6 py-3 text-center font-semibold transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md;
 }
 
 /* Classes d'animation */

@@ -5,48 +5,39 @@ import mobileImage from "@/assets/pictures/eduxcom-tableau-bord-administratif-mo
 import Overlay from "@/components/atoms/Overlay.astro";
 import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
 
-const primaryButtonClass =
-  "bg-primary dark:bg-primary-dark dark:dark-button-text hover:bg-primary-dark dark:hover:bg-primary cursor-pointer rounded-lg px-6 py-3 text-center font-semibold text-white dark:text-dark transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md";
-const secondaryButtonClass =
-  "bg-light-dark dark:bg-dark-light text-dark dark:text-dark hover:bg-light-dark dark:hover:bg-dark-lighter cursor-pointer rounded-lg px-6 py-3 text-center font-semibold transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md";
-
 const imageTransitionClass =
   "h-full w-full transform rounded-lg object-cover transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl";
 ---
 
-<section class="flex flex-col items-center pt-20 md:pt-24 lg:flex-row lg:pt-28">
-  <!-- Text Content -->
-  <aside class="mb-10 lg:mb-0 lg:w-1/2">
+<section
+  class="mt-20 flex h-screen flex-col items-center sm:mt-0 sm:justify-center sm:gap-32 lg:flex-row lg:justify-start lg:gap-0"
+>
+  <!-- Text Content - Réduit sur mobile, normal sur desktop -->
+  <aside class="mb-4 w-full px-4 lg:mt-0 lg:mb-0 lg:w-1/2">
     <AnimatedSection direction="left" delay={0.1}>
-      <h1
-        class="text-dark dark:text-light mb-4 text-3xl leading-tight font-bold md:text-4xl lg:text-5xl"
-      >
-        Simplifiez la gestion de votre établissement scolaire
-      </h1>
+      <h1>Simplifiez la gestion de votre établissement scolaire</h1>
     </AnimatedSection>
-
     <AnimatedSection direction="left" delay={0.3}>
-      <p class="text-dark-light dark:text-dark-lighter mb-8 text-lg md:text-xl">
+      <p class="my-3 md:my-4">
         EduXcoM est une <strong>plateforme éducative open source</strong> qui connecte
         enseignants, élèves et parents pour une <strong
           >gestion d'école en ligne</strong
         > fluide et efficace.
       </p>
     </AnimatedSection>
-
     <AnimatedSection direction="left" delay={0.5}>
-      <div class="flex flex-col gap-4 sm:flex-row">
+      <div class="flex flex-col gap-2 sm:flex-row sm:gap-3">
         <a
           href="#demo"
-          class={primaryButtonClass}
-          aria-label="Demander une démonstration de la plateforme EduXcoM"
+          class="btn-primary text-sm md:text-base"
+          aria-label="Demander une démonstration"
         >
           Demander une démo
         </a>
         <a
           href="#features"
-          class={secondaryButtonClass}
-          aria-label="Découvrir les fonctionnalités de la plateforme EduXcoM"
+          class="btn-secondary text-sm md:text-base"
+          aria-label="Découvrir les fonctionnalités"
         >
           Découvrir les fonctionnalités
         </a>
@@ -54,12 +45,14 @@ const imageTransitionClass =
     </AnimatedSection>
   </aside>
 
-  <!-- Images -->
-  <aside class="relative flex items-center lg:w-1/2 lg:pl-10">
+  <!-- Images - Réduit sur mobile -->
+  <aside class="relative w-full lg:w-1/2 lg:pl-8">
     <AnimatedSection direction="right" delay={0.4}>
       <div class="relative w-full">
-        <div class="relative aspect-[8/5] w-full">
-          <!-- Image laptop  -->
+        <!-- Image laptop - taille réduite sur mobile -->
+        <div
+          class="relative aspect-[8/5] max-h-[40vh] w-full sm:max-h-[50vh] md:max-h-[80vh] lg:max-h-none"
+        >
           <div
             class="group relative h-full w-full overflow-hidden rounded-lg"
             data-lightbox="true"
@@ -76,32 +69,28 @@ const imageTransitionClass =
               fetchpriority="high"
               class={imageTransitionClass}
             />
-
-            <!-- Overlay qui apparaît au survol -->
             <Overlay title="Agrandir" />
           </div>
         </div>
 
-        <!-- Image smartphone -->
+        <!-- Image smartphone - plus petit sur mobile -->
         <div
-          class="absolute right-[-19px] bottom-[-150px] h-[300px] w-[150px] overflow-visible"
+          class="absolute -right-2 -bottom-4 w-[20%] md:-right-4 md:-bottom-20 md:w-[25%] lg:max-w-[150px]"
         >
           <div
-            class="group relative h-full w-full rounded-lg"
+            class="group relative aspect-[1/2] h-full w-full overflow-hidden rounded-lg"
             data-lightbox="true"
           >
             <Image
               src={mobileImage}
               alt="Interface mobile EduXcoM pour la gestion scolaire"
               widths={[150, 300]}
-              sizes="150px"
+              sizes="(max-width: 768px) 25vw, 150px"
               quality={85}
               format="webp"
               loading="eager"
               class={imageTransitionClass}
             />
-
-            <!-- Overlay qui apparaît au survol -->
             <Overlay title="Agrandir" />
           </div>
         </div>

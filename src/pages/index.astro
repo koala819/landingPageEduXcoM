@@ -1,23 +1,39 @@
 ---
-import MainLayout from "@/layouts/MainLayout.astro";
 import Hero from "@/components/molecules/Hero.astro";
 import FeaturesOverview from "@/components/organisms/FeaturesOverview.astro";
-import FeaturesDetails from "@/components/molecules/FeaturesDetails.astro";
-import Solutions from "@/components/molecules/Solutions.astro";
-import Testimonials from "@/components/atoms/Testimonials.astro";
-import FAQ from "@/components/organisms/FAQ.astro";
+
+import MainLayout from "@/layouts/MainLayout.astro";
 
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
 ---
 
 <MainLayout title={pageTitle}>
-  <div id="home" class="container mx-auto">
-    <Hero />
-    <FeaturesOverview />
-    <FeaturesDetails />
-    <Solutions />
-    <Testimonials />
-    <FAQ />
-  </div></MainLayout
->
+  <div id="home" class="container mx-auto pt-20">
+    <div class="section-container">
+      <Hero />
+    </div>
+    <div class="section-container">
+      <FeaturesOverview />
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .section-container {
+    min-height: 100vh; /* Hauteur minimale, mais peut être plus grand si nécessaire */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    scroll-snap-align: start;
+  }
+
+  /* Sur grands écrans, optimisé pour affichage plein écran */
+  @media (min-width: 1024px) {
+    .section-container {
+      height: 100vh;
+      justify-content: center;
+    }
+  }
+</style>
