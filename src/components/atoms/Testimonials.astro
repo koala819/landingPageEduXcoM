@@ -48,13 +48,13 @@ const testimonials: Testimonial[] = [
 ];
 ---
 
-<section id="testimonials" class="py-20 overflow-hidden bg-white dark:bg-dark">
+<section id="testimonials" class="py-20 overflow-hidden">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-16">
-      <h2 class="text-4xl font-bold tracking-tight text-dark dark:text-light">
+      <h2 >
         Témoignages
       </h2>
-      <p class="mt-4 text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+      <p >
         Ce que nos utilisateurs disent d'EduXcoM
       </p>
     </div>
@@ -88,7 +88,7 @@ const testimonials: Testimonial[] = [
 
                 <blockquote class="mb-8">
                   <!-- Text - Left aligned with larger font -->
-                  <p class="text-xl text-dark leading-relaxed italic text-left">
+                  <p class="leading-relaxed italic text-left dark:!text-dark">
                     "{testimonial.content}"
                   </p>
                 </blockquote>
@@ -113,10 +113,10 @@ const testimonials: Testimonial[] = [
         <div class="flex justify-between mt-12">
           <button
             id="prevButton"
-            class="group p-3 rounded-full border-primary border-2 dark:border-primary-dark hover:cursor-pointer"
+            class="btn-primary"
             aria-label="Témoignage précédent"
           >
-          <Icon name='arrow-before' class="text-3xl text-primary dark:text-primary-dark" />
+          <Icon name='arrow-before' class="text-3xl text-light dark:text-dark" />
           </button>
 
           <div class="flex items-center gap-3 indicator-container">
@@ -136,10 +136,10 @@ const testimonials: Testimonial[] = [
 
           <button
             id="nextButton"
-            class="group p-3 rounded-full border-primary border-2 dark:border-primary-dark hover:cursor-pointer"
+            class="btn-primary"
             aria-label="Témoignage suivant"
           >
-          <Icon name='arrow-next' class="text-3xl text-primary dark:text-primary-dark" />
+          <Icon name='arrow-next' class="text-3xl text-light dark:text-dark" />
           </button>
         </div>
       </div>
