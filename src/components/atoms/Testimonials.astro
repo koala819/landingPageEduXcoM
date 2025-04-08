@@ -1,6 +1,6 @@
 ---
-// Testimonials.astro
-// Définition des témoignages
+import { Icon } from "astro-icon/components";
+
 interface Testimonial {
   id: number;
   content: string;
@@ -63,9 +63,10 @@ const testimonials: Testimonial[] = [
       <div class="max-w-4xl mx-auto">
         <!-- Testimonial Container -->
         <div class="testimonial-container relative bg-light-dark dark:bg-dark-lighter rounded-2xl shadow-xl">
-          <!-- Background decorative elements -->
-          <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary/10 dark:bg-primary-dark/10 rounded-full opacity-50"></div>
-          <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary/10 dark:bg-secondary-dark/10 rounded-full opacity-50"></div>
+          <!-- Bulle Droite -->
+          <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary dark:bg-primary-dark rounded-full opacity-50" />
+          <!-- Bulle Gauche -->
+          <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-secondary dark:bg-secondary-dark rounded-full opacity-50" />
 
           <!-- Testimonials -->
           <div class="testimonial-slides relative">
@@ -87,7 +88,7 @@ const testimonials: Testimonial[] = [
 
                 <blockquote class="mb-8">
                   <!-- Text - Left aligned with larger font -->
-                  <p class="text-xl text-dark dark:text-light leading-relaxed italic text-left">
+                  <p class="text-xl text-dark leading-relaxed italic text-left">
                     "{testimonial.content}"
                   </p>
                 </blockquote>
@@ -95,10 +96,10 @@ const testimonials: Testimonial[] = [
                 <!-- Footer with right-aligned signature -->
                 <div class="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
                   <div class="text-right">
-                    <div class="font-medium text-dark dark:text-light text-lg">
+                    <div class="font-medium text-dark text-lg">
                       {testimonial.author}
                     </div>
-                    <div class="text-gray-500 dark:text-gray-400">
+                    <div class="text-[#014F7A] dark:text-dark">
                       {testimonial.position}
                     </div>
                   </div>
@@ -112,12 +113,10 @@ const testimonials: Testimonial[] = [
         <div class="flex justify-between mt-12">
           <button
             id="prevButton"
-            class="group p-3 rounded-full bg-white dark:bg-dark-lighter shadow-md hover:shadow-lg transition-all duration-200"
+            class="group p-3 rounded-full border-primary border-2 dark:border-primary-dark hover:cursor-pointer"
             aria-label="Témoignage précédent"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
+          <Icon name='arrow-before' class="text-3xl text-primary dark:text-primary-dark" />
           </button>
 
           <div class="flex items-center gap-3 indicator-container">
@@ -127,7 +126,7 @@ const testimonials: Testimonial[] = [
                   "indicator-dot rounded-full transition-all duration-300",
                   idx === 0
                     ? "bg-primary dark:bg-primary-dark w-6 h-3"
-                    : "bg-gray-300 dark:bg-gray-600 hover:bg-gray-400 dark:hover:bg-gray-500 w-3 h-3"
+                    : "bg-gray-300 dark:bg-gray-600 hover:bg-primary dark:hover:bg-primary-dark w-3 h-3  hover:cursor-pointer"
                 ]}
                 data-index={idx}
                 aria-label={`Aller au témoignage ${idx + 1}`}
@@ -137,12 +136,10 @@ const testimonials: Testimonial[] = [
 
           <button
             id="nextButton"
-            class="group p-3 rounded-full bg-white dark:bg-dark-lighter shadow-md hover:shadow-lg transition-all duration-200"
+            class="group p-3 rounded-full border-primary border-2 dark:border-primary-dark hover:cursor-pointer"
             aria-label="Témoignage suivant"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500 dark:text-gray-400 group-hover:text-primary dark:group-hover:text-primary-dark" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
+          <Icon name='arrow-next' class="text-3xl text-primary dark:text-primary-dark" />
           </button>
         </div>
       </div>
