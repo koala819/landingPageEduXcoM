@@ -1,0 +1,68 @@
+---
+import GreenCheck from "@/components/atoms/GreenCheck.astro";
+import Badge from "@/components/atoms/Badge.astro";
+import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
+import { Image } from "astro:assets";
+import interfaceParentsMobile from "@/assets/pictures/eduxcom-tableau-bord-famille-mobile.webp";
+import { renderTextWithStrong } from "@/scripts/featuresText";
+
+const parentFeatures = [
+  {
+    text: "Consultez les notes et évaluations de votre enfant dès leur publication par les enseignants",
+    strongParts: ["notes et évaluations"],
+  },
+  {
+    text: "Suivez les devoirs et examens pour aider votre enfant à s'organiser",
+    strongParts: ["devoirs et examens"],
+  },
+  {
+    text: "Recevez des notifications en temps réel concernant les absences, retards ou informations importantes",
+    strongParts: ["notifications en temps réel"],
+  },
+  {
+    text: "Communiquez directement avec les enseignants et l'administration via notre messagerie intégrée",
+    strongParts: ["enseignants et l'administration"],
+  },
+];
+---
+
+<article class="mx-auto grid grid-cols-1 items-stretch gap-12 md:grid-cols-2">
+  <aside class="order-1 flex flex-col justify-center">
+    <AnimatedSection direction="right" delay={0.1}>
+      <Badge title="Application mobile parents" />
+      <h2>Suivi scolaire pour les familles</h2>
+      <p>
+        Notre plateforme renforce le lien école-famille grâce à un accès
+        instantané aux informations scolaires de vos enfants, où que vous soyez.
+      </p>
+      <ul class="space-y-3">
+        {
+          parentFeatures.map(feature => (
+            <li class="flex items-start">
+              <GreenCheck />
+              <span
+                set:html={renderTextWithStrong(
+                  feature.text,
+                  feature.strongParts
+                )}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </AnimatedSection>
+  </aside>
+
+  <aside class="order-2 flex items-center justify-center">
+    <Image
+      src={interfaceParentsMobile}
+      alt="Application mobile EduXcoM pour le suivi scolaire par les parents"
+      widths={[200, 400, 600, 800, 1200]}
+      sizes="(max-width: 767px) 90vw, calc(50vw - 24px)"
+      quality={60}
+      format="webp"
+      loading="lazy"
+      class="h-auto max-h-[80vh] w-full rounded-lg object-contain transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
+    />
+  </aside>
+</article>

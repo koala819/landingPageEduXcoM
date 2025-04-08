@@ -1,0 +1,69 @@
+---
+import GreenCheck from "@/components/atoms/GreenCheck.astro";
+import Badge from "@/components/atoms/Badge.astro";
+import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
+import { Image } from "astro:assets";
+import interfaceAdminTablet from "@/assets/pictures/eduxcom-tableau-bord-administratif-tablet.webp";
+import { renderTextWithStrong } from "@/scripts/featuresText";
+
+const adminFeatures = [
+  {
+    text: "Tableaux de bord analytiques pour suivre les indicateurs de performance de l'établissement",
+    strongParts: ["Tableaux de bord analytiques"],
+  },
+  {
+    text: "Gestion des emplois du temps et attribution des salles avec détection automatique des conflits",
+    strongParts: ["emplois du temps"],
+  },
+  {
+    text: "Suivi financier et gestion des ressources humaines intégrés",
+    strongParts: ["Suivi financier"],
+  },
+  {
+    text: "Rapports statistiques et exports de données personnalisables pour les besoins administratifs",
+    strongParts: ["exports de données"],
+  },
+];
+---
+
+<article class="mx-auto grid grid-cols-1 items-stretch gap-12 md:grid-cols-2">
+  <aside class="order-2 flex flex-col justify-center">
+    <AnimatedSection direction="left" delay={0.1}>
+      <Badge title="Administration scolaire" />
+      <h2>Gestion complète d'établissement</h2>
+      <p>
+        Notre système d'information centralise toutes les données
+        administratives et pédagogiques pour une gestion optimisée de votre
+        établissement scolaire.
+      </p>
+      <ul class="space-y-3">
+        {
+          adminFeatures.map(feature => (
+            <li class="flex items-start">
+              <GreenCheck />
+              <span
+                set:html={renderTextWithStrong(
+                  feature.text,
+                  feature.strongParts
+                )}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </AnimatedSection>
+  </aside>
+
+  <aside class="order-2 flex items-center justify-center md:order-1">
+    <Image
+      src={interfaceAdminTablet}
+      alt="Tableau de bord administratif du logiciel de gestion scolaire EduXcoM"
+      widths={[200, 400, 600, 800, 1200]}
+      sizes="(max-width: 767px) 90vw, calc(50vw - 24px)"
+      quality={60}
+      format="webp"
+      loading="lazy"
+      class="h-auto max-h-[80vh] w-full rounded-lg object-contain transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
+    />
+  </aside>
+</article>

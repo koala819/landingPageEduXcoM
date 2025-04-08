@@ -1,8 +1,12 @@
 ---
 import Hero from "@/components/molecules/Hero.astro";
 import FeaturesOverview from "@/components/organisms/FeaturesOverview.astro";
+// import FeaturesDetails from "@/components/molecules/FeaturesDetails.astro";
 
 import MainLayout from "@/layouts/MainLayout.astro";
+import FeatureTeacher from "@/components/atoms/FeatureTeacher.astro";
+import FeatureParent from "@/components/atoms/FeatureParent.astro";
+import FeatureAdmin from "@/components/atoms/FeatureAdmin.astro";
 
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
@@ -13,8 +17,19 @@ const pageTitle =
     <div class="section-container">
       <Hero />
     </div>
-    <div class="section-container">
-      <FeaturesOverview />
+    <div id="features" class="features-container">
+      <div class="section-container">
+        <FeaturesOverview />
+      </div>
+      <div class="section-container">
+        <FeatureTeacher />
+      </div>
+      <div class="section-container">
+        <FeatureParent />
+      </div>
+      <div class="section-container">
+        <FeatureAdmin />
+      </div>
     </div>
   </div>
 </MainLayout>

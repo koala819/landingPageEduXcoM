@@ -1,0 +1,70 @@
+---
+import GreenCheck from "@/components/atoms/GreenCheck.astro";
+import Badge from "@/components/atoms/Badge.astro";
+import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
+import { Image } from "astro:assets";
+import interfaceEnseignantDesktop from "@/assets/pictures/eduxcom-tableau-bord-enseignant-desktop.webp";
+import { renderTextWithStrong } from "@/scripts/featuresText";
+
+const teacherFeatures = [
+  {
+    text: "Gestion des cahiers de notes et calculs automatiques des moyennes pondérées pour chaque élève",
+    strongParts: ["cahiers de notes"],
+  },
+  {
+    text: "Planification des devoirs et évaluations avec rappels automatiques",
+    strongParts: ["devoirs et évaluations"],
+  },
+  {
+    text: "Suivi des absences et gestion des retards avec alertes immédiates aux parents et à l'administration",
+    strongParts: ["Suivi des absences"],
+  },
+  {
+    text: "Messagerie sécurisée pour une communication fluide avec les familles et l'équipe pédagogique",
+    strongParts: ["communication fluide"],
+  },
+];
+---
+
+<article
+  class="container mx-auto grid grid-cols-1 items-stretch gap-12 md:grid-cols-2"
+>
+  <aside class="order-2 flex flex-col justify-center">
+    <AnimatedSection direction="left" delay={0.1}>
+      <Badge title="Interface enseignants" />
+      <h2>Plateforme numérique pour professeurs</h2>
+      <p>
+        Une solution complète permettant aux enseignants d'optimiser leur temps
+        et d'améliorer le suivi pédagogique des élèves au quotidien.
+      </p>
+      <ul class="space-y-3">
+        {
+          teacherFeatures.map(feature => (
+            <li class="flex items-start">
+              <GreenCheck />
+              <span
+                set:html={renderTextWithStrong(
+                  feature.text,
+                  feature.strongParts
+                )}
+              />
+            </li>
+          ))
+        }
+      </ul>
+    </AnimatedSection>
+  </aside>
+
+  <aside class="order-2 flex items-center justify-center pb-16 md:order-1">
+    <Image
+      src={interfaceEnseignantDesktop}
+      alt="Interface du logiciel EduXcoM pour la gestion des cours et évaluations par les enseignants"
+      widths={[200, 400, 600, 800, 1200]}
+      sizes="(max-width: 767px) 90vw, calc(50vw - 24px)"
+      quality={60}
+      format="webp"
+      loading="lazy"
+      class="h-auto w-full rounded-lg object-contain transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
+    />
+  </aside>
+</article>

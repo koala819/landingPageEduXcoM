@@ -6,6 +6,8 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<div class="inline-block px-3 py-1 text-sm font-medium text-light bg-primary rounded-full mb-4">
+<div
+  class="text-light dark:text-dark bg-primary dark:bg-primary-dark mb-4 inline-block rounded-full px-3 py-1 text-sm font-medium"
+>
   {title}
 </div>

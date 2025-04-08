@@ -84,7 +84,7 @@ h3 {
 }
 
 p {
-  @apply text-dark dark:text-dark-lighter text-base md:text-lg;
+  @apply text-dark dark:text-dark-lighter my-3 text-base md:my-4 md:text-lg;
 }
 
 /* Styles de boutons */
