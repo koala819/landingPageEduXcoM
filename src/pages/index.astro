@@ -2,72 +2,101 @@
 import Hero from "@/components/molecules/Hero.astro";
 import FeaturesOverview from "@/components/organisms/FeaturesOverview.astro";
 import Solutions from "@/components/molecules/Solutions.astro";
-
 import MainLayout from "@/layouts/MainLayout.astro";
 import FeatureTeacher from "@/components/atoms/FeatureTeacher.astro";
 import FeatureParent from "@/components/atoms/FeatureParent.astro";
 import FeatureAdmin from "@/components/atoms/FeatureAdmin.astro";
 import Testimonials from "@/components/atoms/Testimonials.astro";
 import CTA from "@/components/atoms/CTA.astro";
+import FAQ from "@/components/organisms/FAQ.astro";
 
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
 ---
 
 <MainLayout title={pageTitle}>
-  <div id="home" class="container mx-auto pt-20">
-    <div class="section-container">
-      <Hero />
+  <div class="snap-container">
+    {/* Section 1: Hero */}
+    <div id="home" class="section-container">
+      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <Hero />
+      </div>
     </div>
 
+    {/* Section 2: Features */}
     <div id="features" class="features-container">
       <div class="section-container">
-        <FeaturesOverview />
+        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+          <FeaturesOverview />
+        </div>
       </div>
       <div class="section-container">
-        <FeatureTeacher />
+        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+          <FeatureTeacher />
+        </div>
       </div>
       <div class="section-container">
-        <FeatureParent />
+        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+          <FeatureParent />
+        </div>
       </div>
       <div class="section-container">
-        <FeatureAdmin />
+        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+          <FeatureAdmin />
+        </div>
       </div>
     </div>
 
+    {/* Section 3: Solutions */}
     <div class="section-container">
-      <Solutions />
+      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <Solutions />
+      </div>
     </div>
+
+    {/* Section 4: Testimonials */}
     <div class="section-container">
-      <Testimonials />
+      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <Testimonials />
+      </div>
     </div>
+
+    {/* Section 5: CTA */}
     <div class="section-container">
-      <CTA
-        title="Prêt à transformer votre établissement ?"
-        appel="Réservez une démonstration gratuite avec l'un de nos experts et découvrez comment EduXcoM vous fait gagner du temps."
-        btn="Demander une démo personnalisée"
-        imageUrl="https://images.unsplash.com/photo-1494386346843-e12284507169?q=80&w=1964"
-        alt="mains tenant des lumières"
-      />
+      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <CTA
+          title="Prêt à transformer votre établissement ?"
+          appel="Réservez une démonstration gratuite avec l'un de nos experts et découvrez comment EduXcoM vous fait gagner du temps."
+          btn="Demander une démo personnalisée"
+          imageUrl="https://images.unsplash.com/photo-1494386346843-e12284507169?q=80&w=1964"
+          alt="mains tenant des lumières"
+        />
+      </div>
+    </div>
+
+    {/* Section 6: FAQ */}
+    <div id="faq" class="section-container">
+      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <FAQ />
+      </div>
     </div>
   </div>
 </MainLayout>
 
 <style>
+  .snap-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+  }
+
   .section-container {
-    min-height: 100vh; /* Hauteur minimale, mais peut être plus grand si nécessaire */
+    min-height: 100vh;
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1rem 0;
     scroll-snap-align: start;
-  }
-
-  /* Sur grands écrans, optimisé pour affichage plein écran */
-  @media (min-width: 1024px) {
-    .section-container {
-      height: 100vh;
-      justify-content: center;
-    }
+    justify-content: center;
+    align-items: center;
   }
 </style>

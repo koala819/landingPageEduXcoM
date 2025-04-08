@@ -57,6 +57,8 @@ html {
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 body {
