@@ -22,14 +22,16 @@ const navItems: NavItem[] = [
       <!-- Logo -->
       <a
         href="#home"
-        class="text-primary dark:text-primary-dark flex items-center gap-2 text-2xl font-extrabold lg:text-3xl"
+        class="text-primary dark:text-primary-dark flex items-center gap-2 !text-2xl font-extrabold !no-underline lg:!text-3xl"
       >
         <Icon
           name="logo-EduXcoM"
           class="text-primary dark:text-primary-dark text-6xl"
         />
         Edu
-        <span class="text-secondary dark:text-secondary-dark">XcoM</span>
+        <span class="!text-secondary dark:!text-secondary-dark !text-3xl"
+          >XcoM</span
+        >
       </a>
 
       <!-- Mobile Menu Button -->
@@ -49,27 +51,30 @@ const navItems: NavItem[] = [
               <li class="group">
                 <a
                   href={item.href}
-                  class="nav-link hover:text-primary dark:hover:text-primary-dark relative text-xs font-medium transition-colors duration-300 lg:text-sm"
+                  class="nav-link hover:text-primary dark:hover:text-primary-dark relative !text-xs font-medium transition-colors duration-300 lg:!text-sm"
                   data-section={item.href.substring(1)}
                 >
                   {item.text}
-                  <span class="nav-indicator bg-primary dark:bg-primary-dark absolute bottom-[-4px] left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
+                  <hr class="nav-indicator bg-primary dark:bg-primary-dark absolute bottom-[-4px] left-0 h-0.5 w-0 transition-all duration-300 group-hover:w-full" />
                 </a>
               </li>
             ))
           }
         </ul>
 
-        <!-- Desktop Theme Toggle -->
+        <!-- Desktop Theme Toggle - Amélioré -->
         <button
           id="theme-toggle-desktop"
-          class="bg-light-dark dark:bg-light-dark rounded-md p-1 transition-colors duration-200 lg:p-2"
+          class="bg-light-dark dark:bg-dark-background focus:ring-primary rounded-full p-2 transition-all duration-300 hover:scale-110 focus:ring-2 focus:outline-none"
+          aria-label="Changer de thème"
         >
-          <span class="block dark:hidden">🌙</span>
-          <span class="hidden dark:block">☀️</span>
+          <!-- Icône Lune (mode clair) -->
+          <Icon name="moon" class="block h-5 w-5 text-gray-800 dark:hidden" />
+          <!-- Icône Soleil (mode sombre) -->
+          <Icon name="sun" class="hidden h-5 w-5 text-yellow-400 dark:block" />
         </button>
 
-        <a href="#demo" class="btn-primary"> Demander une démo </a>
+        <a href="#demo" class="btn-primary !text-sm"> Demander une démo </a>
       </div>
     </nav>
 

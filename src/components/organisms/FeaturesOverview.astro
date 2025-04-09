@@ -2,27 +2,33 @@
 import FeatureCard from "@/components/molecules/FeatureCard.astro";
 ---
 
-<section class="flex min-h-screen items-center justify-center">
-  <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-    <!-- Card 1 -->
-    <FeatureCard
-      iconName="book-open"
-      title="Solution numérique pour enseignants"
-      descriptif="Gestion simplifiée des notes, devoirs et présences avec notre application de gestion pédagogique"
-    />
+<section
+  class="overflow-x-auto px-4 py-12 sm:overflow-x-hidden sm:px-6 lg:px-8"
+>
+  <div class="mx-auto max-w-7xl">
+    <div
+      class="flex w-[300%] gap-4 sm:grid sm:w-full sm:grid-cols-2 sm:gap-6 lg:grid-cols-3"
+    >
+      <!-- Card 1 -->
+      <FeatureCard
+        iconName="book-open"
+        title="Solution numérique pour enseignants"
+        descriptif="Gestion simplifiée des notes, devoirs et présences avec notre application de gestion pédagogique"
+      />
 
-    <!-- Card 2 -->
-    <FeatureCard
-      iconName="chart-line"
-      title="Système d'information scolaire"
-      descriptif="Tableaux de bord intuitifs et statistiques détaillées pour une gestion d'établissement optimisée"
-    />
+      <!-- Card 2 -->
+      <FeatureCard
+        iconName="chart-line"
+        title="Système d'information scolaire"
+        descriptif="Tableaux de bord intuitifs et statistiques détaillées pour une gestion d'établissement optimisée"
+      />
 
-    <!-- Card 3 -->
-    <FeatureCard
-      iconName="users"
-      title="Outil communication parents-professeurs"
-      descriptif="Suivi des élèves en ligne et communication directe entre les parents et l'équipe éducative"
-    />
+      <!-- Card 3 -->
+      <FeatureCard
+        iconName="users"
+        title="Outil communication parents-professeurs"
+        descriptif="Suivi des élèves en ligne et communication directe entre les parents et l'équipe éducative"
+      />
+    </div>
   </div>
 </section>

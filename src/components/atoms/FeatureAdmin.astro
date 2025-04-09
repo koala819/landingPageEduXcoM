@@ -26,8 +26,12 @@ const adminFeatures = [
 ];
 ---
 
-<article class="mx-auto grid grid-cols-1 items-stretch gap-12 md:grid-cols-2">
-  <aside class="order-2 flex flex-col justify-center">
+<article
+  class="mx-auto grid grid-cols-1 overflow-hidden md:grid-cols-2 md:gap-12"
+>
+  <aside
+    class="order-2 mx-auto flex h-screen max-w-xl flex-col items-center justify-center sm:h-full"
+  >
     <AnimatedSection direction="left" delay={0.1}>
       <Badge title="Administration scolaire" />
       <h2>Gestion complète d'établissement</h2>
@@ -39,9 +43,10 @@ const adminFeatures = [
       <ul class="space-y-3">
         {
           adminFeatures.map(feature => (
-            <li class="flex items-start">
+            <li class="flex items-center">
               <GreenCheck />
               <span
+                class="!my-1 break-words"
                 set:html={renderTextWithStrong(
                   feature.text,
                   feature.strongParts

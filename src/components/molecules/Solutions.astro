@@ -47,14 +47,16 @@ const postIts = [
 ];
 ---
 
-<section id="solutions" class="md-py-16 mt-12 py-12">
+<section id="solutions">
   <!-- Tableau noir -->
   <div
-    class="bg-dark-background dark:bg-dark text-light dark:text-light-dark chalk-board relative mb-12 overflow-hidden rounded-lg p-8 shadow-lg md:p-10"
+    class="flex h-screen w-full items-center p-2 sm:mt-20 sm:block sm:h-full"
   >
-    <div class="relative z-10">
+    <figure
+      class="bg-dark-background dark:bg-dark text-light dark:text-light-dark chalk-board mb-8 overflow-hidden rounded-lg p-8"
+    >
       <h2
-        class="font-chalk relative mb-6 text-center text-3xl font-bold md:text-4xl"
+        class="font-chalk relative mb-6 text-center !text-3xl font-bold md:!text-4xl"
       >
         Une solution tout-en-un pour votre établissement
       </h2>
@@ -62,30 +64,30 @@ const postIts = [
         class="bg-light dark:bg-light-dark mx-auto mt-4 block h-0.5 w-48 opacity-60"
       >
       </span>
-    </div>
-    <p
-      class="font-chalk mx-auto max-w-3xl text-center text-lg leading-relaxed md:text-xl"
-    >
-      EduXcoM est bien plus qu'un simple logiciel de gestion scolaire. C'est une
-      plateforme complète qui connecte tous les acteurs de l'éducation pour une
-      gestion fluide et efficace.
-    </p>
+
+      <p
+        class="font-chalk mx-auto max-w-3xl text-center !text-lg leading-relaxed md:!text-xl"
+      >
+        EduXcoM est bien plus qu'un simple logiciel de gestion scolaire. C'est
+        une plateforme complète qui connecte tous les acteurs de l'éducation
+        pour une gestion fluide et efficace.
+      </p>
+    </figure>
   </div>
+
+  <aside class="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      postIts.map(postIt => (
+        <PostIt
+          title={postIt.title}
+          content={postIt.content}
+          iconName={postIt.icon}
+          rotate={postIt.rotate}
+        />
+      ))
+    }
+  </aside>
 </section>
-
-<div class="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-  {
-    postIts.map(postIt => (
-      <PostIt
-        title={postIt.title}
-        content={postIt.content}
-        iconName={postIt.icon}
-        rotate={postIt.rotate}
-      />
-    ))
-  }
-</div>
-
 <link
   href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
   rel="stylesheet"

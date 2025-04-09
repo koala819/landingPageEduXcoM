@@ -1,4 +1,5 @@
 ---
+// Props identiques
 interface Props {
   title: string;
   btn: string;
@@ -9,40 +10,24 @@ interface Props {
 const { btn, appel, title, imageUrl, alt } = Astro.props;
 ---
 
-<section class="relative">
-  <!-- Image  -->
-  <picture
-    class="z-0 mb-8 w-full lg:absolute lg:top-1/2 lg:right-0 lg:w-1/3 lg:-translate-y-1/2 lg:transform"
-  >
-    <img
-      src={imageUrl}
-      alt={alt}
-      class="h-auto max-h-full w-full rounded-xl object-cover object-center lg:rounded-none lg:rounded-r-xl"
-      loading="lazy"
-    />
+<section
+  class="bg-light-dark dark:bg-dark-background relative h-[calc(100dvh-4rem)] overflow-hidden rounded-xl shadow-md lg:h-auto"
+>
+  <div class="flex h-full flex-col-reverse items-center lg:flex-row">
+    <!-- Texte -->
     <div
-      class="to-light-dark/90 dark:to-dark-background/90 absolute inset-0 bg-gradient-to-l from-transparent"
+      class="flex w-full flex-col justify-center px-6 py-8 text-center lg:w-1/2 lg:px-12 lg:text-left"
     >
-    </div>
-  </picture>
-
-  <!-- CTA-->
-  <div
-    class="bg-light-dark dark:bg-dark-background relative z-10 w-full overflow-hidden rounded-xl shadow-md lg:w-3/5"
-  >
-    <div
-      class="relative z-10 flex w-full flex-col items-center justify-between px-8 py-12 lg:flex-row lg:px-12"
-    >
-      <div class="mb-8 max-w-xl space-y-6 text-center lg:mb-0 lg:text-left">
-        <h2>{title}</h2>
-        <p>{appel}</p>
-        <a
-          href="#demo"
-          class="btn-primary inline-flex items-center justify-center"
-        >
-          <span>{btn}</span>
+      <h2>{title}</h2>
+      <p>{appel}</p>
+      <a
+        href="#demo"
+        class="btn-primary mt-6 inline-flex items-center justify-center gap-2"
+      >
+        <span class="!text-light dark:!text-dark">{btn}</span>
+        <div class="mr-4 sm:mr-0">
           <svg
-            class="ml-2 h-5 w-5"
+            class="h-5 w-5"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
@@ -53,8 +38,17 @@ const { btn, appel, title, imageUrl, alt } = Astro.props;
               stroke-width="2"
               d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
           </svg>
-        </a>
-      </div>
+        </div>
+      </a>
+    </div>
+    <!-- Image -->
+    <div class="relative w-full flex-1 lg:w-1/2">
+      <img
+        src={imageUrl}
+        alt={alt}
+        class="h-full w-full object-cover object-top sm:object-center md:object-center lg:rounded-r-xl lg:object-center"
+        loading="lazy"
+      />
     </div>
   </div>
 </section>

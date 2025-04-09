@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import desktopImage from "@/assets/pictures/eduxcom-tableau-bord-administratif-desktop.webp";
 import mobileImage from "@/assets/pictures/eduxcom-tableau-bord-administratif-mobile.webp";
-import Overlay from "@/components/atoms/Overlay.astro";
+// import Overlay from "@/components/atoms/Overlay.astro";
 import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
 
 const imageTransitionClass =
@@ -10,7 +10,7 @@ const imageTransitionClass =
 ---
 
 <section
-  class="mt-20 flex h-screen flex-col items-center sm:mt-0 sm:justify-center sm:gap-32 lg:flex-row lg:justify-start lg:gap-0"
+  class="mt-20 flex h-screen flex-col items-center sm:justify-center sm:gap-32 md:mt-32 lg:mt-0 lg:flex-row lg:justify-start lg:gap-0"
 >
   <!-- Text Content - Réduit sur mobile, normal sur desktop -->
   <aside class="mb-4 w-full px-4 lg:mt-0 lg:mb-0 lg:w-1/2">
@@ -29,14 +29,14 @@ const imageTransitionClass =
       <div class="flex flex-col gap-2 sm:flex-row sm:gap-3">
         <a
           href="#demo"
-          class="btn-primary text-sm md:text-base"
+          class="btn-primary"
           aria-label="Demander une démonstration"
         >
           Demander une démo
         </a>
         <a
           href="#features"
-          class="btn-secondary text-sm md:text-base"
+          class="btn-secondary"
           aria-label="Découvrir les fonctionnalités"
         >
           Découvrir les fonctionnalités
@@ -53,46 +53,45 @@ const imageTransitionClass =
         <div
           class="relative aspect-[8/5] max-h-[40vh] w-full sm:max-h-[50vh] md:max-h-[80vh] lg:max-h-none"
         >
-          <div
+          <!-- <div
             class="group relative h-full w-full overflow-hidden rounded-lg"
             data-lightbox="true"
-          >
-            <Image
-              src={desktopImage}
-              alt="Tableau de bord administratif EduXcoM sur ordinateur portable"
-              widths={[400, 800, 1200]}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
-              quality={85}
-              format="webp"
-              loading="eager"
-              decoding="async"
-              fetchpriority="high"
-              class={imageTransitionClass}
-            />
-            <Overlay title="Agrandir" />
-          </div>
+          > -->
+          <Image
+            src={desktopImage}
+            alt="Tableau de bord administratif EduXcoM sur ordinateur portable"
+            widths={[400, 800, 1200]}
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 800px"
+            quality={85}
+            format="webp"
+            loading="eager"
+            decoding="async"
+            fetchpriority="high"
+          />
+          <!-- <Overlay title="Agrandir" /> -->
+          <!-- </div> -->
         </div>
 
-        <!-- Image smartphone - plus petit sur mobile -->
+        <!-- Image smartphone -->
         <div
           class="absolute -right-2 -bottom-4 w-[20%] md:-right-4 md:-bottom-20 md:w-[25%] lg:max-w-[150px]"
         >
-          <div
+          <!-- <div
             class="group relative aspect-[1/2] h-full w-full overflow-hidden rounded-lg"
             data-lightbox="true"
-          >
-            <Image
-              src={mobileImage}
-              alt="Interface mobile EduXcoM pour la gestion scolaire"
-              widths={[150, 300]}
-              sizes="(max-width: 768px) 25vw, 150px"
-              quality={85}
-              format="webp"
-              loading="eager"
-              class={imageTransitionClass}
-            />
-            <Overlay title="Agrandir" />
-          </div>
+          > -->
+          <Image
+            src={mobileImage}
+            alt="Interface mobile EduXcoM pour la gestion scolaire"
+            widths={[150, 300]}
+            sizes="(max-width: 768px) 25vw, 150px"
+            quality={85}
+            format="webp"
+            loading="eager"
+            class={imageTransitionClass}
+          />
+          <!-- <Overlay title="Agrandir" />
+          </div> -->
         </div>
       </div>
     </AnimatedSection>

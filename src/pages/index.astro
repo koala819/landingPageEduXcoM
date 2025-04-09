@@ -18,7 +18,9 @@ const pageTitle =
   <div class="snap-container">
     {/* Section 1: Hero */}
     <div id="home" class="section-container">
-      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+      <div
+        class="container mx-auto flex h-full flex-col justify-center sm:px-4"
+      >
         <Hero />
       </div>
     </div>
@@ -26,30 +28,40 @@ const pageTitle =
     {/* Section 2: Features */}
     <div id="features" class="features-container">
       <div class="section-container">
-        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <div
+          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
+        >
           <FeaturesOverview />
         </div>
       </div>
       <div class="section-container">
-        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <div
+          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
+        >
           <FeatureTeacher />
         </div>
       </div>
       <div class="section-container">
-        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <div
+          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
+        >
           <FeatureParent />
         </div>
       </div>
       <div class="section-container">
-        <div class="container mx-auto flex h-full flex-col justify-center px-4">
+        <div
+          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
+        >
           <FeatureAdmin />
         </div>
       </div>
     </div>
 
-    {/* Section 7: CTA */}
+    {/* Section 3: CTA */}
     <div class="section-container">
-      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+      <div
+        class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
+      >
         <CTA
           title="Réussissez votre transition numérique"
           appel="Notre équipe d'experts vous accompagne pas à pas dans la mise en place d'EduXcoM et la formation de votre personnel."
@@ -60,23 +72,27 @@ const pageTitle =
       </div>
     </div>
 
-    {/* Section 3: Solutions */}
+    {/* Section 4: Solutions */}
     <div class="section-container">
-      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+      <div class="container mx-auto flex flex-col justify-center px-2 sm:px-4">
         <Solutions />
       </div>
     </div>
 
-    {/* Section 4: Testimonials */}
+    {/* Section 5: Testimonials */}
     <div class="section-container">
-      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+      <div
+        class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
+      >
         <Testimonials />
       </div>
     </div>
 
     {/* Section 5: CTA */}
     <div class="section-container">
-      <div class="container mx-auto flex h-full flex-col justify-center px-4">
+      <div
+        class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
+      >
         <CTA
           title="Prêt à transformer votre établissement ?"
           appel="Réservez une démonstration gratuite avec l'un de nos experts et découvrez comment EduXcoM vous fait gagner du temps."
@@ -94,22 +110,40 @@ const pageTitle =
       </div>
     </div>
   </div>
+
+  <style>
+    .snap-container {
+      height: 100dvh;
+      overflow-y: auto;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+      /* Ajoutez cette propriété pour éviter le défilement du body */
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* Assurez-vous que le contenu est visible */
+      z-index: 1;
+    }
+
+    .section-container {
+      min-height: 100dvh;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      scroll-snap-align: start;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    /* Ajoutez cette media query pour les écrans de petite hauteur */
+    @media (max-height: 600px) {
+      .section-container {
+        min-height: auto; /* Permettre aux sections de s'adapter au contenu */
+        padding: 3rem 0; /* Plus d'espace vertical */
+      }
+    }
+  </style>
 </MainLayout>
-
-<style>
-  .snap-container {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-  }
-
-  .section-container {
-    min-height: 100vh;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    scroll-snap-align: start;
-    justify-content: center;
-    align-items: center;
-  }
-</style>
