@@ -9,13 +9,6 @@ const postIts = [
     icon: "science-sharp",
     rotate: "-1deg",
   },
-  //   {
-  //     title: "Multilingue",
-  //     content:
-  //       "Support complet en français, arabe et anglais. Ajoutez d'autres langues selon vos besoins.",
-  //     icon: "languages",
-  //     rotate: "2deg",
-  //   },
   {
     title: "Support dédié",
     content:
@@ -47,13 +40,11 @@ const postIts = [
 ];
 ---
 
-<section id="solutions">
+<section>
   <!-- Tableau noir -->
-  <div
-    class="flex h-screen w-full items-center p-2 sm:mt-20 sm:block sm:h-full"
-  >
+  <div class="w-full px-4 py-8 sm:py-12 md:py-16">
     <figure
-      class="bg-dark-background dark:bg-dark text-light dark:text-light-dark chalk-board mb-8 overflow-hidden rounded-lg p-8"
+      class="chalk-board bg-dark-background dark:bg-dark text-light dark:text-light-dark mb-12 overflow-hidden rounded-lg p-6 sm:p-8 md:p-12"
     >
       <h2
         class="font-chalk relative mb-6 text-center !text-3xl font-bold md:!text-4xl"
@@ -64,7 +55,6 @@ const postIts = [
         class="bg-light dark:bg-light-dark mx-auto mt-4 block h-0.5 w-48 opacity-60"
       >
       </span>
-
       <p
         class="font-chalk mx-auto max-w-3xl text-center !text-lg leading-relaxed md:!text-xl"
       >
@@ -75,19 +65,23 @@ const postIts = [
     </figure>
   </div>
 
-  <aside class="mb-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    {
-      postIts.map(postIt => (
-        <PostIt
-          title={postIt.title}
-          content={postIt.content}
-          iconName={postIt.icon}
-          rotate={postIt.rotate}
-        />
-      ))
-    }
-  </aside>
+  <!-- Post-its -->
+  <div class="px-4 pb-12 sm:pb-16">
+    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        postIts.map(postIt => (
+          <PostIt
+            title={postIt.title}
+            content={postIt.content}
+            iconName={postIt.icon}
+            rotate={postIt.rotate}
+          />
+        ))
+      }
+    </div>
+  </div>
 </section>
+
 <link
   href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap"
   rel="stylesheet"
@@ -95,7 +89,7 @@ const postIts = [
 
 <style>
   .chalk-board {
-    background: url("../../assets/chalkboard-texture.webp");
+    background-image: url("/src/assets/chalkboard-texture.webp");
     background-size: cover;
     background-position: center;
   }

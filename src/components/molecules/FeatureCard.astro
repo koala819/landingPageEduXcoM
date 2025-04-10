@@ -11,9 +11,12 @@ const { iconName, title, descriptif } = Astro.props;
 ---
 
 <div
-  class="dark:bg-dark-background mx-auto w-full max-w-md rounded-xl bg-white p-6 shadow-md transition-transform duration-300 hover:-translate-y-2"
+  class="dark:bg-dark-background mx-auto w-full max-w-md rounded-xl bg-white shadow-md transition-transform duration-300 hover:-translate-y-2"
 >
-  <CardIcon iconName={iconName} />
-  <h2>{title}</h2>
-  <p>{descriptif}</p>
+  <figure class="p-2">
+    <CardIcon iconName={iconName} />
+    <h2 class="break-words">{title}</h2>
+  </figure>
+
+  <p class="p-6">{descriptif}</p>
 </div>

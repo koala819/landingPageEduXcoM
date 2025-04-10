@@ -9,141 +9,105 @@ import FeatureAdmin from "@/components/atoms/FeatureAdmin.astro";
 import Testimonials from "@/components/atoms/Testimonials.astro";
 import CTA from "@/components/atoms/CTA.astro";
 import FAQ from "@/components/organisms/FAQ.astro";
+import lightInHands from "@/assets/pictures/lumiere-mains.webp";
+import seaStudent from "@/assets/pictures/etudiant-reussite.webp";
+import Pricing from "@/components/atoms/Pricing.astro";
 
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
 ---
 
 <MainLayout title={pageTitle}>
-  <div class="snap-container">
-    {/* Section 1: Hero */}
-    <div id="home" class="section-container">
-      <div
-        class="container mx-auto flex h-full flex-col justify-center sm:px-4"
-      >
-        <Hero />
-      </div>
+  <!-- <div class="content-wrapper"> -->
+  <section id="home" class="my-16">
+    <div class="container mx-auto px-4">
+      <Hero />
     </div>
+  </section>
 
-    {/* Section 2: Features */}
-    <div id="features" class="features-container">
-      <div class="section-container">
-        <div
-          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
-        >
-          <FeaturesOverview />
-        </div>
-      </div>
-      <div class="section-container">
-        <div
-          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
-        >
-          <FeatureTeacher />
-        </div>
-      </div>
-      <div class="section-container">
-        <div
-          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
-        >
-          <FeatureParent />
-        </div>
-      </div>
-      <div class="section-container">
-        <div
-          class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
-        >
-          <FeatureAdmin />
-        </div>
-      </div>
-    </div>
+  <section id="features" class="container mx-auto px-4">
+    <FeaturesOverview />
+  </section>
 
-    {/* Section 3: CTA */}
-    <div class="section-container">
-      <div
-        class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
-      >
-        <CTA
-          title="Réussissez votre transition numérique"
-          appel="Notre équipe d'experts vous accompagne pas à pas dans la mise en place d'EduXcoM et la formation de votre personnel."
-          btn="Découvrir notre accompagnement"
-          imageUrl="https://images.unsplash.com/photo-1639503667014-6533f3f34831?q=80&w=1887"
-          alt="Etudiant réussit et saute devant la mer"
-        />
-      </div>
-    </div>
+  <section class="container mx-auto px-4">
+    <FeatureTeacher />
+  </section>
 
-    {/* Section 4: Solutions */}
-    <div class="section-container">
-      <div class="container mx-auto flex flex-col justify-center px-2 sm:px-4">
-        <Solutions />
-      </div>
-    </div>
+  <section class="container mx-auto px-4">
+    <FeatureParent />
+  </section>
 
-    {/* Section 5: Testimonials */}
-    <div class="section-container">
-      <div
-        class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
-      >
-        <Testimonials />
-      </div>
-    </div>
+  <section class="container mx-auto px-4">
+    <FeatureAdmin />
+  </section>
+  <!-- </div> -->
 
-    {/* Section 5: CTA */}
-    <div class="section-container">
-      <div
-        class="container mx-auto flex h-full flex-col justify-center px-2 sm:px-4"
-      >
-        <CTA
-          title="Prêt à transformer votre établissement ?"
-          appel="Réservez une démonstration gratuite avec l'un de nos experts et découvrez comment EduXcoM vous fait gagner du temps."
-          btn="Demander une démo personnalisée"
-          imageUrl="https://images.unsplash.com/photo-1494386346843-e12284507169?q=80&w=1964"
-          alt="mains tenant des lumières"
-        />
-      </div>
-    </div>
-
-    {/* Section 6: FAQ */}
-    <div id="faq" class="section-container">
-      <div class="container mx-auto flex h-full flex-col justify-center px-4">
-        <FAQ />
-      </div>
-    </div>
-  </div>
-
-  <style>
-    .snap-container {
-      height: 100dvh;
-      overflow-y: auto;
-      scroll-snap-type: y mandatory;
-      scroll-behavior: smooth;
-      /* Ajoutez cette propriété pour éviter le défilement du body */
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      /* Assurez-vous que le contenu est visible */
-      z-index: 1;
-    }
-
-    .section-container {
-      min-height: 100dvh;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      scroll-snap-align: start;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 0;
-    }
-
-    /* Ajoutez cette media query pour les écrans de petite hauteur */
-    @media (max-height: 600px) {
-      .section-container {
-        min-height: auto; /* Permettre aux sections de s'adapter au contenu */
-        padding: 3rem 0; /* Plus d'espace vertical */
-      }
-    }
-  </style>
+  <section>
+    <CTA
+      title="Réussissez votre transition numérique"
+      appel="Notre équipe d'experts vous accompagne pas à pas dans la mise en place d'EduXcoM et la formation de votre personnel."
+      btn="Découvrir notre accompagnement"
+      imageUrl={seaStudent}
+      alt="Etudiant réussit et saute devant la mer"
+    />
+  </section>
 </MainLayout>
+
+<section id="pricing">
+  <Pricing />
+</section>
+
+<section id="solutions" class="container mx-auto px-4">
+  <Solutions />
+</section>
+
+<section id="testimonials" class="container mx-auto px-4">
+  <Testimonials />
+</section>
+
+<section class="container mx-auto px-4">
+  <CTA
+    title="Prêt à transformer votre établissement ?"
+    appel="Réservez une démonstration gratuite avec l'un de nos experts et découvrez comment EduXcoM vous fait gagner du temps."
+    btn="Demander une démo personnalisée"
+    imageUrl={lightInHands}
+    alt="mains tenant des lumières"
+  />
+</section>
+
+<section id="faq" class="container mx-auto px-4">
+  <FAQ />
+</section>
+
+<style>
+  .content-wrapper {
+    width: 100%;
+    scroll-behavior: smooth;
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Défilement fluide pour les liens d'ancrage
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+
+    anchorLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        const href =
+          link instanceof HTMLAnchorElement ? link.getAttribute("href") : null;
+        if (href && href !== "#") {
+          e.preventDefault();
+          const targetElement = document.querySelector(href);
+          if (targetElement) {
+            targetElement.scrollIntoView({
+              behavior: prefersReducedMotion ? "auto" : "smooth",
+            });
+          }
+        }
+      });
+    });
+  });
+</script>

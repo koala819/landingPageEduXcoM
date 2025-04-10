@@ -2,7 +2,6 @@
 import { Image } from "astro:assets";
 import desktopImage from "@/assets/pictures/eduxcom-tableau-bord-administratif-desktop.webp";
 import mobileImage from "@/assets/pictures/eduxcom-tableau-bord-administratif-mobile.webp";
-// import Overlay from "@/components/atoms/Overlay.astro";
 import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
 
 const imageTransitionClass =
@@ -10,10 +9,10 @@ const imageTransitionClass =
 ---
 
 <section
-  class="mt-20 flex h-screen flex-col items-center sm:justify-center sm:gap-32 md:mt-32 lg:mt-0 lg:flex-row lg:justify-start lg:gap-0"
+  class="flex h-full w-full flex-col items-center py-8 sm:justify-center sm:gap-8 md:py-12 lg:flex-row lg:justify-start lg:gap-0"
 >
   <!-- Text Content - Réduit sur mobile, normal sur desktop -->
-  <aside class="mb-4 w-full px-4 lg:mt-0 lg:mb-0 lg:w-1/2">
+  <aside class="mb-4 px-4 lg:mb-0 lg:w-1/2">
     <AnimatedSection direction="left" delay={0.1}>
       <h1>Simplifiez la gestion de votre établissement scolaire</h1>
     </AnimatedSection>
@@ -49,14 +48,10 @@ const imageTransitionClass =
   <aside class="relative w-full lg:w-1/2 lg:pl-8">
     <AnimatedSection direction="right" delay={0.4}>
       <div class="relative w-full">
-        <!-- Image laptop - taille réduite sur mobile -->
+        <!-- Image laptop - taille adaptive -->
         <div
-          class="relative aspect-[8/5] max-h-[40vh] w-full sm:max-h-[50vh] md:max-h-[80vh] lg:max-h-none"
+          class="relative aspect-[8/5] max-h-[40vh] w-full sm:max-h-[50vh] md:max-h-[60vh] lg:max-h-[80vh]"
         >
-          <!-- <div
-            class="group relative h-full w-full overflow-hidden rounded-lg"
-            data-lightbox="true"
-          > -->
           <Image
             src={desktopImage}
             alt="Tableau de bord administratif EduXcoM sur ordinateur portable"
@@ -68,18 +63,12 @@ const imageTransitionClass =
             decoding="async"
             fetchpriority="high"
           />
-          <!-- <Overlay title="Agrandir" /> -->
-          <!-- </div> -->
         </div>
 
         <!-- Image smartphone -->
         <div
-          class="absolute -right-2 -bottom-4 w-[20%] md:-right-4 md:-bottom-20 md:w-[25%] lg:max-w-[150px]"
+          class="absolute -right-2 -bottom-4 w-[20%] md:-right-4 md:-bottom-12 md:w-[25%] lg:max-w-[150px]"
         >
-          <!-- <div
-            class="group relative aspect-[1/2] h-full w-full overflow-hidden rounded-lg"
-            data-lightbox="true"
-          > -->
           <Image
             src={mobileImage}
             alt="Interface mobile EduXcoM pour la gestion scolaire"
@@ -90,8 +79,6 @@ const imageTransitionClass =
             loading="eager"
             class={imageTransitionClass}
           />
-          <!-- <Overlay title="Agrandir" />
-          </div> -->
         </div>
       </div>
     </AnimatedSection>

@@ -27,26 +27,29 @@ const adminFeatures = [
 ---
 
 <article
-  class="mx-auto grid grid-cols-1 overflow-hidden md:grid-cols-2 md:gap-12"
+  class="mx-auto grid w-full grid-cols-1 gap-8 py-8 md:grid-cols-2 md:gap-12 lg:py-12"
 >
-  <aside
-    class="order-2 mx-auto flex h-screen max-w-xl flex-col items-center justify-center sm:h-full"
-  >
+  <!-- Contenu textuel -->
+  <aside class="order-2 flex flex-col justify-center px-4 md:order-last">
     <AnimatedSection direction="left" delay={0.1}>
       <Badge title="Administration scolaire" />
-      <h2>Gestion complète d'établissement</h2>
-      <p>
+      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">
+        Gestion complète d'établissement
+      </h2>
+      <p class="mb-6">
         Notre système d'information centralise toutes les données
         administratives et pédagogiques pour une gestion optimisée de votre
         établissement scolaire.
       </p>
-      <ul class="space-y-3">
+      <ul class="space-y-2 sm:space-y-3">
         {
           adminFeatures.map(feature => (
-            <li class="flex items-center">
-              <GreenCheck />
+            <li class="flex items-start">
+              <span class="mt-1 flex-shrink-0">
+                <GreenCheck />
+              </span>
               <span
-                class="!my-1 break-words"
+                class="ml-2 break-words"
                 set:html={renderTextWithStrong(
                   feature.text,
                   feature.strongParts
@@ -59,16 +62,19 @@ const adminFeatures = [
     </AnimatedSection>
   </aside>
 
-  <aside class="order-2 flex items-center justify-center md:order-1">
-    <Image
-      src={interfaceAdminTablet}
-      alt="Tableau de bord administratif du logiciel de gestion scolaire EduXcoM"
-      widths={[200, 400, 600, 800, 1200]}
-      sizes="(max-width: 767px) 90vw, calc(50vw - 24px)"
-      quality={60}
-      format="webp"
-      loading="lazy"
-      class="h-auto max-h-[80vh] w-full rounded-lg object-contain transition-all duration-300 group-hover:-translate-y-1 group-hover:scale-105 hover:drop-shadow-xl"
-    />
+  <!-- Image -->
+  <aside class="order-1 flex items-center justify-center px-4 md:px-0">
+    <div class="mx-auto w-full max-w-lg">
+      <Image
+        src={interfaceAdminTablet}
+        alt="Tableau de bord administratif du logiciel de gestion scolaire EduXcoM"
+        widths={[200, 400, 600, 800, 1200]}
+        sizes="(max-width: 767px) 90vw, calc(50vw - 24px)"
+        quality={70}
+        format="webp"
+        loading="lazy"
+        class="h-auto w-full rounded-lg object-contain transition-all duration-300 hover:scale-[1.02] hover:drop-shadow-xl"
+      />
+    </div>
   </aside>
 </article>

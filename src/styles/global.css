@@ -84,6 +84,10 @@ h3 {
   @apply text-primary dark:text-primary-dark text-2xl font-bold;
 }
 
+h4 {
+  @apply text-primary dark:text-primary-dark mb-4 text-sm font-bold tracking-wider uppercase;
+}
+
 p,
 span {
   @apply text-dark dark:text-dark-lighter my-3 text-sm sm:text-base md:my-4 md:text-lg;
