@@ -9,10 +9,11 @@ interface Props {
 const { description, iconName } = Astro.props;
 ---
 
-<div class="trust-item flex items-center">
+<div class="flex items-center">
   <Icon
     name={iconName}
-    class="text-secondary dark:text-secondary-dark text-base md:text-5xl"
+    class="text-secondary dark:text-secondary-dark"
+    size="32"
   />
 
   <span class="text-dark dark:text-dark-lighter ml-3 text-xs md:text-sm"
