@@ -1,0 +1,115 @@
+---
+import FooterList from "@/components/atoms/FooterList.astro";
+import { Icon } from "astro-icon/components";
+const currentYear = new Date().getFullYear();
+
+const navigationItems = [
+  {
+    name: "Accueil",
+    href: "#home",
+  },
+  {
+    name: "Fonctionnalités",
+    href: "#features",
+  },
+  {
+    name: "Tarif",
+    href: "#pricing",
+  },
+  {
+    name: "Témoignages",
+    href: "#testimonials",
+  },
+  {
+    name: "FAQ",
+    href: "#faq",
+  },
+];
+---
+
+<footer class="bg-dark dark:bg-dark-lighter/35 text-light mt-12 pt-16 pb-6">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-4">
+      <!-- Logo et description -->
+      <div class="md:col-span-1">
+        <h2 class="!text-primary-dark mb-4 font-bold">
+          Edu<span class="!text-secondary-dark !text-4xl">XcoM</span>
+        </h2>
+        <p class="!text-light mb-6 text-sm">
+          Application de gestion scolaire tout-en-un qui simplifie la vie des
+          établissements, enseignants, élèves et parents.
+        </p>
+        <div class="mt-4 flex space-x-4">
+          <a
+            href="https://github.com/koala819/"
+            target="_blank"
+            class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
+          >
+            <Icon name="github" class="text-base md:text-3xl" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/xavier-genolhac/"
+            target="_blank"
+            class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
+          >
+            <Icon name="linkedin" class="text-base md:text-3xl" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Navigation rapide -->
+      <div class="flex flex-col items-center">
+        <h4 class="!text-primary-dark mb-4">Navigation</h4>
+        <ul class="space-y-3">
+          {
+            navigationItems.map(item => (
+              <FooterList link={item.href} text={item.name} />
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="flex flex-col items-center">
+        <h4 class="!text-primary-dark mb-4">Contact</h4>
+        <a
+          href="mailto:contact@dix31.com"
+          class="text-light hover:text-secondary-dark">contact@dix31.com</a
+        >
+      </div>
+
+      <!-- Logo EduXcoM -->
+      <div class="text-primary-dark flex items-center justify-center">
+        <Icon name="logo-EduXcoM" size="122" />
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-secondary-dark mt-12 border-t pt-6">
+      <div
+        class="text-light flex flex-col items-center justify-between text-sm md:flex-row"
+      >
+        <p class="!text-light">
+          &copy; {currentYear} EduXcoM. Tous droits réservés.
+        </p>
+        <div class="mt-4 flex gap-6 md:mt-0">
+          <a
+            href="/mentions-legales"
+            class="hover:text-primary-dark transition-colors"
+            >Mentions légales</a
+          >
+          <a
+            href="/politique-confidentialite"
+            class="hover:text-primary-dark transition-colors">Confidentialité</a
+          >
+          <a href="/cgv" class="hover:text-primary-dark transition-colors"
+            >CGV</a
+          >
+          <a href="/rgpd" class="hover:text-primary-dark transition-colors"
+            >RGPD</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

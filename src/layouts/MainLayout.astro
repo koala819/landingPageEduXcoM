@@ -2,8 +2,8 @@
 import "@/styles/global.css";
 import Head from "@/components/atoms/Head.astro";
 import Navbar from "@/components/atoms/Navbar.astro";
+import Footer from "@/components/Footer.astro";
 import LightBox from "@/components/atoms/LightBox.astro";
-
 const { ...props } = Astro.props;
 ---
 
@@ -20,7 +20,6 @@ const { ...props } = Astro.props;
         (!("theme" in localStorage) &&
           window.matchMedia(DARK_SCHEME_QUERY).matches);
       document.documentElement.classList.toggle("dark", isDark);
-
       // Précharger les polices et ressources critiques
       if ("requestIdleCallback" in window) {
         requestIdleCallback(() => {
@@ -37,10 +36,11 @@ const { ...props } = Astro.props;
     </script>
   </head>
   <body
-    class="bg-light dark:bg-dark text-dark dark:text-light overflow-x-hidden rounded-md p-4 leading-relaxed"
+    class="bg-light dark:bg-dark text-dark dark:text-light overflow-x-hidden rounded-md leading-relaxed"
   >
     <Navbar />
     <slot />
+    <Footer />
     <LightBox />
     <script>
       // Optimisation: Utiliser type="module" pour le chargement asynchrone
