@@ -1,0 +1,325 @@
+---
+import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
+import { Icon } from "astro-icon/components";
+
+const isHomePage = Astro.url.pathname === "/";
+---
+
+<div class="flex items-center space-x-2 md:hidden">
+  <!-- Utilisation du composant avec un name unique pour mobile -->
+  <ToggleTheme name="theme-toggle-mobile" />
+
+  <!-- Mobile Menu Button -->
+  <button
+    id="mobile-menu-button"
+    class="flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+    aria-label="Toggle Menu"
+  >
+    <!-- Icône hamburger (affichée par défaut) -->
+    <Icon
+      id="menu-open-icon"
+      name="menu"
+      class="text-dark dark:text-light block h-6 w-6"
+    />
+
+    <!-- Icône X (cachée par défaut) -->
+    <!-- <Icon
+      id="menu-close-icon"
+      name="close"
+      class="text-dark dark:text-light hidden h-6 w-6"
+    /> -->
+  </button>
+</div>
+
+<!-- Effet de flou uniquement sous la navbar -->
+<div id="mobile-menu" class="fixed inset-0 z-40 hidden pt-20 md:hidden">
+  <!-- Overlay avec flou - commence sous la navbar -->
+  <div
+    id="menu-overlay"
+    class="bg-primary/10 pointer-events-auto absolute inset-0 top-20 backdrop-blur-md"
+  >
+  </div>
+
+  <!-- Contenu du menu -->
+  <div class="relative z-50">
+    <div
+      id="menu-content"
+      class="bg-light dark:bg-dark border-border-dark dark:border-border-dark container mx-auto rounded-lg border px-4 py-6 shadow-xl"
+    >
+      <!-- Menu Links avec icônes -->
+      <div class="space-y-4">
+        <a
+          href={isHomePage ? "#home" : "/#home"}
+          class="mobile-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark flex items-center space-x-3 py-2 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            ></path>
+          </svg>
+          <span>Accueil</span>
+        </a>
+        <a
+          href={isHomePage ? "#features" : "/#features"}
+          class="mobile-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark flex items-center space-x-3 py-2 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
+            ></path>
+          </svg>
+          <span>Fonctionnalités</span>
+        </a>
+        <a
+          href={isHomePage ? "#pricing" : "/#pricing"}
+          class="mobile-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark flex items-center space-x-3 py-2 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>Tarif</span>
+        </a>
+        <a
+          href={isHomePage ? "#testimonials" : "/#testimonials"}
+          class="mobile-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark flex items-center space-x-3 py-2 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"
+            ></path>
+          </svg>
+          <span>Témoignages</span>
+        </a>
+        <a
+          href={isHomePage ? "#faq" : "/#faq"}
+          class="mobile-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark flex items-center space-x-3 py-2 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            ></path>
+          </svg>
+          <span>FAQ</span>
+        </a>
+      </div>
+
+      <!-- Séparateur -->
+      <div class="my-6 border-t border-gray-200 dark:border-gray-700"></div>
+
+      <!-- CTA Button -->
+      <a
+        href={isHomePage ? "#demo" : "/#demo"}
+        class="mobile-link bg-primary dark:bg-primary-dark hover:bg-primary-dark dark:hover:bg-primary mb-4 block w-full rounded-lg py-3 text-center font-medium text-white transition-colors"
+      >
+        Demander une démo
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupMobileMenu() {
+    console.log("Attempting to set up mobile menu...");
+
+    // --- Sélection des éléments ---
+    const mobileMenuButton = document.getElementById("mobile-menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const menuOverlay = document.getElementById("menu-overlay");
+    const menuOpenIcon = document.getElementById("menu-open-icon");
+
+    // --- Vérification cruciale des éléments ---
+    if (!mobileMenuButton || !mobileMenu || !menuOverlay || !menuOpenIcon) {
+      console.error(
+        "Mobile Menu Error: One or more required elements were NOT FOUND in the DOM. Check IDs:",
+        {
+          button: mobileMenuButton,
+          menu: mobileMenu,
+          overlay: menuOverlay,
+          openIcon: menuOpenIcon,
+        }
+      );
+      // Si des éléments manquent, le reste du script ne peut pas fonctionner.
+      return;
+    }
+    // console.log("Mobile Menu: All required elements found.");
+
+    // --- État du menu ---
+    let menuOpen = !mobileMenu.classList.contains("hidden");
+    // console.log("Mobile Menu: Initial menuOpen state:", menuOpen);
+
+    // --- Fonctions principales ---
+    function openMenu() {
+      // Vérifier si déjà ouvert pour éviter travail inutile
+      if (menuOpen) {
+        // console.log("Menu already open, doing nothing.");
+        return;
+      }
+      // console.log("Opening menu...");
+      if (mobileMenu) {
+        mobileMenu.classList.remove("hidden");
+      }
+
+      if (menuOpenIcon) {
+        menuOpenIcon.classList.add("hidden");
+      }
+
+      if (mobileMenuButton) {
+        mobileMenuButton.setAttribute("aria-expanded", "true");
+      }
+
+      document.body.style.overflow = "hidden"; // Empêcher le défilement de l'arrière-plan
+      menuOpen = true; // Mettre à jour l'état
+      // console.log("Menu opened. New state:", menuOpen);
+    }
+
+    function closeMenu() {
+      // Vérifier si déjà fermé
+      if (!menuOpen) {
+        // console.log("Menu already closed, doing nothing.");
+        return;
+      }
+      // console.log("Closing menu...");
+
+      if (mobileMenu) {
+        mobileMenu.classList.add("hidden");
+      }
+
+      if (menuOpenIcon) {
+        menuOpenIcon.classList.remove("hidden");
+      }
+
+      // menuCloseIcon.classList.add("hidden");
+
+      if (mobileMenuButton) {
+        mobileMenuButton.setAttribute("aria-expanded", "false");
+      }
+
+      document.body.style.overflow = ""; // Rétablir le défilement
+      menuOpen = false; // Mettre à jour l'état
+      // console.log("Menu closed. New state:", menuOpen);
+    }
+
+    function toggleMenu(event: MouseEvent) {
+      // console.log("toggleMenu called. Current menuOpen state:", menuOpen);
+      // event.preventDefault(); // Décommentez si le bouton est un lien ou cause un comportement par défaut indésirable
+      event.stopPropagation(); // Empêche le clic de déclencher d'autres listeners sur les parents
+
+      if (menuOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    }
+
+    // --- Ajout des écouteurs d'événements ---
+
+    // 1. Clic sur le bouton principal (qui contient les deux icônes)
+    mobileMenuButton.addEventListener("click", toggleMenu);
+    // console.log("Mobile Menu: Event listener added to toggle button.");
+
+    // 2. Clic sur l'overlay (pour fermer)
+    menuOverlay.addEventListener("click", event => {
+      // S'assurer que le clic est bien sur l'overlay lui-même
+      // et non sur un élément enfant (comme le contenu du menu qui pourrait être au-dessus)
+      if (event.target === menuOverlay) {
+        // console.log("Mobile Menu: Overlay clicked directly.");
+        closeMenu();
+      } else {
+        // console.log(
+        //   "Mobile Menu: Click inside overlay area, but not on overlay itself."
+        // );
+      }
+    });
+    // console.log("Mobile Menu: Event listener added to overlay.");
+
+    // 3. Clic sur les liens du menu mobile (pour fermer)
+    const mobileLinks = document.querySelectorAll("#mobile-menu .mobile-link"); // Ciblage plus précis
+    mobileLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        // console.log("Mobile Menu: Mobile link clicked.");
+        closeMenu();
+        // Pas besoin de preventDefault pour les liens # internes à la page en général
+      });
+    });
+    // console.log(
+    //   `Mobile Menu: Event listeners added to ${mobileLinks.length} mobile links.`
+    // );
+
+    // 4. Appui sur la touche 'Echap' (pour fermer)
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape" && menuOpen) {
+        // console.log("Mobile Menu: Escape key pressed.");
+        closeMenu();
+      }
+    });
+    // console.log("Mobile Menu: Event listener added for Escape key.");
+
+    // --- État initial d'accessibilité ---
+    mobileMenuButton.setAttribute("aria-expanded", menuOpen.toString());
+    // console.log("Mobile Menu: Initial setup complete.");
+  } // Fin de la fonction setupMobileMenu
+
+  // --- Exécution du script ---
+  document.addEventListener("astro:page-load", setupMobileMenu);
+
+  let initialSetupDone = false;
+  document.addEventListener("astro:page-load", () => {
+    initialSetupDone = true;
+  });
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!initialSetupDone) setupMobileMenu();
+    });
+  } else {
+    // DOMContentLoaded a déjà eu lieu avant que cet écouteur ne soit ajouté
+    if (!initialSetupDone) setupMobileMenu();
+  }
+</script>

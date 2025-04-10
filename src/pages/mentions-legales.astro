@@ -1,0 +1,157 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const pageTitle =
+  "Mentions Légales | EduXcoM - Plateforme de gestion scolaire open source";
+---
+
+<Layout title={pageTitle}>
+  <div class="my-24"></div>
+  <!-- Espace vide pour pousser le contenu sous la navbar -->
+  <section id="mentions-legales" class="container mx-auto px-4">
+    <h1 class="text-primary text-center">Mentions Légales</h1>
+    <p class="text-center">
+      Transparence et conformité au cœur de nos services
+    </p>
+
+    <div class="mt-16 grid grid-cols-1 gap-x-10 gap-y-16 md:grid-cols-2">
+      <!-- Informations Générales -->
+      <div>
+        <h2 class="text-primary mb-6 text-2xl font-semibold">
+          Informations Générales
+        </h2>
+        <ul class="space-y-4">
+          <li>
+            <span class="font-medium">Nom du site web :</span> EduXcoM
+          </li>
+          <li>
+            <span class="font-medium">Numéro de Siret :</span> 85254837900019
+          </li>
+          <li>
+            <span class="font-medium">Directeur de la publication :</span> Xavier
+            GENOLHAC
+          </li>
+          <li>
+            <span class="font-medium">Activité :</span> Développement et édition
+            de logiciels de gestion scolaire
+          </li>
+          <li>
+            <span class="font-medium">URL :</span> www.eduxcom.vercel.app
+          </li>
+          <li>
+            <span class="font-medium">Localisation :</span> 31300 Toulouse - France
+          </li>
+        </ul>
+      </div>
+
+      <!-- Hébergement -->
+      <div>
+        <h2 class="text-primary mb-6 text-2xl font-semibold">Hébergement</h2>
+        <p>EduXcoM est hébergé par Vercel Inc.</p>
+        <p class="mt-4">
+          Vercel Inc.<br />
+          340 S Lemon Ave #4133<br />
+          Walnut, CA 91789<br />
+          USA
+        </p>
+      </div>
+
+      <!-- Utilisation de Cookies -->
+      <div>
+        <h2 class="text-primary mb-6 text-2xl font-semibold">
+          Utilisation de Cookies
+        </h2>
+        <p>
+          En utilisant eduxcom.vercel.app, vous acceptez notre utilisation de
+          cookies qui améliorent votre expérience et nous aident à suivre les
+          visites via Google Analytics. Ces cookies nous permettent d'analyser
+          l'utilisation du site afin d'en améliorer continuellement les
+          fonctionnalités.
+        </p>
+      </div>
+
+      <!-- Liens Hypertextes -->
+      <div>
+        <h2 class="text-primary mb-6 text-2xl font-semibold">
+          Liens Hypertextes
+        </h2>
+        <p>
+          eduxcom.vercel.app peut inclure des liens vers d'autres sites. Nous ne
+          sommes pas responsables de leur contenu ni de leurs pratiques de
+          confidentialité. Nous vous encourageons à lire les politiques de
+          confidentialité de chaque site que vous visitez.
+        </p>
+      </div>
+
+      <!-- Protection des Données Personnelles -->
+      <div class="md:col-span-2">
+        <h2 class="text-primary mb-6 text-2xl font-semibold">
+          Protection des Données Personnelles
+        </h2>
+        <p>
+          Vos données personnelles sont utilisées uniquement en interne et ne
+          sont ni vendues, ni échangées, ni louées à des tiers. Conformément au
+          Règlement Général sur la Protection des Données (RGPD) et à la loi
+          Informatique et Libertés, vous disposez des droits suivants :
+        </p>
+        <ul class="mt-4 list-disc space-y-2 pl-6">
+          <li>Droit d'accès à vos données personnelles</li>
+          <li>Droit de rectification de vos données personnelles</li>
+          <li>Droit à l'effacement de vos données personnelles</li>
+          <li>Droit à la limitation du traitement</li>
+          <li>Droit à la portabilité de vos données</li>
+          <li>Droit d'opposition au traitement</li>
+        </ul>
+        <p class="mt-4">
+          Pour exercer ces droits ou pour toute question relative à vos données
+          personnelles, veuillez nous contacter à l'adresse email : <a
+            href="mailto:contact@dix31.com"
+            class="text-primary hover:underline">contact@dix31.com</a
+          >.
+        </p>
+      </div>
+
+      <!-- Propriété Intellectuelle -->
+      <div class="md:col-span-2">
+        <h2 class="text-primary mb-6 text-2xl font-semibold">
+          Propriété Intellectuelle
+        </h2>
+        <p>
+          EduXcoM est un logiciel open source. Le code source de l'application
+          est disponible sous licence MIT. Cette licence vous permet d'utiliser,
+          modifier et distribuer le code sous certaines conditions.
+        </p>
+        <p class="mt-4">
+          Les contenus textuels, graphiques et autres éléments de design
+          présents sur le site eduxcom.vercel.app sont protégés par le droit
+          d'auteur et sont la propriété exclusive d'EduXcoM, sauf mention
+          contraire.
+        </p>
+        <p class="mt-4">
+          Pour plus d'informations sur la licence et vos droits d'utilisation,
+          veuillez consulter notre dépôt GitHub ou nous contacter directement.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-16 flex justify-center">
+      <a href="/" class="btn-primary">Retour à l'accueil</a>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Script pour modifier les liens de la navbar
+  document.addEventListener("DOMContentLoaded", () => {
+    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+    navLinks.forEach(link => {
+      link.addEventListener("click", e => {
+        const href = link.getAttribute("href");
+        if (window.location.pathname !== "/") {
+          e.preventDefault();
+          window.location.href = "/" + href;
+        }
+      });
+    });
+  });
+</script>

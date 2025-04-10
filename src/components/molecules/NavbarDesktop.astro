@@ -1,0 +1,51 @@
+---
+import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
+
+const isHomePage = Astro.url.pathname === "/";
+---
+
+<!-- Navigation Links -->
+<div class="hidden items-center space-x-8 md:flex">
+  <a
+    href={isHomePage ? "#home" : "/#home"}
+    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
+  >
+    Accueil
+  </a>
+  <a
+    href={isHomePage ? "#features" : "/#features"}
+    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
+  >
+    Fonctionnalités
+  </a>
+  <a
+    href={isHomePage ? "#pricing" : "/#pricing"}
+    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
+  >
+    Tarif
+  </a>
+  <a
+    href={isHomePage ? "#testimonials" : "/#testimonials"}
+    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
+  >
+    Témoignages
+  </a>
+  <a
+    href={isHomePage ? "#faq" : "/#faq"}
+    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
+  >
+    FAQ
+  </a>
+</div>
+
+<!-- Toggle Theme Toggler & CTA Button -->
+<div class="hidden items-center space-x-4 md:flex">
+  <ToggleTheme name="theme-toggle-desktop" />
+
+  <a
+    href={isHomePage ? "#demo" : "/#demo"}
+    class="btn-primary flex items-center p-2"
+  >
+    Demander une démo
+  </a>
+</div>

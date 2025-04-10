@@ -1,0 +1,31 @@
+---
+import NavbarDesktop from "@/components/molecules/NavbarDesktop.astro";
+import NavbarMobile from "@/components/molecules/NavbarMobile.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="bg-light dark:bg-dark fixed top-0 left-0 z-50 w-full shadow-md">
+  <div class="container mx-auto px-4">
+    <div class="flex h-20 items-center justify-between">
+      <!-- LEFT -->
+      <a href="/" class="flex items-center space-x-1">
+        <Icon
+          name="logo-EduXcoM"
+          class="text-primary dark:text-primary-dark"
+          size="40"
+        />
+        <span
+          class="!text-primary-dark hidden !text-xl font-bold md:block md:!text-4xl"
+          >Edu</span
+        >
+        <span
+          class="!text-secondary dark:!text-secondary-dark hidden !text-xl font-bold md:block md:!text-4xl"
+          >XcoM</span
+        >
+      </a>
+
+      <NavbarDesktop />
+      <NavbarMobile />
+    </div>
+  </div>
+</nav>
