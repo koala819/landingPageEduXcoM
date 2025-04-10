@@ -5,10 +5,9 @@ import tailwindcss from '@tailwindcss/vite';
 
 
 import favicons from 'astro-favicons';
-
+import vercel from '@astrojs/vercel';
 import icon from 'astro-icon';
 
-import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,7 +21,6 @@ export default defineConfig({
   base: '/',
   // trailingSlash: 'always',
 
-  adapter: node({
-    mode: 'standalone',
-  }),
+  adapter: vercel(),
+
 });
