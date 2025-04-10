@@ -15,7 +15,6 @@ export default [
   },
   {
     rules: {
-      "no-console": "error",
       "@typescript-eslint/no-explicit-any": "off", // désactive la règle qui interdit l'utilisation de 'any'
     },
   },
