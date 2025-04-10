@@ -1,0 +1,49 @@
+---
+// Section.astro - Composant simple et fiable pour les sections
+interface Props {
+  id?: string;
+  class?: string;
+}
+const { id, class: className = "" } = Astro.props;
+---
+
+<section id={id} class={`section-container ${className}`}>
+  <div class="container mx-auto px-4">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .section-container {
+    width: 100%;
+    padding: 4rem 0;
+  }
+
+  /* Sur grands écrans uniquement */
+  @media (min-width: 1024px) and (min-height: 700px) {
+    .section-container {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      scroll-snap-align: start;
+    }
+  }
+</style>
+
+<script>
+  // Ajuste uniquement la hauteur minimum pour prendre en compte la navbar
+  document.addEventListener("DOMContentLoaded", () => {
+    if (window.innerWidth >= 1024 && window.innerHeight >= 700) {
+      const navbar = document.querySelector("header");
+      const navbarHeight = navbar ? navbar.offsetHeight : 0;
+
+      // Ajuster les sections
+      const sections = document.querySelectorAll(".section-container");
+      sections.forEach(section => {
+        if (section instanceof HTMLElement) {
+          section.style.minHeight = `calc(100vh - ${navbarHeight}px)`;
+        }
+      });
+    }
+  });
+</script>

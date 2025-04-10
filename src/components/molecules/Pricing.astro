@@ -1,0 +1,185 @@
+---
+import GreenCheck from "@/components/atoms/GreenCheck.astro";
+import Avantage from "@/components/atoms/PricingAvantages.astro";
+import PricingGarantie from "@/components/atoms/PricingGarantie.astro";
+
+const inclus = [
+  {
+    text: "Nombre d'utilisateurs illimité",
+  },
+  {
+    text: "Toutes les fonctionnalités incluses",
+  },
+  {
+    text: "Mises à jour régulières",
+  },
+];
+
+const support = [
+  {
+    text: "Support technique 6j/7",
+  },
+  {
+    text: "Formation incluse",
+  },
+  {
+    text: "Documentation détaillée",
+  },
+];
+
+const avantagesOpenSources = [
+  {
+    icon: "search",
+    title: "Transparence",
+    text: "Code source accessible et vérifiable à tout moment pour une sécurité optimale.",
+  },
+  {
+    icon: "settings",
+    title: "Personnalisation",
+    text: "Adaptez la plateforme aux besoins spécifiques de votre établissement. ",
+  },
+  {
+    icon: "lock-open",
+    title: "Indépendance",
+    text: "Pas de verrouillage propriétaire, gardez le contrôle sur vos données.",
+  },
+];
+
+const Garanties = [
+  {
+    icon: "clock",
+    title: "Installation en 24h",
+  },
+  {
+    icon: "money",
+    title: "Satisfait ou remboursé 30j",
+  },
+  {
+    icon: "shield",
+    title: "Conformité RGPD/CNIL",
+  },
+];
+---
+
+<section id="pricing" class="py-24">
+  <div class="container mx-auto px-4">
+    <div class="mb-16 text-center">
+      <h2>TARIFICATION</h2>
+      <h3 class="my-6 text-center">
+        Une offre simple qui s'adapte à vos besoins
+      </h3>
+      <p>
+        Tous les outils dont vous avez besoin pour gérer efficacement votre
+        établissement scolaire, avec une tarification transparente et sans
+        surprise.
+      </p>
+    </div>
+
+    <div class="mx-auto max-w-4xl">
+      <!-- Carte -->
+      <div class="border-primary rounded-2xl border-1 shadow-xl">
+        <!-- Entête -->
+        <div class="px-6 pt-8 pb-6 text-center md:px-10">
+          <h3>49€ / mois</h3>
+          <p>Facturé mensuellement. Sans engagement.</p>
+        </div>
+
+        <!-- Contenu -->
+        <div
+          class="bg-light-dark dark:bg-dark-background pt-4 md:bg-amber-200 md:p-10"
+        >
+          <!-- Call to action -->
+          <div class="mb-8 pt-4 text-center">
+            <a href="#" class="btn-secondary p-2 !text-xl sm:!text-3xl"
+              >Demander une démo</a
+            >
+            <p class="!text-sm">7 jours d'essai gratuit. Annulation facile.</p>
+          </div>
+
+          <!-- Fonctionnalités -->
+          <div
+            class="bg-light dark:bg-dark-background flex flex-col items-center space-y-8 rounded-lg p-4 md:p-6 lg:flex-row lg:items-start lg:space-y-0 lg:space-x-8 xl:space-x-16"
+          >
+            <aside
+              class="max-w-sm flex-1 text-center lg:max-w-none lg:text-left"
+            >
+              <h4>Inclus dans votre abonnement</h4>
+              <ul class="inline-block space-y-3 text-left">
+                {
+                  inclus.map(item => (
+                    <li class="flex items-start">
+                      <span class="mt-1 flex-shrink-0">
+                        <GreenCheck />
+                      </span>
+                      <span class="text-dark dark:text-dark-lighter ml-2 break-words">
+                        {item.text}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </aside>
+
+            <aside
+              class="max-w-sm flex-1 text-center lg:max-w-none lg:text-left"
+            >
+              <h4>Support et accompagnement</h4>
+              <ul class="inline-block space-y-3 text-left">
+                {
+                  support.map(item => (
+                    <li class="flex items-start">
+                      <span class="mt-1 flex-shrink-0">
+                        <GreenCheck />
+                      </span>
+                      <span class="text-dark dark:text-dark-lighter ml-2 break-words">
+                        {item.text}
+                      </span>
+                    </li>
+                  ))
+                }
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section Open Source -->
+      <div class="open-source-section mt-16 text-center">
+        <div
+          class="bg-light dark:bg-dark border-primary border-opacity-10 dark:border-primary-dark inline-flex items-center justify-center rounded-xl border px-6 py-3"
+        >
+          <span
+            class="text-primary dark:text-primary-dark text-sm font-semibold md:text-base"
+          >
+            100% Open Source - Code source libre et transparent
+          </span>
+        </div>
+
+        <!-- Avantages Open Source -->
+        <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
+          {
+            avantagesOpenSources.map(avantage => (
+              <Avantage
+                iconName={avantage.icon}
+                title={avantage.title}
+                description={avantage.text}
+              />
+            ))
+          }
+        </div>
+      </div>
+
+      <!-- Garanties et confiance -->
+      <div class="flex-cols-1 md:flex-cols-3 mt-8 flex justify-center gap-8">
+        {
+          Garanties.map(garantie => (
+            <PricingGarantie
+              iconName={garantie.icon}
+              description={garantie.title}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

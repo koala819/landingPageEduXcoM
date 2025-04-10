@@ -1,0 +1,25 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  iconName: string;
+  title: string;
+  description: string;
+}
+
+const { description, iconName, title } = Astro.props;
+---
+
+<div
+  class="benefit-card dark:bg-dark hover:border-primary hover:border-opacity-10 dark:hover:border-primary-dark rounded-xl border border-transparent bg-white p-6 transition-all duration-300"
+>
+  <div class="flex-col items-center justify-center">
+    <Icon
+      name={iconName}
+      class="text-primary dark:text-primary-dark w-full text-5xl"
+    />
+    <h3>{title}</h3>
+  </div>
+
+  <p>{description}</p>
+</div>
