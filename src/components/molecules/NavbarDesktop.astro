@@ -1,41 +1,44 @@
 ---
 import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
 
+const items = [
+  {
+    name: "Accueil",
+    link: "#home",
+  },
+  {
+    name: "Fonctionnalités",
+    link: "#features",
+  },
+  {
+    name: "Tarif",
+    link: "#pricing",
+  },
+  {
+    name: "Témoignages",
+    link: "#testimonials",
+  },
+  {
+    name: "FAQ",
+    link: "#faq",
+  },
+];
+
 const isHomePage = Astro.url.pathname === "/";
 ---
 
 <!-- Navigation Links -->
-<div class="hidden items-center space-x-8 md:flex">
-  <a
-    href={isHomePage ? "#home" : "/#home"}
-    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
-  >
-    Accueil
-  </a>
-  <a
-    href={isHomePage ? "#features" : "/#features"}
-    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
-  >
-    Fonctionnalités
-  </a>
-  <a
-    href={isHomePage ? "#pricing" : "/#pricing"}
-    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
-  >
-    Tarif
-  </a>
-  <a
-    href={isHomePage ? "#testimonials" : "/#testimonials"}
-    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
-  >
-    Témoignages
-  </a>
-  <a
-    href={isHomePage ? "#faq" : "/#faq"}
-    class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark transition-colors"
-  >
-    FAQ
-  </a>
+<div class="hidden items-center space-x-4 px-2 md:flex lg:space-x-8">
+  {
+    items.map(item => (
+      <a
+        href={isHomePage ? `${item.link}` : `/${item.link}`}
+        class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark !text-sm transition-colors lg:!text-xl xl:!text-3xl"
+      >
+        {item.name}
+      </a>
+    ))
+  }
 </div>
 
 <!-- Toggle Theme Toggler & CTA Button -->
@@ -44,7 +47,7 @@ const isHomePage = Astro.url.pathname === "/";
 
   <a
     href={isHomePage ? "#demo" : "/#demo"}
-    class="btn-primary flex items-center p-2"
+    class="btn-primary flex items-center !text-xs lg:p-2 lg:!text-xl"
   >
     Demander une démo
   </a>
