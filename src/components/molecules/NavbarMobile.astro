@@ -199,15 +199,17 @@ const isHomePage = Astro.url.pathname === "/";
         mobileMenu.classList.remove("hidden");
       }
 
-      // if (menuOpenIcon) {
-      //   menuOpenIcon.classList.add("hidden");
-      // }
+      if (menuOpenIcon) {
+        menuOpenIcon.classList.add("hidden");
+      }
 
       if (mobileMenuButton) {
         mobileMenuButton.setAttribute("aria-expanded", "true");
       }
 
-      document.body.style.overflow = "hidden"; // Empêcher le défilement de l'arrière-plan
+      // Empêcher le défilement de l'arrière-plan
+      document.documentElement.classList.add("no-scroll");
+
       menuOpen = true; // Mettre à jour l'état
       // console.log("Menu opened. New state:", menuOpen);
     }
@@ -224,15 +226,17 @@ const isHomePage = Astro.url.pathname === "/";
         mobileMenu.classList.add("hidden");
       }
 
-      // if (menuOpenIcon) {
-      //   menuOpenIcon.classList.remove("hidden");
-      // }
+      if (menuOpenIcon) {
+        menuOpenIcon.classList.remove("hidden");
+      }
 
       // menuCloseIcon.classList.add("hidden");
 
       if (mobileMenuButton) {
         mobileMenuButton.setAttribute("aria-expanded", "false");
       }
+
+      document.documentElement.classList.remove("no-scroll");
 
       document.body.style.overflow = ""; // Rétablir le défilement
       menuOpen = false; // Mettre à jour l'état
