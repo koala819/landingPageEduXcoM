@@ -28,14 +28,16 @@ const isHomePage = Astro.url.pathname === "/";
 ---
 
 <!-- Navigation Links -->
-<div class="hidden items-center space-x-4 px-2 md:flex lg:space-x-8">
+<div class="hidden items-center space-x-4 px-2 md:flex">
   {
     items.map(item => (
       <a
         href={isHomePage ? `${item.link}` : `/${item.link}`}
-        class="text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark !text-sm transition-colors lg:!text-xl xl:!text-3xl"
+        class="nav-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark relative !text-sm font-medium tracking-wide transition-colors duration-300 lg:!text-base xl:!text-lg"
+        data-section={item.link.replace("#", "")}
       >
         {item.name}
+        <span class="nav-indicator bg-primary dark:bg-primary-dark absolute bottom-[-16px] left-0 h-[2px] w-0 transition-all duration-300 ease-in-out" />
       </a>
     ))
   }
@@ -52,3 +54,95 @@ const isHomePage = Astro.url.pathname === "/";
     Demander une démo
   </a>
 </div>
+
+<!-- <script>
+  // Fonction pour marquer la section active
+  const markActiveSection = () => {
+    const sections = document.querySelectorAll("section[id], div[id]");
+    const navLinks = document.querySelectorAll(".nav-link");
+
+    // Observer les sections pour détecter quand elles sont visibles
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            // Quand une section est visible, marquer le lien correspondant comme actif
+            const activeId = entry.target.id;
+            navLinks.forEach(link => {
+              const linkSection = link.getAttribute("data-section");
+              if (linkSection === activeId) {
+                link.classList.add("active");
+                const indicator = link.querySelector(".nav-indicator");
+                if (indicator) {
+                  indicator.classList.add("w-full");
+                }
+              } else {
+                link.classList.remove("active");
+                const indicator = link.querySelector(".nav-indicator");
+                if (indicator) {
+                  indicator.classList.remove("w-full");
+                }
+              }
+            });
+          }
+        });
+      },
+      {
+        threshold: [0.5], // Ajouter un seuil plus bas pour mieux détecter
+      }
+    ); // Déclencher quand au moins 50% de la section est visible
+
+    // Observer toutes les sections
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+
+    // Gérer le survol des liens
+    navLinks.forEach(link => {
+      link.addEventListener("mouseenter", () => {
+        if (!link.classList.contains("active")) {
+          const indicator = link.querySelector(".nav-indicator");
+          if (indicator) {
+            indicator.classList.add("w-full", "opacity-50");
+          }
+        }
+      });
+
+      link.addEventListener("mouseleave", () => {
+        if (!link.classList.contains("active")) {
+          const indicator = link.querySelector(".nav-indicator");
+          if (indicator) {
+            indicator.classList.remove("w-full", "opacity-50");
+          }
+        }
+      });
+    });
+
+    // Si on est au début de la page, activer le premier lien par défaut
+    if (window.scrollY < 100) {
+      const firstLink = navLinks[0];
+      if (firstLink) {
+        firstLink.classList.add("active");
+        if (firstLink) {
+          firstLink.classList.add("active");
+          firstLink.querySelector(".nav-indicator")?.classList.add("w-full");
+        }
+      }
+    }
+  };
+
+  // Appliquer au chargement et lors du scroll
+  document.addEventListener("DOMContentLoaded", markActiveSection);
+  window.addEventListener("scroll", markActiveSection, { passive: true });
+</script>
+
+<style>
+  @reference "../../styles/global.css";
+  .nav-link.active {
+    @apply text-primary dark:text-primary-dark font-semibold;
+  }
+
+  .nav-link.active .nav-indicator {
+    @apply w-full;
+  }
+</style> -->
