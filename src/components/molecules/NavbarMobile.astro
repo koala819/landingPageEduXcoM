@@ -21,13 +21,6 @@ const isHomePage = Astro.url.pathname === "/";
       name="menu"
       class="text-dark dark:text-light block h-6 w-6"
     />
-
-    <!-- Icône X (cachée par défaut) -->
-    <!-- <Icon
-      id="menu-close-icon"
-      name="close"
-      class="text-dark dark:text-light hidden h-6 w-6"
-    /> -->
   </button>
 </div>
 
@@ -206,9 +199,9 @@ const isHomePage = Astro.url.pathname === "/";
         mobileMenu.classList.remove("hidden");
       }
 
-      if (menuOpenIcon) {
-        menuOpenIcon.classList.add("hidden");
-      }
+      // if (menuOpenIcon) {
+      //   menuOpenIcon.classList.add("hidden");
+      // }
 
       if (mobileMenuButton) {
         mobileMenuButton.setAttribute("aria-expanded", "true");
@@ -231,9 +224,9 @@ const isHomePage = Astro.url.pathname === "/";
         mobileMenu.classList.add("hidden");
       }
 
-      if (menuOpenIcon) {
-        menuOpenIcon.classList.remove("hidden");
-      }
+      // if (menuOpenIcon) {
+      //   menuOpenIcon.classList.remove("hidden");
+      // }
 
       // menuCloseIcon.classList.add("hidden");
 
