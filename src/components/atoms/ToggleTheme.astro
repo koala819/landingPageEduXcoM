@@ -1,10 +1,8 @@
 ---
 import { Icon } from "astro-icon/components";
-
 interface Props {
   name: string;
 }
-
 const { name } = Astro.props;
 ---
 
@@ -16,35 +14,34 @@ const { name } = Astro.props;
   <Icon name="sun" class="hidden h-5 w-5 text-yellow-400 dark:block" />
   <Icon name="moon" class="block h-5 w-5 text-gray-800 dark:hidden" />
 </button>
-
 <script>
   // Gestion du thème
-  const themeToggleDesktop = document.getElementById("theme-toggle-desktop");
-  const themeToggleMobile = document.getElementById("theme-toggle-mobile");
+  document.addEventListener("DOMContentLoaded", () => {
+    // Sélectionne tous les boutons de bascule de thème
+    const themeToggles = document.querySelectorAll('[id^="theme-toggle-"]');
 
-  function toggleTheme() {
-    document.documentElement.classList.toggle("dark");
-    localStorage.theme = document.documentElement.classList.contains("dark")
-      ? "dark"
-      : "light";
-  }
+    // Fonction pour basculer le thème
+    function toggleTheme() {
+      document.documentElement.classList.toggle("dark");
+      localStorage.theme = document.documentElement.classList.contains("dark")
+        ? "dark"
+        : "light";
+    }
 
-  if (themeToggleDesktop) {
-    themeToggleDesktop.addEventListener("click", toggleTheme);
-  }
+    // Ajouter un écouteur d'événement à chaque bouton de bascule
+    themeToggles.forEach(toggle => {
+      toggle.addEventListener("click", toggleTheme);
+    });
 
-  if (themeToggleMobile) {
-    themeToggleMobile.addEventListener("click", toggleTheme);
-  }
-
-  // Initialisation du thème à partir du localStorage
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
+    // Initialisation du thème à partir du localStorage
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  });
 </script>

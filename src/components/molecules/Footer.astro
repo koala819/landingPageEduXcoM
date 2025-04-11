@@ -1,6 +1,8 @@
 ---
 import FooterList from "@/components/atoms/FooterList.astro";
 import { Icon } from "astro-icon/components";
+import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
+
 const currentYear = new Date().getFullYear();
 
 const navigationItems = [
@@ -39,7 +41,7 @@ const navigationItems = [
           Application de gestion scolaire tout-en-un qui simplifie la vie des
           établissements, enseignants, élèves et parents.
         </p>
-        <div class="mt-4 flex space-x-4">
+        <div class="flex space-x-4">
           <a
             href="https://github.com/koala819/"
             target="_blank"
@@ -58,17 +60,9 @@ const navigationItems = [
           >
             <Icon name="linkedin" class="text-base md:text-3xl" />
           </a>
-          <button
-            id="theme-toggle-desktop"
-            class="bg-light-dark dark:bg-dark-background focus:ring-primary rounded-full p-2 transition-all duration-300 hover:scale-110 focus:ring-2 focus:outline-none"
-            aria-label="Changer de thème"
-          >
-            <Icon name="moon" class="block h-5 w-5 text-gray-800 dark:hidden" />
-            <Icon
-              name="sun"
-              class="hidden h-5 w-5 text-yellow-400 dark:block"
-            />
-          </button>
+          <div class="p-2">
+            <ToggleTheme name="theme-toggle-footer" />
+          </div>
         </div>
       </div>
 
@@ -113,16 +107,13 @@ const navigationItems = [
             class="hover:text-primary-dark transition-colors"
             >Mentions légales</a
           >
-          <a
-            href="/politique-confidentialite"
-            class="hover:text-primary-dark transition-colors">Confidentialité</a
-          >
+
           <a href="/cgv" class="hover:text-primary-dark transition-colors"
             >CGV</a
           >
           <a href="/rgpd" class="hover:text-primary-dark transition-colors"
-            >RGPD</a
-          >
+            >Protection des données
+          </a>
         </div>
       </div>
     </div>
