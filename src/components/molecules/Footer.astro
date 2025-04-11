@@ -43,6 +43,8 @@ const navigationItems = [
           <a
             href="https://github.com/koala819/"
             target="_blank"
+            aria-label="Voir le profil GitHub"
+            rel="noopener noreferrer"
             class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
           >
             <Icon name="github" class="text-base md:text-3xl" />
@@ -50,6 +52,8 @@ const navigationItems = [
           <a
             href="https://www.linkedin.com/in/xavier-genolhac/"
             target="_blank"
+            aria-label="Voir le profil LinkedIn"
+            rel="noopener noreferrer"
             class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
           >
             <Icon name="linkedin" class="text-base md:text-3xl" />
@@ -70,7 +74,7 @@ const navigationItems = [
 
       <!-- Navigation rapide -->
       <div class="flex flex-col items-center">
-        <h4 class="!text-primary-dark mb-4">Navigation</h4>
+        <h3 class="!text-primary-dark mb-4">Navigation</h3>
         <ul class="space-y-3">
           {
             navigationItems.map(item => (
@@ -82,7 +86,7 @@ const navigationItems = [
 
       <!-- Contact -->
       <div class="flex flex-col items-center">
-        <h4 class="!text-primary-dark mb-4">Contact</h4>
+        <h3 class="!text-primary-dark mb-4">Contact</h3>
         <a
           href="mailto:contact@dix31.com"
           class="text-light hover:text-secondary-dark">contact@dix31.com</a
