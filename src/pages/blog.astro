@@ -1,35 +1,182 @@
 ---
 import BlogLayout from "../layouts/BlogLayout.astro";
 import BlogPost from "../components/blog/BlogPost.astro";
+import { slugifyTitle } from "@/scripts/slugify";
 
+// Récupérer les articles
 const allPosts = Object.values(
   import.meta.glob("./posts/*.md", { eager: true })
 );
-
 const cocon1 = Object.values(
   import.meta.glob("./posts/Actus_Tendances/*.md", { eager: true })
 );
-console.log("🚀 ~ cocon1:", cocon1);
 
-const pageTitle = "My Astro Learning Blog";
+const combinedPosts = [...allPosts, ...cocon1];
+
+// // Trier les articles par date (du plus récent au plus ancien)
+// combinedPosts.sort(
+//   (a: any, b: any) =>
+//     new Date(b.data.date || 0).getTime() - new Date(a.data.date || 0).getTime()
+// );
+
+// Trier les articles par date si la date est disponible
+combinedPosts.sort((a: any, b: any) => {
+  const dateA = a.frontmatter?.date
+    ? new Date(a.frontmatter.date)
+    : new Date(0);
+  const dateB = b.frontmatter?.date
+    ? new Date(b.frontmatter.date)
+    : new Date(0);
+  return new Date(dateB).getTime() - new Date(dateA).getTime();
+});
+
+// Extraire tous les tags uniques
+const uniqueTags = [
+  ...new Set(
+    combinedPosts.flatMap((post: any) => post.frontmatter?.tags || [])
+  ),
+];
+
+// const pageTitle = "My Astro Learning Blog";
+
+// Regrouper par catégories pour l'affichage
+const categories: Record<string, any[]> = {};
+combinedPosts.forEach((post: any) => {
+  // const category = post.data.category || "Non classé";
+  const category = "Non classé";
+  if (!categories[category]) {
+    categories[category] = [];
+  }
+  categories[category].push(post);
+});
+
+const pageTitle = "Mon blog d'apprentissage Astro";
 ---
 
 <BlogLayout pageTitle={pageTitle}>
-  <p>This is where I will post about my journey learning Astro.</p>
-  <ul>
-    {
-      allPosts.map((post: any) => (
-        <BlogPost url={post.url} title={post.frontmatter.title} />
-      ))
-    }
-  </ul>
-  <p>Cocon 1</p>
-  <ul>
-    {
-      cocon1.map((post: any) => {
-        console.log("post", post);
-        return <BlogPost url={post.url} title={post.frontmatter.title} />;
-      })
-    }
-  </ul>
+  <div class="mx-auto max-w-5xl px-4">
+    <header class="py-12 text-center">
+      <h1 class="mb-4 text-4xl font-bold text-gray-800 dark:text-white">
+        {pageTitle}
+      </h1>
+      <p
+        class="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-300"
+      >
+        Découvrez mon parcours d'apprentissage d'Astro et mes réflexions sur le
+        développement web moderne.
+      </p>
+    </header>
+
+    <!-- Menu Tags -->
+    <div class="mb-12">
+      <h2 class="mb-5 text-2xl font-bold text-gray-800 dark:text-white">
+        Explorez par tags
+      </h2>
+      <div class="flex flex-wrap gap-3">
+        {
+          uniqueTags.map(tag => (
+            <a
+              href={`/tags/${tag}`}
+              class="hover:bg-primary dark:hover:bg-primary rounded-full bg-gray-100 px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-white dark:bg-gray-800 dark:text-gray-200"
+            >
+              #{tag}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Articles mis en avant -->
+    <div class="mb-16">
+      <h2 class="mb-5 text-2xl font-bold text-gray-800 dark:text-white">
+        Articles à la une
+      </h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        {
+          combinedPosts.slice(0, 3).map((post: any) => {
+            return (
+              <BlogPost
+                url={`/posts/${slugifyTitle(post.frontmatter.title)}`}
+                title={post.frontmatter.title}
+                date={post.frontmatter.date}
+                description={post.frontmatter.description}
+                tags={post.frontmatter.tags}
+                image={post.frontmatter.image}
+                readTime={post.frontmatter.readTime}
+                author={post.frontmatter.author}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="mt-16 mb-8 flex justify-center">
+      <nav class="inline-flex rounded-md shadow-sm" aria-label="Pagination">
+        <a
+          href="#"
+          class="relative inline-flex items-center rounded-l-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+        >
+          Précédent
+        </a>
+        <a
+          href="#"
+          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+        >
+          1
+        </a>
+        <a
+          href="#"
+          class="bg-primary relative inline-flex items-center px-4 py-2 text-sm font-medium text-white"
+        >
+          2
+        </a>
+        <a
+          href="#"
+          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+        >
+          3
+        </a>
+        <span
+          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300"
+        >
+          ...
+        </span>
+        <a
+          href="#"
+          class="relative inline-flex items-center rounded-r-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
+        >
+          Suivant
+        </a>
+      </nav>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="mb-16 rounded-2xl bg-gray-100 p-8 dark:bg-gray-800">
+      <div class="mx-auto max-w-2xl text-center">
+        <h3 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white">
+          Abonnez-vous à la newsletter
+        </h3>
+        <p class="mb-6 text-gray-600 dark:text-gray-300">
+          Recevez les derniers articles et actualités directement dans votre
+          boîte mail.
+        </p>
+        <form class="flex flex-col gap-4 sm:flex-row">
+          <input
+            type="email"
+            placeholder="Votre adresse email"
+            class="focus:ring-primary flex-1 rounded-full border border-gray-300 px-5 py-3 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-primary hover:bg-primary-dark rounded-full px-8 py-3 font-medium text-white transition-colors"
+          >
+            S'abonner
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
 </BlogLayout>

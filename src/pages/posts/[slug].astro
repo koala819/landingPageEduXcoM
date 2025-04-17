@@ -1,0 +1,34 @@
+---
+import Layout from "@/layouts/BlogLayout.astro";
+import { slugifyTitle } from "@/scripts/slugify"; // ✅ import externe
+
+export function getStaticPaths() {
+  const allPosts = Object.values(
+    import.meta.glob("@/pages/posts/*.md", { eager: true })
+  );
+  const cocon1 = Object.values(
+    import.meta.glob("@/pages/posts/Actus_Tendances/*.md", { eager: true })
+  );
+
+  const combinedPosts = [...allPosts, ...cocon1];
+
+  return combinedPosts.map((post: any) => ({
+    params: {
+      slug: slugifyTitle(post.frontmatter.title),
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout pageTitle={post.frontmatter.title}>
+  <article class="prose dark:prose-invert mx-auto max-w-3xl px-4 py-8">
+    <h1>{post.frontmatter.title}</h1>
+    <p class="mb-6 text-sm text-gray-500">{post.frontmatter.date}</p>
+    <div set:html={post.compiledContent()} />
+  </article>
+</Layout>

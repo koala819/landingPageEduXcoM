@@ -1,29 +1,13 @@
 ---
-layout: ../../../layouts/MarkdownPostLayout.astro
-title: Pourquoi passer à un logiciel de gestion scolaire en 2025 ?
-pubDate: 2022-07-01
-description: "This is the first post of my new Astro blog."
-author: "Astro Learner"
+title: "Le rôle de la mère dans l’éducation"
+date: "2024-04-10"
+description: "Une analyse du rôle éducatif des mères à travers les cultures."
+tags: ["éducation", "famille"]
 image:
-  url: "https://docs.astro.build/assets/rose.webp"
-  alt: "The Astro logo on a dark background with a pink glow."
-tags: ["astro", "blogging", "learning in public"]
+  url: "/images/mere.jpg"
+  alt: "Une mère et son enfant"
+author: "Xavier Genolhac"
+readTime: 4
 ---
 
-# My First Blog Post
-
-Published on: 2022-07-01
-
-Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
-
-## What I've accomplished
-
-1. **Installing Astro**: First, I created a new Astro project and set up my online accounts.
-
-2. **Making Pages**: I then learned how to make pages by creating new `.astro` files and placing them in the `src/pages/` folder.
-
-3. **Making Blog Posts**: This is my first blog post! I now have Astro pages and Markdown posts!
-
-## What's next
-
-I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
+Contenu de l’article ici...

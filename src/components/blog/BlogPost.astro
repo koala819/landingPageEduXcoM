@@ -1,12 +1,141 @@
 ---
+import { Icon } from "astro-icon/components";
+
 interface Props {
   url: string;
   title: string;
+  date?: string;
+  description?: string;
+  tags?: string[];
+  image?: {
+    url: string;
+    alt: string;
+  };
+  author?: string;
+  readTime?: number;
 }
 
-const { url, title } = Astro.props;
+const {
+  url,
+  title,
+  date,
+  description = "",
+  tags = [],
+  image = {
+    url: "/default-blog.jpg",
+    alt: "default",
+  },
+  author = "Xavier Genolhac",
+  readTime = 5,
+} = Astro.props;
+
+// Formater la date si elle existe
+const formattedDate = date
+  ? new Date(date).toLocaleDateString("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })
+  : "";
 ---
 
-<li>
-  <a href={url}>{title}</a>
-</li>
+<article
+  class="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800"
+>
+  <a href={url} class="block overflow-hidden">
+    <div class="relative">
+      <!-- Image avec effet de zoom au survol -->
+      <img
+        src={image.url}
+        alt={image.alt}
+        class="h-52 w-full object-cover transition-transform duration-300 group-hover:scale-105 sm:h-60"
+        loading="lazy"
+      />
+
+      <!-- Overlay au survol -->
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+      >
+      </div>
+
+      <!-- Date badge -->
+
+      <span
+        class="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-gray-700 shadow-sm dark:bg-zinc-700/90 dark:text-gray-200"
+      >
+        {formattedDate}
+      </span>
+    </div>
+
+    <div class="p-5">
+      <!-- Tags avec effet au survol -->
+      {
+        tags.length > 0 && (
+          <div class="mb-3 flex flex-wrap gap-2">
+            {tags.map(tag => (
+              <span class="bg-primary/10 text-primary hover:bg-primary rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:text-white">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )
+      }
+
+      <!-- Titre avec animation au survol -->
+      <h2
+        class="group-hover:text-primary dark:group-hover:text-primary-light mb-3 text-xl font-bold text-gray-800 transition-colors duration-200 dark:text-white"
+      >
+        {title}
+      </h2>
+
+      <!-- Extrait avec une meilleure présentation -->
+      {
+        description && (
+          <p class="mb-4 line-clamp-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+            {description}
+          </p>
+        )
+      }
+
+      <!-- Métadonnées de l'article -->
+      <div
+        class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400"
+      >
+        <div class="flex items-center gap-2">
+          <!-- Avatar placeholder -->
+          <div class="h-6 w-6 rounded-full bg-gray-200 dark:bg-gray-600"></div>
+          <span>{author}</span>
+        </div>
+
+        <!-- Temps de lecture -->
+        <div class="flex items-center gap-1">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>{readTime} min</span>
+        </div>
+      </div>
+
+      <!-- Bouton "Lire plus" visible au survol -->
+      <div class="mt-4 text-right">
+        <a
+          href={Astro.props.url}
+          class="text-primary dark:text-primary-light inline-flex items-center text-sm font-medium opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        >
+          Lire plus
+          <Icon name="arrow-next" class="text-base md:text-3xl" />
+        </a>
+      </div>
+    </div>
+  </a>
+</article>
