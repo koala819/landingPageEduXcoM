@@ -1,0 +1,64 @@
+---
+import "@/styles/global.css";
+import Head from "@/components/atoms/Head.astro";
+import NavbarBlog from "@/components/blog/molecules/NavbarBlog.astro";
+import FooterBlog from "@/components/blog/atoms/FooterBlog.astro";
+import LightBox from "@/components/atoms/LightBox.astro";
+import Wave from "@/components/blog/atoms/Wave.astro";
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+
+// Préparer des propriétés enrichies pour le blog
+const enrichedProps = {
+  title: pageTitle ? `${pageTitle} | EduXcoM Blog` : "EduXcoM Blog",
+};
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <Head {...enrichedProps} />
+  </head>
+  <body
+    class="bg-primary dark:bg-primary-dark text-dark dark:text-light overflow-x-hidden rounded-md leading-relaxed"
+  >
+    <NavbarBlog />
+    <div class="bg-light dark:bg-dark relative h-96">
+      <div class="absolute bottom-0 left-1/2 z-20 -translate-x-1/2 pb-6">
+        <a
+          href="/#demo"
+          class="btn-primary flex items-center !text-xs lg:p-2 lg:!text-xl"
+        >
+          Demander une démo
+        </a>
+      </div>
+    </div>
+    <Wave color="bg-light" darkColor="dark:bg-dark" />
+
+    <!-- <Wave color="bg-light" darkColor="dark:bg-dark" /> -->
+    <!-- Espace vide pour pousser le contenu sous la navbar -->
+    <main
+      class="blog-container bg-light dark:bg-dark relative z-10 mx-auto max-w-7xl rounded-lg p-6 pt-24 shadow-md"
+    >
+      <slot />
+    </main>
+
+    <FooterBlog />
+    <LightBox />
+  </body>
+</html>
+
+<script>
+  // Optimisation: Utiliser type="module" pour le chargement asynchrone
+  import { initTheme } from "../scripts/theme.js";
+  // Initialiser le thème après le chargement complet
+  if (document.readyState === "complete") {
+    initTheme();
+  } else {
+    window.addEventListener("load", initTheme);
+  }
+</script>

@@ -1,0 +1,38 @@
+---
+import NavbarDesktopBlog from "@/components/blog/atoms/NavbarDesktopBlog.astro";
+// import NavbarMobileBlog from "@/components/blog/atoms/NavbarMobileBlog.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<nav class="bg-light dark:bg-dark fixed top-0 left-0 z-50 w-full shadow-md">
+  <div class="container mx-auto px-4">
+    <div class="flex h-20 items-center justify-between">
+      <!-- LEFT -->
+      <a
+        href="/"
+        aria-label="Retour à l'accueil"
+        class="flex items-center space-x-1"
+      >
+        <Icon
+          name="logo-EduXcoM"
+          class="text-primary dark:text-primary-dark"
+          size="40"
+        />
+        <span
+          class="!text-primary dark:!text-primary-dark hidden !text-xl font-bold md:block md:!text-4xl"
+          >Edu</span
+        >
+        <span
+          class="!text-secondary dark:!text-secondary-dark hidden !text-xl font-bold md:block md:!text-4xl"
+          >XcoM</span
+        >
+        <span
+          class="!text-dark bg-primary/30 dark:bg-primary-dark/80 ml-2 hidden rounded-xl p-2 !text-lg font-medium md:block md:!text-2xl"
+          >Blog</span
+        >
+      </a>
+      <NavbarDesktopBlog />
+      <!-- <NavbarMobileBlog /> -->
+    </div>
+  </div>
+</nav>

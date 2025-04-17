@@ -1,0 +1,99 @@
+---
+import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
+
+const isHomePage = Astro.url.pathname === "/";
+
+const blogItems = [
+  {
+    name: "Accueil",
+    link: "/blog",
+  },
+  {
+    name: "Contact",
+    link: isHomePage ? "#demo" : "/#demo",
+  },
+];
+// const isBlogHomePage =
+//   Astro.url.pathname === "/blog" || Astro.url.pathname === "/blog/";
+---
+
+<!-- Navigation Links -->
+<div class="hidden items-center space-x-4 px-2 md:flex">
+  {
+    blogItems.map(item => (
+      <a
+        href={item.link}
+        class="nav-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark relative !text-sm font-medium tracking-wide transition-colors duration-300 lg:!text-base xl:!text-lg"
+      >
+        {item.name}
+        <span class="nav-indicator bg-primary dark:bg-primary-dark absolute bottom-[-16px] left-0 h-[2px] w-0 transition-all duration-300 ease-in-out" />
+      </a>
+    ))
+  }
+</div>
+
+<!-- Toggle Theme Toggler & CTA Button -->
+<div class="hidden items-center space-x-4 md:flex">
+  <ToggleTheme name="theme-toggle-desktop-blog" />
+  <a
+    href={isHomePage ? "#demo" : "/#demo"}
+    class="btn-primary flex items-center !text-xs lg:p-2 lg:!text-xl"
+  >
+    Demander une démo
+  </a>
+
+  <script>
+    // Fonction pour marquer le lien actif
+    const markActiveLink = () => {
+      const currentPath = window.location.pathname;
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      navLinks.forEach(link => {
+        const href = link.getAttribute("href");
+        if (href && currentPath.startsWith(href)) {
+          link.classList.add("active");
+          const indicator = link.querySelector(".nav-indicator");
+          if (indicator) {
+            indicator.classList.add("w-full");
+          }
+        }
+      });
+
+      // Gérer le survol des liens
+      navLinks.forEach(link => {
+        link.addEventListener("mouseenter", () => {
+          if (!link.classList.contains("active")) {
+            const indicator = link.querySelector(".nav-indicator");
+            if (indicator) {
+              indicator.classList.add("w-full", "opacity-50");
+            }
+          }
+        });
+
+        link.addEventListener("mouseleave", () => {
+          if (!link.classList.contains("active")) {
+            const indicator = link.querySelector(".nav-indicator");
+            if (indicator) {
+              indicator.classList.remove("w-full", "opacity-50");
+            }
+          }
+        });
+      });
+    };
+
+    // Appliquer au chargement
+    document.addEventListener("DOMContentLoaded", markActiveLink);
+    document.addEventListener("astro:page-load", markActiveLink);
+  </script>
+
+  <style>
+    @reference "../../../styles/global.css";
+    .nav-link.active {
+      @apply text-primary dark:text-primary-dark font-semibold;
+    }
+
+    .nav-link.active .nav-indicator {
+      @apply w-full;
+    }
+  </style>
+</div>

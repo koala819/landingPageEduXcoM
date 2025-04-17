@@ -1,0 +1,172 @@
+---
+import FooterList from "@/components/atoms/FooterList.astro";
+import { Icon } from "astro-icon/components";
+import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
+
+const currentYear = new Date().getFullYear();
+
+const blogNavigationItems = [
+  {
+    name: "Accueil Blog",
+    href: "/blog",
+  },
+  {
+    name: "Site Principal",
+    href: "/",
+  },
+];
+
+const categoriesItems = [
+  {
+    name: "Contenus Educatifs",
+    href: "/blog/categories/gestion-scolaire",
+  },
+  {
+    name: "Focus Utilisateurs",
+    href: "/blog/categories/education-numerique",
+  },
+  {
+    name: "Tech & Open Source",
+    href: "/blog/categories/bonnes-pratiques",
+  },
+  {
+    name: "Actus & Tendances",
+    href: "/blog/categories/temoignages",
+  },
+];
+
+// Articles populaires pour la section dédiée
+// const popularArticles = [
+//   {
+//     name: "Optimiser la gestion scolaire",
+//     href: "/blog/optimiser-la-gestion-scolaire",
+//   },
+//   {
+//     name: "Les tendances EdTech 2025",
+//     href: "/blog/tendances-edtech-2025",
+//   },
+//   {
+//     name: "Guide pratique de la scolarité numérique",
+//     href: "/blog/guide-scolarite-numerique",
+//   },
+// ];
+---
+
+<footer class="bg-dark text-light mt-12 pt-16 pb-6 dark:bg-gray-700">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-4">
+      <!-- Logo et description -->
+      <div class="md:col-span-1">
+        <h2 class="!text-primary-dark mb-4 font-bold">
+          Edu<span class="!text-secondary-dark !text-4xl">XcoM</span>
+          <span class="!text-light !text-2xl font-medium">Blog</span>
+        </h2>
+        <p class="!text-light mb-6 text-sm">
+          Découvrez nos articles, conseils et actualités sur la gestion
+          scolaire, l'éducation numérique et les meilleures pratiques pour les
+          établissements d'enseignement.
+        </p>
+        <div class="flex space-x-4">
+          <a
+            href="https://github.com/koala819/"
+            target="_blank"
+            aria-label="Voir
+          le profil GitHub"
+            rel="noopener noreferrer"
+            class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
+          >
+            <Icon name="github" class="text-base md:text-3xl" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/xavier-genolhac/"
+            target="_blank"
+            aria-label="Voir le profil LinkedIn"
+            rel="noopener noreferrer"
+            class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
+          >
+            <Icon name="linkedin" class="text-base md:text-3xl" />
+          </a>
+          <a
+            href="/rss.xml"
+            target="_blank"
+            aria-label="S'abonner au flux RSS"
+            rel="noopener noreferrer"
+            class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
+          >
+            <Icon name="rss" class="text-base md:text-3xl" />
+          </a>
+          <div class="p-2">
+            <ToggleTheme name="theme-toggle-blog-footer" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Navigation du blog -->
+      <div class="flex flex-col items-center">
+        <h3 class="!text-primary-dark mb-4">Navigation</h3>
+        <ul class="space-y-3">
+          {
+            blogNavigationItems.map(item => (
+              <FooterList link={item.href} text={item.name} />
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Catégories -->
+      <div class="flex flex-col items-center">
+        <h3 class="!text-primary-dark mb-4">Catégories</h3>
+        <ul class="space-y-3">
+          {
+            categoriesItems.map(item => (
+              <FooterList link={item.href} text={item.name} />
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- Articles populaires -->
+      <div class="flex flex-col items-center">
+        <!-- <h3 class="!text-primary-dark mb-4">Articles Populaires</h3>
+        <ul class="space-y-3">
+          {
+            popularArticles.map(item => (
+              <FooterList link={item.href} text={item.name} />
+            ))
+          }
+        </ul> -->
+        <a
+          href="/blog/newsletter"
+          class="bg-primary-dark hover:bg-primary mt-4 rounded-lg px-4 py-2 text-sm text-white"
+        >
+          S'abonner à la newsletter
+        </a>
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <div class="border-secondary-dark mt-12 border-t pt-6">
+      <div
+        class="text-light flex flex-col items-center justify-between text-sm md:flex-row"
+      >
+        <p class="!text-light inline-flex items-center">
+          <Icon name="copyleft" class="mr-4 text-base md:text-3xl" />
+          {currentYear} EduXcoM. Publié sous licence libre
+        </p>
+        <div class="mt-4 flex gap-6 md:mt-0">
+          <a
+            href="/mentions-legales"
+            class="hover:text-primary-dark transition-colors"
+            >Mentions légales</a
+          >
+        </div>
+        <a href="/contact" class="hover:text-primary-dark transition-colors"
+          >Contact</a
+        >
+        <a href="/rgpd" class="hover:text-primary-dark transition-colors"
+          >Protection des données
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

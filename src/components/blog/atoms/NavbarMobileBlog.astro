@@ -1,0 +1,220 @@
+---
+import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
+import { Icon } from "astro-icon/components";
+
+const blogItems = [
+  {
+    name: "Accueil",
+    link: "/blog",
+    icon: "home-outline",
+  },
+  {
+    name: "Derniers Articles",
+    link: "/blog/derniers-articles",
+    icon: "document-text-outline",
+  },
+  {
+    name: "Catégories",
+    link: "/blog/categories",
+    icon: "grid-outline",
+  },
+  {
+    name: "Recherche",
+    link: "/blog/recherche",
+    icon: "search-outline",
+  },
+];
+---
+
+<div class="flex items-center space-x-2 md:hidden">
+  <!-- Utilisation du composant avec un name unique pour mobile -->
+  <ToggleTheme name="theme-toggle-mobile-blog" />
+
+  <!-- Mobile Menu Button -->
+  <button
+    id="mobile-menu-button"
+    class="flex cursor-pointer items-center justify-center rounded-full p-2 hover:bg-gray-100 dark:hover:bg-gray-800"
+    aria-label="Toggle Menu"
+  >
+    <!-- Icône hamburger (affichée par défaut) -->
+    <Icon
+      id="menu-open-icon"
+      name="menu"
+      class="text-dark dark:text-light block h-6 w-6"
+    />
+  </button>
+</div>
+
+<!-- Effet de flou uniquement sous la navbar -->
+<div id="mobile-menu" class="fixed inset-0 z-40 hidden pt-20 md:hidden">
+  <!-- Overlay avec flou - commence sous la navbar -->
+  <div
+    id="menu-overlay"
+    class="bg-primary/10 pointer-events-auto absolute inset-0 top-20 backdrop-blur-md"
+  >
+  </div>
+
+  <!-- Contenu du menu -->
+  <div class="relative z-50">
+    <div
+      id="menu-content"
+      class="bg-light dark:bg-dark border-border-dark dark:border-border-dark container mx-auto rounded-lg border px-4 py-6 shadow-xl"
+    >
+      <!-- Menu Links avec icônes -->
+      <div class="space-y-4">
+        {
+          blogItems.map(item => (
+            <a
+              href={item.link}
+              class="mobile-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark flex items-center space-x-3 py-2 transition-colors"
+            >
+              <Icon name={item.icon} class="h-5 w-5" />
+              <span>{item.name}</span>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Séparateur -->
+      <div class="my-6 border-t border-gray-200 dark:border-gray-700"></div>
+
+      <!-- CTA Buttons -->
+      <a
+        href="/"
+        class="mobile-link bg-secondary dark:bg-secondary-dark hover:bg-secondary-dark dark:hover:bg-secondary mb-4 block w-full rounded-lg py-3 text-center font-medium text-white transition-colors"
+      >
+        Site Principal
+      </a>
+      <a
+        href="/contact"
+        class="mobile-link bg-primary dark:bg-primary-dark hover:bg-primary-dark dark:hover:bg-primary block w-full rounded-lg py-3 text-center font-medium text-white transition-colors"
+      >
+        Contact
+      </a>
+    </div>
+
+    <script>
+      function setupMobileMenu() {
+        console.log("Attempting to set up mobile menu for blog...");
+
+        // --- Sélection des éléments ---
+        const mobileMenuButton = document.getElementById("mobile-menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const menuOverlay = document.getElementById("menu-overlay");
+        const menuOpenIcon = document.getElementById("menu-open-icon");
+
+        // --- Vérification cruciale des éléments ---
+        if (!mobileMenuButton || !mobileMenu || !menuOverlay || !menuOpenIcon) {
+          console.error(
+            "Mobile Menu Error: One or more required elements were NOT FOUND in the DOM. Check IDs:",
+            {
+              button: mobileMenuButton,
+              menu: mobileMenu,
+              overlay: menuOverlay,
+              openIcon: menuOpenIcon,
+            }
+          );
+          return;
+        }
+
+        // --- État du menu ---
+        let menuOpen = !mobileMenu.classList.contains("hidden");
+
+        // --- Fonctions principales ---
+        function openMenu() {
+          if (menuOpen) return;
+
+          if (mobileMenu) {
+            mobileMenu.classList.remove("hidden");
+          }
+
+          if (menuOpenIcon) {
+            menuOpenIcon.classList.add("hidden");
+          }
+
+          if (mobileMenuButton) {
+            mobileMenuButton.setAttribute("aria-expanded", "true");
+          }
+
+          // Empêcher le défilement de l'arrière-plan
+          document.documentElement.classList.add("no-scroll");
+
+          menuOpen = true;
+        }
+
+        function closeMenu() {
+          if (!menuOpen) return;
+
+          if (mobileMenu) {
+            mobileMenu.classList.add("hidden");
+          }
+
+          if (menuOpenIcon) {
+            menuOpenIcon.classList.remove("hidden");
+          }
+
+          if (mobileMenuButton) {
+            mobileMenuButton.setAttribute("aria-expanded", "false");
+          }
+
+          document.documentElement.classList.remove("no-scroll");
+          document.body.style.overflow = "";
+          menuOpen = false;
+        }
+
+        function toggleMenu(event: MouseEvent) {
+          event.stopPropagation();
+
+          if (menuOpen) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        }
+
+        // --- Ajout des écouteurs d'événements ---
+        mobileMenuButton.addEventListener("click", toggleMenu);
+
+        menuOverlay.addEventListener("click", event => {
+          if (event.target === menuOverlay) {
+            closeMenu();
+          }
+        });
+
+        const mobileLinks = document.querySelectorAll(
+          "#mobile-menu .mobile-link"
+        );
+        mobileLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            closeMenu();
+          });
+        });
+
+        document.addEventListener("keydown", event => {
+          if (event.key === "Escape" && menuOpen) {
+            closeMenu();
+          }
+        });
+
+        // --- État initial d'accessibilité ---
+        mobileMenuButton.setAttribute("aria-expanded", menuOpen.toString());
+      }
+
+      // --- Exécution du script ---
+      document.addEventListener("astro:page-load", setupMobileMenu);
+
+      let initialSetupDone = false;
+      document.addEventListener("astro:page-load", () => {
+        initialSetupDone = true;
+      });
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => {
+          if (!initialSetupDone) setupMobileMenu();
+        });
+      } else {
+        if (!initialSetupDone) setupMobileMenu();
+      }
+    </script>
+  </div>
+</div>

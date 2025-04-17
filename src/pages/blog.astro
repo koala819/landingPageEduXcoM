@@ -1,0 +1,35 @@
+---
+import BlogLayout from "../layouts/BlogLayout.astro";
+import BlogPost from "../components/blog/BlogPost.astro";
+
+const allPosts = Object.values(
+  import.meta.glob("./posts/*.md", { eager: true })
+);
+
+const cocon1 = Object.values(
+  import.meta.glob("./posts/Actus_Tendances/*.md", { eager: true })
+);
+console.log("🚀 ~ cocon1:", cocon1);
+
+const pageTitle = "My Astro Learning Blog";
+---
+
+<BlogLayout pageTitle={pageTitle}>
+  <p>This is where I will post about my journey learning Astro.</p>
+  <ul>
+    {
+      allPosts.map((post: any) => (
+        <BlogPost url={post.url} title={post.frontmatter.title} />
+      ))
+    }
+  </ul>
+  <p>Cocon 1</p>
+  <ul>
+    {
+      cocon1.map((post: any) => {
+        console.log("post", post);
+        return <BlogPost url={post.url} title={post.frontmatter.title} />;
+      })
+    }
+  </ul>
+</BlogLayout>
