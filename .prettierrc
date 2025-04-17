@@ -8,6 +8,8 @@
   "trailingComma": "es5",
   "bracketSpacing": true,
   "endOfLine": "lf",
+  "quoteProps": "as-needed",
+  "embeddedLanguageFormatting": "auto",
   "plugins": ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   "overrides": [
     {
