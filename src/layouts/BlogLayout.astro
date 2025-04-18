@@ -8,9 +8,10 @@ import Wave from "@/components/blog/atoms/Wave.astro";
 
 interface Props {
   pageTitle: string;
+  displayWave: boolean;
 }
 
-const { pageTitle } = Astro.props;
+const { pageTitle,displayWave } = Astro.props;
 
 // Préparer des propriétés enrichies pour le blog
 const enrichedProps = {
@@ -26,7 +27,9 @@ const enrichedProps = {
   <body
     class="bg-primary dark:bg-primary-dark text-dark dark:text-light overflow-x-hidden rounded-md leading-relaxed"
   >
+
     <NavbarBlog />
+    {displayWave && (
     <div class="bg-light dark:bg-dark relative h-96">
       <div class="absolute bottom-0 left-1/2 z-20 -translate-x-1/2 pb-6">
         <a
@@ -38,7 +41,7 @@ const enrichedProps = {
       </div>
     </div>
     <Wave color="bg-light" darkColor="dark:bg-dark" />
-
+    )}
     <main
       class="blog-container bg-light dark:bg-dark relative z-10 mx-auto mt-32 max-w-7xl rounded-lg p-6 shadow-md"
     >

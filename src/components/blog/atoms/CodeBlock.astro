@@ -1,0 +1,12 @@
+---
+const { lang, code, ...props } = Astro.props;
+import { highlight } from "shiki";
+
+const highlighted = await highlight(code, { lang: lang || "plaintext" });
+---
+
+<pre
+  class={`relative rounded-2xl overflow-x-auto my-6 bg-gray-900 text-white p-4 text-sm`}
+  {...props}>
+  <code class={`language-${lang}`} set:html={highlighted} />
+</pre>

@@ -1,0 +1,30 @@
+---
+import { Markdown } from "astro-remote";
+import Heading from "@/components/blog/atoms/MDHeading.astro";
+import Subheading from "@/components/blog/atoms/MDSubheading.astro";
+import Paragraph from "@/components/blog/atoms/MDParagraph.astro";
+import Image from "@/components/blog/atoms/MDImage.astro";
+import Link from "@/components/blog/atoms/MDLink.astro";
+import Table from "@/components/blog/atoms/MDTable.astro";
+import List from "@/components/blog/atoms/MDList.astro";
+import ListItem from "@/components/blog/atoms/MDListItem.astro";
+import CTA from "@/components/blog/atoms/MDCTA.astro";
+
+const { content } = Astro.props;
+---
+
+<Markdown
+  content={content}
+  sanitize={{ allowComponents: true }}
+  components={{
+    h2: Heading,
+    h3: Subheading,
+    p: Paragraph,
+    img: Image,
+    a: Link,
+    table: Table,
+    ul: List,
+    li: ListItem,
+    CTA,
+  }}
+/>

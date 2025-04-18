@@ -20,7 +20,7 @@ const {
   title,
   date,
   description = "",
-  tags = [],
+  // tags = [],
   image = {
     url: "/default-blog.jpg",
     alt: "default",
@@ -40,7 +40,7 @@ const formattedDate = date
 ---
 
 <article
-  class="group overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-lg dark:border-zinc-700 dark:bg-zinc-800"
+  class="group dark:border-dark-background dark:bg-dark-background bg-dark-lighter/10 overflow-hidden rounded-xl border border-gray-200 shadow-sm transition-all duration-300 hover:shadow-lg"
 >
   <a href={url} class="block overflow-hidden">
     <div class="relative">
@@ -57,33 +57,12 @@ const formattedDate = date
         class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
       >
       </div>
-
-      <!-- Date badge -->
-
-      <span
-        class="absolute top-4 right-4 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-gray-700 shadow-sm dark:bg-zinc-700/90 dark:text-gray-200"
-      >
-        {formattedDate}
-      </span>
     </div>
 
     <div class="p-5">
-      <!-- Tags avec effet au survol -->
-      {
-        tags.length > 0 && (
-          <div class="mb-3 flex flex-wrap gap-2">
-            {tags.map(tag => (
-              <span class="bg-primary/10 text-primary hover:bg-primary rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:text-white">
-                #{tag}
-              </span>
-            ))}
-          </div>
-        )
-      }
-
       <!-- Titre avec animation au survol -->
       <h2
-        class="group-hover:text-primary dark:group-hover:text-primary-light mb-3 text-xl font-bold text-gray-800 transition-colors duration-200 dark:text-white"
+        class="group-hover:text-primary dark:group-hover:text-primary-light mb-3 text-xl font-bold break-words text-gray-800 transition-colors duration-200 dark:!text-white"
       >
         {title}
       </h2>
@@ -91,7 +70,7 @@ const formattedDate = date
       <!-- Extrait avec une meilleure présentation -->
       {
         description && (
-          <p class="mb-4 line-clamp-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+          <p class="dark:!text-light mb-4 line-clamp-3 text-sm leading-relaxed text-gray-600">
             {description}
           </p>
         )
@@ -102,9 +81,9 @@ const formattedDate = date
         class="flex items-center justify-between text-xs text-gray-500 dark:text-gray-400"
       >
         <div class="flex items-center gap-2">
-          <!-- Avatar placeholder -->
-          <div class="h-6 w-6 rounded-full bg-gray-200 dark:bg-gray-600"></div>
-          <span>{author}</span>
+          <!-- Author -->
+
+          <span class="dark:!text-light">{author}</span>
         </div>
 
         <!-- Temps de lecture -->
@@ -122,9 +101,29 @@ const formattedDate = date
               stroke-width="2"
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
           </svg>
-          <span>{readTime} min</span>
+          <span class="dark:!text-light">{readTime} min</span>
         </div>
       </div>
+
+      <!-- Date badge -->
+      <div class="text-right">
+        <span class="dark:!text-light !text-sm text-gray-700">
+          {formattedDate}
+        </span>
+      </div>
+
+      <!-- Tags avec effet au survol -->
+      <!-- {
+        tags.length > 0 && (
+          <div class="mb-3 flex flex-wrap gap-2">
+            {tags.map(tag => (
+              <span class="bg-primary/10 text-primary hover:bg-primary rounded-full px-3 py-1 text-xs font-medium transition-all duration-200 hover:text-white">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        )
+      } -->
 
       <!-- Bouton "Lire plus" visible au survol -->
       <div class="mt-4 text-right">
