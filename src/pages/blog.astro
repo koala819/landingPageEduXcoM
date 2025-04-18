@@ -42,7 +42,8 @@ combinedPosts.forEach((post: any) => {
   categories[category].push(post);
 });
 
-const pageTitle = "Mon blog d'apprentissage Astro";
+const pageTitle =
+  "Le blog EduXcoM : gestion scolaire & transformation numérique";
 ---
 
 <BlogLayout pageTitle={pageTitle} displayWave={true}>
@@ -54,8 +55,9 @@ const pageTitle = "Mon blog d'apprentissage Astro";
       <p
         class="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-300"
       >
-        Découvrez mon parcours d'apprentissage d'Astro et mes réflexions sur le
-        développement web moderne.
+        Découvrez comment les établissements scolaires innovants utilisent
+        EduXcoM pour gagner du temps, améliorer la communication et rester en
+        conformité avec le RGPD
       </p>
     </header>
 
@@ -81,7 +83,7 @@ const pageTitle = "Mon blog d'apprentissage Astro";
     <!-- Articles mis en avant -->
     <div class="mb-16">
       <h2 class="mb-5 text-2xl font-bold text-gray-800 dark:text-white">
-        Articles
+        Digitaliser votre établissement
       </h2>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {
@@ -145,7 +147,7 @@ const pageTitle = "Mon blog d'apprentissage Astro";
     </div> -->
 
     <!-- Newsletter -->
-    <div class="mb-16 rounded-2xl bg-gray-100 p-8 dark:bg-gray-800">
+    <!-- <div class="mb-16 rounded-2xl bg-gray-100 p-8 dark:bg-gray-800">
       <div class="mx-auto max-w-2xl text-center">
         <h3 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white">
           Abonnez-vous à la newsletter
@@ -169,6 +171,6 @@ const pageTitle = "Mon blog d'apprentissage Astro";
           </button>
         </form>
       </div>
-    </div>
+    </div> -->
   </div>
 </BlogLayout>
