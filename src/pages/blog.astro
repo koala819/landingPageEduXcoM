@@ -1,6 +1,6 @@
 ---
-import BlogLayout from "../layouts/BlogLayout.astro";
-import BlogPost from "../components/blog/BlogPost.astro";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import BlogPost from "@/components/blog/atoms/BlogPost.astro";
 import { slugifyTitle } from "@/scripts/slugify";
 
 // Récupérer les articles
@@ -49,12 +49,10 @@ const pageTitle =
 <BlogLayout pageTitle={pageTitle} displayWave={true}>
   <div class="mx-auto max-w-5xl px-4">
     <header class="py-12 text-center">
-      <h1 class="mb-4 text-4xl font-bold text-gray-800 dark:text-white">
+      <h1 class="mb-4 text-4xl font-bold">
         {pageTitle}
       </h1>
-      <p
-        class="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-300"
-      >
+      <p class="mx-auto mb-8 max-w-2xl text-lg">
         Découvrez comment les établissements scolaires innovants utilisent
         EduXcoM pour gagner du temps, améliorer la communication et rester en
         conformité avec le RGPD
@@ -82,7 +80,7 @@ const pageTitle =
 
     <!-- Articles mis en avant -->
     <div class="mb-16">
-      <h2 class="mb-5 text-2xl font-bold text-gray-800 dark:text-white">
+      <h2 class="mb-5 !text-xl sm:!text-3xl lg:!text-4xl">
         Digitaliser votre établissement
       </h2>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
