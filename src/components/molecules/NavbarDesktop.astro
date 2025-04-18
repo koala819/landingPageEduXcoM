@@ -135,14 +135,3 @@ const isHomePage = Astro.url.pathname === "/";
   document.addEventListener("DOMContentLoaded", markActiveSection);
   window.addEventListener("scroll", markActiveSection, { passive: true });
 </script>
-
-<style>
-  @reference "../../styles/global.css";
-  .nav-link.active {
-    @apply text-primary dark:text-primary-dark font-semibold;
-  }
-
-  .nav-link.active .nav-indicator {
-    @apply w-full;
-  }
-</style>
