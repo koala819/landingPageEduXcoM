@@ -9,19 +9,27 @@ const imageTransitionClass =
 ---
 
 <section
-  class="flex h-full w-full flex-col items-center py-8 sm:justify-center sm:gap-8 md:py-12 lg:flex-row lg:justify-start lg:gap-0"
+  class="flex h-full w-full flex-col items-center py-8 sm:justify-center sm:gap-8 md:py-12 xl:flex-row xl:justify-start xl:gap-0"
 >
   <!-- Text Content - Réduit sur mobile, normal sur desktop -->
-  <aside class="mb-4 px-4 lg:mb-0 lg:w-1/2">
+  <aside class="mb-4 px-4 xl:mb-0 xl:w-1/2">
     <AnimatedSection direction="left" delay={0.1}>
-      <h1>Simplifiez la gestion de votre établissement scolaire</h1>
+      <h1>
+        La plateforme tout-en-un pour simplifier la gestion des cours dans les
+        mosquées.
+      </h1>
+    </AnimatedSection>
+    <AnimatedSection direction="left" delay={0.2}>
+      <h2 class="mt-2 mb-4 md:mt-8 md:text-xl">
+        Pensé pour les responsables d'écoles associatives, cours du soir et
+        mosquées.
+      </h2>
     </AnimatedSection>
     <AnimatedSection direction="left" delay={0.3}>
       <p>
-        EduXcoM est une <strong>plateforme éducative open source</strong> qui connecte
-        enseignants, élèves et parents pour une <strong
-          >gestion d'école en ligne</strong
-        > fluide et efficace.
+        <strong>Suivi des élèves</strong>, <strong>plannings</strong>, <strong
+          >absences</strong
+        > et <strong>communication</strong> réunis au même endroit.
       </p>
     </AnimatedSection>
     <AnimatedSection direction="left" delay={0.5}>
@@ -31,15 +39,15 @@ const imageTransitionClass =
           class="btn-primary"
           aria-label="Demander une démonstration"
         >
-          Demander une démo
+          Demander une démo gratuite
         </a>
-        <a
+        <!-- <a
           href="#features"
           class="btn-secondary"
           aria-label="Découvrir les fonctionnalités"
         >
           Découvrir les fonctionnalités
-        </a>
+        </a> -->
       </div>
     </AnimatedSection>
   </aside>

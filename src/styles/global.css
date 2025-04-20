@@ -77,7 +77,7 @@ h1 {
 }
 
 h2 {
-  @apply text-primary dark:text-primary-dark text-4xl font-bold;
+  @apply text-primary dark:text-primary-dark text-lg font-semibold md:text-2xl lg:text-4xl;
 }
 
 h3 {
