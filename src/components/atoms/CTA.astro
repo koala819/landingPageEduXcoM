@@ -4,12 +4,12 @@ import { Image } from "astro:assets";
 interface Props {
   title: string;
   btn: string;
-  appel: string;
+
   imageUrl: any;
   alt: string;
 }
 
-const { btn, appel, title, imageUrl, alt } = Astro.props;
+const { btn, title, imageUrl, alt } = Astro.props;
 ---
 
 <section
@@ -20,7 +20,7 @@ const { btn, appel, title, imageUrl, alt } = Astro.props;
     <div
       class="flex w-full flex-col justify-center px-6 py-8 text-center lg:w-1/2 lg:px-12 lg:text-left"
     >
-      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">{title}</h2>
+      <h2 class="mb-4 !text-2xl">{title}</h2>
 
       <a
         href="#demo"
@@ -42,7 +42,10 @@ const { btn, appel, title, imageUrl, alt } = Astro.props;
           </svg>
         </div>
       </a>
-      <p class="mb-6">{appel}</p>
+      <p class="mb-6">
+        Sans engagement – réponse sous 24h – démonstration en visio avec un
+        membre de l’équipe
+      </p>
     </div>
 
     <!-- Image -->
