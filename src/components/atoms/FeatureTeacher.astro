@@ -1,29 +1,29 @@
 ---
-import GreenCheck from "@/components/atoms/GreenCheck.astro";
+// import GreenCheck from "@/components/atoms/GreenCheck.astro";
 import Badge from "@/components/atoms/Badge.astro";
 import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
 import { Image } from "astro:assets";
 import interfaceEnseignantDesktop from "@/assets/pictures/eduxcom-tableau-bord-enseignant-desktop.webp";
-import { renderTextWithStrong } from "@/scripts/featuresText";
+// import { renderTextWithStrong } from "@/scripts/featuresText";
 
-const teacherFeatures = [
-  {
-    text: "Gestion des cahiers de notes et calculs automatiques des moyennes pondérées pour chaque élève",
-    strongParts: ["cahiers de notes"],
-  },
-  {
-    text: "Planification des devoirs et évaluations avec rappels automatiques",
-    strongParts: ["devoirs et évaluations"],
-  },
-  {
-    text: "Suivi des absences et gestion des retards avec alertes immédiates aux parents et à l'administration",
-    strongParts: ["Suivi des absences"],
-  },
-  {
-    text: "Messagerie sécurisée pour une communication fluide avec les familles et l'équipe pédagogique",
-    strongParts: ["communication fluide"],
-  },
-];
+// const teacherFeatures = [
+//   {
+//     text: "Gestion des cahiers de notes et calculs automatiques des moyennes pondérées pour chaque élève",
+//     strongParts: ["cahiers de notes"],
+//   },
+//   {
+//     text: "Planification des devoirs et évaluations avec rappels automatiques",
+//     strongParts: ["devoirs et évaluations"],
+//   },
+//   {
+//     text: "Suivi des absences et gestion des retards avec alertes immédiates aux parents et à l'administration",
+//     strongParts: ["Suivi des absences"],
+//   },
+//   {
+//     text: "Messagerie sécurisée pour une communication fluide avec les familles et l'équipe pédagogique",
+//     strongParts: ["communication fluide"],
+//   },
+// ];
 ---
 
 <article
@@ -33,14 +33,12 @@ const teacherFeatures = [
   <aside class="order-2 flex flex-col justify-center px-4 md:order-last">
     <AnimatedSection direction="left" delay={0.1}>
       <Badge title="Interface enseignants" />
-      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">
-        Plateforme numérique pour professeurs
-      </h2>
+      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">Pour les enseignants</h2>
       <p class="mb-6">
-        Une solution complète permettant aux enseignants d'optimiser leur temps
-        et d'améliorer le suivi pédagogique des élèves au quotidien.
+        Un seul outil pour les notes, devoirs, absences et communication. Fini
+        les fichiers dispersés.
       </p>
-      <ul class="space-y-2 sm:space-y-3">
+      <!-- <ul class="space-y-2 sm:space-y-3">
         {
           teacherFeatures.map(feature => (
             <li class="flex items-start">
@@ -57,7 +55,7 @@ const teacherFeatures = [
             </li>
           ))
         }
-      </ul>
+      </ul> -->
     </AnimatedSection>
   </aside>
 
