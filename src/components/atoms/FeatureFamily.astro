@@ -1,29 +1,29 @@
 ---
-import GreenCheck from "@/components/atoms/GreenCheck.astro";
+// import GreenCheck from "@/components/atoms/GreenCheck.astro";
 import Badge from "@/components/atoms/Badge.astro";
 import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
 import { Image } from "astro:assets";
 import interfaceParentsMobile from "@/assets/pictures/eduxcom-tableau-bord-famille-mobile.webp";
-import { renderTextWithStrong } from "@/scripts/featuresText";
+// import { renderTextWithStrong } from "@/scripts/featuresText";
 
-const parentFeatures = [
-  {
-    text: "Consultez les notes et évaluations de votre enfant dès leur publication par les enseignants",
-    strongParts: ["notes et évaluations"],
-  },
-  {
-    text: "Suivez les devoirs et examens pour aider votre enfant à s'organiser",
-    strongParts: ["devoirs et examens"],
-  },
-  {
-    text: "Recevez des notifications en temps réel concernant les absences, retards ou informations importantes",
-    strongParts: ["notifications en temps réel"],
-  },
-  {
-    text: "Communiquez directement avec les enseignants et l'administration via notre messagerie intégrée",
-    strongParts: ["enseignants et l'administration"],
-  },
-];
+// const parentFeatures = [
+//   {
+//     text: "Consultez les notes et évaluations de votre enfant dès leur publication par les enseignants",
+//     strongParts: ["notes et évaluations"],
+//   },
+//   {
+//     text: "Suivez les devoirs et examens pour aider votre enfant à s'organiser",
+//     strongParts: ["devoirs et examens"],
+//   },
+//   {
+//     text: "Recevez des notifications en temps réel concernant les absences, retards ou informations importantes",
+//     strongParts: ["notifications en temps réel"],
+//   },
+//   {
+//     text: "Communiquez directement avec les enseignants et l'administration via notre messagerie intégrée",
+//     strongParts: ["enseignants et l'administration"],
+//   },
+// ];
 ---
 
 <article
@@ -32,15 +32,13 @@ const parentFeatures = [
   <!-- Contenu textuel -->
   <aside class="order-1 flex flex-col justify-center px-4">
     <AnimatedSection direction="right" delay={0.1}>
-      <Badge title="Application mobile parents" />
-      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">
-        Suivi scolaire pour les familles
-      </h2>
+      <!-- <Badge title="Application mobile parents" /> -->
+      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">Pour les familles</h2>
       <p class="mb-6">
-        Notre plateforme renforce le lien école-famille grâce à un accès
-        instantané aux informations scolaires de vos enfants, où que vous soyez.
+        Tout le suivi scolaire de vos enfants, accessible en temps réel depuis
+        votre téléphone.
       </p>
-      <ul class="space-y-2 sm:space-y-3">
+      <!-- <ul class="space-y-2 sm:space-y-3">
         {
           parentFeatures.map(feature => (
             <li class="flex items-start">
@@ -57,7 +55,7 @@ const parentFeatures = [
             </li>
           ))
         }
-      </ul>
+      </ul> -->
     </AnimatedSection>
   </aside>
 
