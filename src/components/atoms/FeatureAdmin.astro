@@ -1,29 +1,29 @@
 ---
-import GreenCheck from "@/components/atoms/GreenCheck.astro";
-import Badge from "@/components/atoms/Badge.astro";
+// import GreenCheck from "@/components/atoms/GreenCheck.astro";
+// import Badge from "@/components/atoms/Badge.astro";
 import AnimatedSection from "@/components/atoms/AnimatedSection.astro";
 import { Image } from "astro:assets";
 import interfaceAdminTablet from "@/assets/pictures/eduxcom-tableau-bord-administratif-tablet.webp";
-import { renderTextWithStrong } from "@/scripts/featuresText";
+// import { renderTextWithStrong } from "@/scripts/featuresText";
 
-const adminFeatures = [
-  {
-    text: "Tableaux de bord analytiques pour suivre les indicateurs de performance de l'établissement",
-    strongParts: ["Tableaux de bord analytiques"],
-  },
-  {
-    text: "Gestion des emplois du temps et attribution des salles avec détection automatique des conflits",
-    strongParts: ["emplois du temps"],
-  },
-  {
-    text: "Suivi financier et gestion des ressources humaines intégrés",
-    strongParts: ["Suivi financier"],
-  },
-  {
-    text: "Rapports statistiques et exports de données personnalisables pour les besoins administratifs",
-    strongParts: ["exports de données"],
-  },
-];
+// const adminFeatures = [
+//   {
+//     text: "Tableaux de bord analytiques pour suivre les indicateurs de performance de l'établissement",
+//     strongParts: ["Tableaux de bord analytiques"],
+//   },
+//   {
+//     text: "Gestion des emplois du temps et attribution des salles avec détection automatique des conflits",
+//     strongParts: ["emplois du temps"],
+//   },
+//   {
+//     text: "Suivi financier et gestion des ressources humaines intégrés",
+//     strongParts: ["Suivi financier"],
+//   },
+//   {
+//     text: "Rapports statistiques et exports de données personnalisables pour les besoins administratifs",
+//     strongParts: ["exports de données"],
+//   },
+// ];
 ---
 
 <article
@@ -32,16 +32,13 @@ const adminFeatures = [
   <!-- Contenu textuel -->
   <aside class="order-2 flex flex-col justify-center px-4 md:order-last">
     <AnimatedSection direction="left" delay={0.1}>
-      <Badge title="Administration scolaire" />
-      <h2 class="mb-4 text-2xl font-bold sm:text-3xl">
-        Gestion complète d'établissement
-      </h2>
-      <p class="mb-6">
-        Notre système d'information centralise toutes les données
-        administratives et pédagogiques pour une gestion optimisée de votre
-        établissement scolaire.
+      <!-- <Badge title="Administration scolaire" /> -->
+      <h2 class="mb-4">Pour les administrateurs</h2>
+      <p>
+        Une vue claire sur tout l’établissement. Plus de contrôle, moins de
+        stress.
       </p>
-      <ul class="space-y-2 sm:space-y-3">
+      <!-- <ul class="space-y-2 sm:space-y-3">
         {
           adminFeatures.map(feature => (
             <li class="flex items-start">
@@ -58,7 +55,7 @@ const adminFeatures = [
             </li>
           ))
         }
-      </ul>
+      </ul> -->
     </AnimatedSection>
   </aside>
 
