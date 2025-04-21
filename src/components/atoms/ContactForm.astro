@@ -3,7 +3,7 @@
 ---
 
 <div
-  class="not-content my-3rounded-3xl dark:bg-dark text-dark dark:text-light bg-light mx-auto border border-gray-200 p-6 md:p-10"
+  class="not-content my-3rounded-3xl dark:bg-dark-background text-dark bg-light mx-auto border border-gray-200 p-6 md:p-10 dark:text-black"
 >
   <h3 class="text-center">Contactez Nous</h3>
   <div
@@ -23,10 +23,10 @@
       <label for="contact-name">Nom</label>
       <input
         type="text"
-        class="form__input"
+        class="form_input"
         name="name"
         id="contact-name"
-        placeholder="Votre nom préféré"
+        placeholder="Votre nom"
         required
       />
     </div>
@@ -34,11 +34,11 @@
       <label for="contact-email">Email</label>
       <input
         type="email"
-        class="form__input"
+        class="form_input"
         name="email"
         id="contact-email"
         inputmode="email"
-        placeholder="Votre meilleur email de contact"
+        placeholder="Votre email de contact"
         required
       />
     </div>
@@ -49,20 +49,15 @@
       <label for="contact-message">Message</label>
       <textarea
         name="message"
-        class="form__input"
+        class="form_input"
         id="contact-message"
         rows="4"
         placeholder="Ecrivez votre message ici"
         required></textarea>
     </div>
     <button type="submit" class="btn-primary group" id="submit-button">
-      <div
-        id="button-text"
-        class="dark:text-dark group-hover:text-dark text-white dark:group-hover:text-white"
-      >
-        Envoyer
-      </div>
-      <span id="button-loader" class="hidden">
+      <div id="button-text" class="dark:text-dark text-white">Envoyer</div>
+      <span id="button-loader" class="!text-light hidden dark:!text-black">
         <svg
           class="mr-1 inline-block h-5 w-5 animate-spin"
           xmlns="http://www.w3.org/2000/svg"
@@ -87,17 +82,6 @@
     </button>
   </form>
 </div>
-
-<style>
-  @import "tailwindcss/theme" theme(reference);
-  .form__input {
-    @apply w-full rounded-md border border-transparent bg-gray-200 p-2.5 transition outline-none;
-    @apply focus-visible:border-blue-600/70 focus-visible:ring-2 focus-visible:ring-blue-600/50;
-  }
-  .hidden {
-    display: none;
-  }
-</style>
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {

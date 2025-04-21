@@ -120,3 +120,7 @@ a {
   overflow: hidden;
   height: 100vh;
 }
+
+.form_input {
+  @apply focus-visible:border-primary-dark focus-visible:ring-primary-dark dark:bg-dark/65 dark:text-primary-dark bg-dark-lighter/25 text-dark dark:placeholder:text-primary-dark w-full rounded-md p-2.5 transition outline-none placeholder:text-gray-500;
+}
