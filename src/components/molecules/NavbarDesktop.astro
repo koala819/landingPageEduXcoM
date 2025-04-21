@@ -92,7 +92,8 @@ const isHomePage = Astro.url.pathname === "/";
         });
       },
       {
-        threshold: [0.5], // Ajouter un seuil plus bas pour mieux détecter
+        threshold: [0.2], // Réduire le seuil pour une meilleure détection
+        rootMargin: "0px 0px -20% 0px", // Ajouter une marge négative en bas
       }
     ); // Déclencher quand au moins 50% de la section est visible
 
