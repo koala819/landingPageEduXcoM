@@ -20,7 +20,6 @@ const pageTitle =
 ---
 
 <Layout title={pageTitle}>
-  <!-- <div class="content-wrapper"> -->
   <section id="home" class="my-16">
     <div class="container mx-auto px-4">
       <Hero />
@@ -28,6 +27,13 @@ const pageTitle =
   </section>
 
   <FounderStory />
+
+  <CTA
+    title="Gérez votre école en toute simplicité"
+    btn="Réserver un appel découverte (15min)"
+    imageUrl={muslimboy}
+    alt="Petit garçon musulman"
+  />
 
   <section id="features" class="container mx-auto px-4">
     <BeforeAfterComparison />
@@ -44,16 +50,7 @@ const pageTitle =
   <section class="container mx-auto px-4">
     <FeatureAdmin />
   </section>
-  <!-- </div> -->
 
-  <section>
-    <CTA
-      title="Gérez votre école en toute simplicité"
-      btn="Réserver un appel découverte (15min)"
-      imageUrl={muslimboy}
-      alt="Petit garçon musulman"
-    />
-  </section>
   <section>
     <CTA
       title="Plus de temps pour l’essentiel"
@@ -61,6 +58,10 @@ const pageTitle =
       imageUrl={muslimwoman}
       alt="Femme musulmane de dos"
     />
+  </section>
+
+  <section id="testimonials" class="container mx-auto px-4">
+    <Testimonials />
   </section>
 
   <section id="pricing">
@@ -71,18 +72,12 @@ const pageTitle =
   <Solutions />
 </section> -->
 
-  <section id="testimonials" class="container mx-auto px-4">
-    <Testimonials />
-  </section>
-
-  <section class="container mx-auto px-4">
-    <CTA
-      title="Un outil pensé pour votre quotidien"
-      btn="Demander une démo gratuite"
-      imageUrl={muslimgirls}
-      alt="groupe filles musulmanes"
-    />
-  </section>
+  <CTA
+    title="Un outil pensé pour votre quotidien"
+    btn="Demander une démo gratuite"
+    imageUrl={muslimgirls}
+    alt="groupe filles musulmanes"
+  />
 
   <section id="faq" class="container mx-auto px-4">
     <FAQ />

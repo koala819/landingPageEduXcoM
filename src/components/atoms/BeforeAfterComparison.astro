@@ -16,22 +16,26 @@ const afterEduXcoM = [
 
 <section class="w-full px-4 py-12 sm:px-6 lg:px-8">
   <div class="mx-auto">
-    <h2 class="mb-12 text-center text-3xl font-bold">
+    <h2 class="mb-12 text-center">
       Ce que vivent les écoles AVANT / APRÈS EduXcoM
     </h2>
 
     <!-- Version desktop: colonnes côte à côte -->
     <div class="mb-8 lg:mb-0 lg:grid lg:grid-cols-2 lg:gap-8">
       <!-- AVANT -->
-      <div class="mb-8 rounded-lg bg-gray-100 p-8 lg:mb-0">
-        <h3 class="mb-4 font-bold text-red-600 lg:mb-6">Avant EduXcoM :</h3>
+      <div
+        class="bg-light-dark/25 dark:bg-dark-background mb-8 rounded-lg p-8 text-center lg:mb-0"
+      >
+        <h3 class="!text-error dark:!text-error-dark mb-4 font-bold lg:mb-6">
+          Avant EduXcoM :
+        </h3>
         <ul class="space-y-3 lg:space-y-4">
           {
             beforeEduXcoM.map(feature => (
               <li class="flex items-center py-8">
                 <Icon
                   name="x-circle"
-                  class="mr-3 h-5 w-5 flex-shrink-0 text-red-500 lg:h-6 lg:w-6"
+                  class="!text-error dark:!text-error-dark mr-3 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
                 />
                 <span>{feature}</span>
               </li>
@@ -41,8 +45,10 @@ const afterEduXcoM = [
       </div>
 
       <!-- APRÈS -->
-      <div class="rounded-lg bg-green-50 p-8">
-        <h3 class="mb-4 text-xl font-bold text-green-600 lg:mb-6 lg:text-2xl">
+      <div class="dark:bg-success/30 bg-success-dark/5 rounded-lg p-8">
+        <h3
+          class="!text-success dark:!text-success-dark mb-4 text-center lg:mb-6"
+        >
           Avec EduXcoM :
         </h3>
         <ul class="space-y-3 lg:space-y-4">
@@ -51,7 +57,7 @@ const afterEduXcoM = [
               <li class="flex items-center py-8">
                 <Icon
                   name="check-circle"
-                  class="mr-3 h-5 w-5 flex-shrink-0 text-green-500"
+                  class="!text-success dark:!text-success-dark mr-3 h-5 w-5 flex-shrink-0"
                 />
                 <span class="text-lg">{feature}</span>
               </li>

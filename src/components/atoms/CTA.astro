@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
 
 interface Props {
   title: string;
@@ -20,29 +21,21 @@ const { btn, title, imageUrl, alt } = Astro.props;
     <div
       class="flex w-full flex-col justify-center px-6 py-8 text-center lg:w-1/2 lg:px-12 lg:text-left"
     >
-      <h2 class="mb-4 !text-2xl">{title}</h2>
+      <h2>{title}</h2>
 
       <a
         href="#demo"
-        class="btn-primary mt-2 inline-flex items-center justify-center gap-2"
+        class="btn-primary group my-6 inline-flex items-center justify-center"
       >
-        <span class="!text-light dark:!text-dark">{btn}</span>
+        {btn}
         <div class="mr-4 sm:mr-0">
-          <svg
-            class="h-5 w-5"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-          </svg>
+          <Icon
+            name="arrow-right"
+            class="text-light dark:text-dark group-hover:text-dark dark:group-hover:text-light ml-3 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
+          />
         </div>
       </a>
-      <p class="mb-6">
+      <p>
         Sans engagement – réponse sous 24h – démonstration en visio avec un
         membre de l’équipe
       </p>

@@ -2,7 +2,7 @@
 @theme {
   /* Thème clair (par défaut) */
   --color-primary: oklch(0.44 0.103151 241.6728);
-  --color-primary-dark: oklch(0.68 0.1721 245.3);
+  --color-primary-dark: oklch(0.78 0.1268 236.92);
   --color-secondary: oklch(0.43 0.1333 140.29);
   --color-secondary-dark: oklch(0.87 0.2164 139.38);
 
@@ -91,7 +91,7 @@ h4 {
 p,
 span,
 label {
-  @apply text-dark dark:text-dark-lighter my-3 text-sm sm:text-base md:my-4 md:text-lg;
+  @apply text-dark dark:text-light my-3 text-sm sm:text-base md:my-4 md:text-lg;
 }
 
 a {
