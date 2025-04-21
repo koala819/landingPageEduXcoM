@@ -5,7 +5,7 @@ import PricingGarantie from "@/components/atoms/PricingGarantie.astro";
 
 const inclus = [
   {
-    text: "Nombre d'utilisateurs illimité",
+    text: "Utilisateurs illimités",
   },
   {
     text: "Toutes les fonctionnalités incluses",
@@ -13,9 +13,6 @@ const inclus = [
   {
     text: "Mises à jour régulières",
   },
-];
-
-const support = [
   {
     text: "Support technique 6j/7",
   },
@@ -27,32 +24,42 @@ const support = [
   },
 ];
 
-const avantagesOpenSources = [
+// Suppression de la variable support qui n'est plus utilisée
+
+const beneficesConcrets = [
   {
-    icon: "search",
-    title: "Transparence",
-    text: "Code source accessible et vérifiable à tout moment pour une sécurité optimale.",
+    icon: "clock",
+    title: "Gagnez jusqu'à 10 heures par semaine",
+    text: "Automatisation des tâches administratives répétitives comme le suivi des absences, la gestion des notes et la planification des devoirs.",
   },
   {
-    icon: "settings",
-    title: "Personnalisation",
-    text: "Adaptez la plateforme aux besoins spécifiques de votre établissement. ",
+    icon: "trending-up",
+    title: "Améliorez votre efficacité",
+    text: "Une gestion centralisée de vos emplois du temps, des élèves et des communications, tout à portée de clic.",
   },
   {
-    icon: "lock-open",
-    title: "Indépendance",
-    text: "Pas de verrouillage propriétaire, gardez le contrôle sur vos données.",
+    icon: "users",
+    title: "Renforcez le lien avec les familles",
+    text: "Suivi en temps réel des notes et absences, communication facile et sécurisée via notre messagerie intégrée.",
   },
 ];
+
+// const avantagesOpenSources = [
+//   {
+//     icon: "search",
+//     title: "Code source accessible",
+//     text: "Code source vérifiable pour garantir transparence et sécurité.",
+//   },
+// ];
 
 const Garanties = [
   {
     icon: "clock",
-    title: "Installation en 24h",
+    title: "Installation en 72h",
   },
   {
     icon: "money",
-    title: "Satisfait ou remboursé 30j",
+    title: "Satisfait ou remboursé pendant 30j",
   },
   {
     icon: "shield",
@@ -62,16 +69,40 @@ const Garanties = [
 ---
 
 <section class="py-24">
-  <div class="container mx-auto px-4">
-    <div class="mb-16 text-center">
-      <h2>TARIFICATION</h2>
-      <h3 class="my-6 text-center">
-        Une offre simple qui s'adapte à vos besoins
+  <div class="container px-4">
+    <!-- Section Bénéfices -->
+    <div class="mb-16">
+      <h2>SIMPLIFIEZ VOTRE GESTION ET RÉCUPÉREZ DU TEMPS</h2>
+      <h3 class="my-6 md:text-center">
+        Concentrez-vous sur ce qui compte vraiment
       </h3>
       <p>
-        Tous les outils dont vous avez besoin pour gérer efficacement votre
-        établissement scolaire, avec une tarification transparente et sans
-        surprise.
+        Avec EduXcoM, vous gérez votre établissement plus efficacement, réduisez
+        les tâches administratives répétitives et renforcez la communication
+        avec les familles.
+      </p>
+    </div>
+
+    <!-- Bénéfices concrets -->
+    <div class="mb-20 grid grid-cols-1 gap-8 md:grid-cols-3">
+      {
+        beneficesConcrets.map(benefice => (
+          <Avantage
+            iconName={benefice.icon}
+            title={benefice.title}
+            description={benefice.text}
+          />
+        ))
+      }
+    </div>
+
+    <!-- Section Tarifs -->
+    <div class="mb-16 text-center">
+      <h2>UN TARIF SIMPLE POUR UNE GESTION SIMPLIFIÉE</h2>
+      <h3 class="my-6 text-center">Tous les outils en un seul abonnement</h3>
+      <p class="mx-auto max-w-3xl">
+        EduXcoM vous offre tout ce dont vous avez besoin pour simplifier la
+        gestion de votre établissement à un tarif abordable et sans surprise.
       </p>
     </div>
 
@@ -81,50 +112,37 @@ const Garanties = [
         <!-- Entête -->
         <div class="px-6 pt-8 pb-6 text-center md:px-10">
           <h3>49€ / mois</h3>
-          <p>Facturé mensuellement. Sans engagement.</p>
+          <p>
+            Sans engagement, facturation mensuelle. Profitez de tout ce dont
+            vous avez besoin pour gérer votre établissement : utilisateurs
+            illimités, mises à jour régulières, support technique, et bien plus.
+          </p>
         </div>
 
         <!-- Contenu -->
         <div class="bg-light-dark dark:bg-dark-background pt-4 md:p-10">
           <!-- Call to action -->
           <div class="mb-8 pt-4 text-center">
-            <a href="#demo" class="btn-secondary p-2 !text-xl sm:!text-3xl"
-              >Demander une démo</a
+            <a href="#demo" class="btn-primary !text-xl sm:!text-3xl"
+              >Demander ma démo gratuite</a
             >
-            <p class="!text-sm">7 jours d'essai gratuit. Annulation facile.</p>
+            <p class="!text-sm">
+              Profitez de 7 jours gratuits pour tester toutes les
+              fonctionnalités sans risque. Annulation facile en un clic.
+            </p>
           </div>
 
           <!-- Fonctionnalités -->
           <div
-            class="bg-light dark:bg-dark-background flex flex-col items-center space-y-8 rounded-lg p-4 md:p-6 lg:flex-row lg:items-start lg:space-y-0 lg:space-x-8 xl:space-x-16"
+            class="bg-light dark:bg-dark-background flex flex-col items-center space-y-8 rounded-lg p-4 md:p-6"
           >
             <aside
               class="max-w-sm flex-1 text-center lg:max-w-none lg:text-left"
             >
-              <h4>Inclus dans votre abonnement</h4>
+              <h3>Inclus dans votre abonnement</h3>
               <ul class="inline-block space-y-3 text-left">
                 {
                   inclus.map(item => (
-                    <li class="flex items-start">
-                      <span class="mt-1 flex-shrink-0">
-                        <GreenCheck />
-                      </span>
-                      <span class="text-dark dark:text-dark-lighter ml-2 break-words">
-                        {item.text}
-                      </span>
-                    </li>
-                  ))
-                }
-              </ul>
-            </aside>
-
-            <aside
-              class="max-w-sm flex-1 text-center lg:max-w-none lg:text-left"
-            >
-              <h4>Support et accompagnement</h4>
-              <ul class="inline-block space-y-3 text-left">
-                {
-                  support.map(item => (
                     <li class="flex items-start">
                       <span class="mt-1 flex-shrink-0">
                         <GreenCheck />
@@ -149,27 +167,35 @@ const Garanties = [
           <span
             class="text-primary dark:text-primary-dark text-sm font-semibold md:text-base"
           >
-            100% Open Source - Code source libre et transparent
+            100% Open Source - Code source accessible et vérifiable pour
+            garantir transparence et sécurité
           </span>
         </div>
+      </div>
 
-        <!-- Avantages Open Source -->
-        <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3">
-          {
-            avantagesOpenSources.map(avantage => (
-              <Avantage
-                iconName={avantage.icon}
-                title={avantage.title}
-                description={avantage.text}
-              />
-            ))
-          }
+      <!-- Témoignages avant garanties -->
+      <div class="my-16">
+        <h3 class="text-center">Ils ont simplifié leur gestion avec EduXcoM</h3>
+        <div class="bg-light-dark dark:bg-dark-background mt-6 rounded-lg p-6">
+          <p class="!italic">
+            "En tant que responsable administrative, je suivais autrefois
+            l'évolution des classes avec des dossiers papier et des tableaux
+            Excel complexes. Aujourd'hui, mon tableau de bord EduXcoM me signale
+            automatiquement les élèves nécessitant un soutien supplémentaire.
+            Cette approche proactive nous a permis de réduire l'échec scolaire"
+          </p>
+          <p class="mt-2 text-right !font-semibold">
+            Farid Rachidi - Responsable administratif
+          </p>
         </div>
       </div>
 
       <!-- Garanties et confiance -->
+      <div class="mb-8 text-center">
+        <h3>Nos garanties</h3>
+      </div>
       <div
-        class="flex flex-col items-center space-y-8 md:flex-row md:justify-center md:space-y-0 md:space-x-16"
+        class="flex flex-col items-center space-y-8 md:flex-row md:justify-center md:space-y-0 md:space-x-8"
       >
         {
           Garanties.map(garantie => (

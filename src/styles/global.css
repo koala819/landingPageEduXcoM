@@ -1,7 +1,6 @@
 @import "tailwindcss";
 @theme {
-  /* Thème clair (par défaut) */
-  --color-primary: oklch(0.44 0.103151 241.6728);
+  --color-primary: oklch(0.41 0.0959 241.6);
   --color-primary-dark: oklch(0.78 0.1268 236.92);
   --color-secondary: oklch(0.43 0.1333 140.29);
   --color-secondary-dark: oklch(0.87 0.2164 139.38);
@@ -81,7 +80,7 @@ h2 {
 }
 
 h3 {
-  @apply text-primary dark:text-primary-dark text-xl font-bold;
+  @apply text-primary dark:text-primary-dark text-base font-bold md:text-xl;
 }
 
 h4 {
@@ -104,7 +103,7 @@ a {
 }
 
 .btn-secondary {
-  @apply bg-secondary dark:bg-secondary-dark text-light dark:text-dark hover:bg-secondary-dark hover:text-dark dark:hover:text-light cursor-pointer rounded-lg py-1 text-center font-semibold transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md sm:px-6 sm:py-3;
+  @apply bg-secondary dark:bg-secondary-dark text-light dark:text-dark hover:bg-secondary-dark hover:text-dark hover:dark:bg-secondary dark:hover:text-light cursor-pointer rounded-lg py-1 text-center font-semibold transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md sm:px-6 sm:py-3;
 }
 
 /* Classes d'animation */

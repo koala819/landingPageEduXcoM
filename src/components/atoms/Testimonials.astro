@@ -5,7 +5,7 @@ interface Testimonial {
   id: number;
   content: string;
   author: string;
-  position: string;
+  role: string;
   rating: number;
 }
 
@@ -14,35 +14,35 @@ const testimonials: Testimonial[] = [
     id: 1,
     content: "Le jour où j'ai compris la valeur d'EduXcoM, c'était pendant une réunion avec un parent inquiet. En quelques clics, j'ai pu lui montrer l'évolution précise de son enfant depuis le début de l'année. Son soulagement était visible. Maintenant, je passe mes soirées à préparer des cours captivants plutôt qu'à remplir des formulaires administratifs sans fin.",
     author: "Fatima Ali",
-    position: "Enseignante",
+    role: "Enseignante",
     rating: 5
   },
   {
     id: 2,
     content: "Notre école accueille des élèves de milieux très divers, avec des parents parfois peu disponibles en raison de leurs horaires de travail. Grâce aux notifications personnalisées d'EduXcoM, même les familles les plus occupées restent connectées à la vie scolaire de leurs enfants. Une mère m'a confié récemment que c'était la première année où elle se sentait véritablement impliquée dans l'éducation de sa fille.",
     author: "Amina Touhami",
-    position: "Enseignante",
+    role: "Enseignante",
     rating: 5
   },
   {
     id: 3,
-    content: "En tant que responsable administrative, je suivais autrefois l'évolution des classes avec des dossiers papier et des tableaux Excel complexes. Aujourd'hui, mon tableau de bord EduXcoM me signale automatiquement les élèves nécessitant un soutien supplémentaire. Cette approche proactive nous a permis de réduire l'échec scolaire de 17% l'année dernière.",
+    content: "En tant que responsable administrative, je suivais autrefois l'évolution des classes avec des dossiers papier et des tableaux Excel complexes. Aujourd'hui, mon tableau de bord EduXcoM me signale automatiquement les élèves nécessitant un soutien supplémentaire. Cette approche proactive nous a permis de réduire l'échec scolaire.",
     author: "Farid Rachidi",
-    position: "Responsable administrative",
+    role: "Responsable administratif",
     rating: 5
   },
   {
     id: 4,
     content: "J'étais sceptique quand on nous a présenté EduXcoM à la rentrée. Encore un système qui nous prendrait plus de temps qu'il n'en ferait gagner, pensais-je. Mais dès la première semaine, j'ai changé d'avis. Je note les absences pendant l'appel sur mon téléphone, et je saisis les comportements problématiques en temps réel. Le bureau administratif est immédiatement informé, et les parents reçoivent les notifications importantes sans que j'aie à envoyer des emails individuels.",
     author: "Hassan Mahmoud",
-    position: "Enseignante",
+    role: "Enseignant",
     rating: 5
   },
   // {
   //   id: 5,
   //   content: "Les tableaux de bord personnalisés nous permettent d'avoir une vision claire des progrès de chaque classe. Cela nous aide à identifier rapidement les domaines nécessitant une attention particulière et à adapter nos méthodes pédagogiques en conséquence.",
   //   author: "Céline",
-  //   position: "Bureau administratif",
+  //   role: "Bureau administratif",
   //   rating: 5
   // }
 ];
@@ -58,7 +58,7 @@ const testimonials: Testimonial[] = [
     <div class="relative">
 
         <!-- Testimonial Container -->
-        <div class="testimonial-container relative bg-light-dark dark:bg-dark-lighter rounded-2xl shadow-xl">
+        <div class="testimonial-container relative bg-light-dark dark:bg-dark-background rounded-2xl shadow-xl">
           <!-- Bulle Droite -->
           <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary dark:bg-primary-dark rounded-full opacity-50" />
           <!-- Bulle Gauche -->
@@ -78,27 +78,24 @@ const testimonials: Testimonial[] = [
                 <!-- Rating - Left aligned -->
                 <div class="flex mb-6 justify-start">
                   {Array(testimonial.rating).fill(0).map(() => (
-                    <span class="text-amber-400 mr-1 text-4xl">★</span>
+                    <span class="!text-amber-400 mr-1 text-4xl">★</span>
                   ))}
                 </div>
 
                 <blockquote class="mb-8">
                   <!-- Text - Left aligned with larger font -->
-                  <p class="leading-relaxed italic text-left dark:!text-dark">
+                  <p class="leading-relaxed !italic text-left ">
                     "{testimonial.content}"
                   </p>
                 </blockquote>
 
                 <!-- Footer with right-aligned signature -->
-                <div class="border-t border-gray-200 dark:border-gray-700 pt-4 mt-4">
-                  <div class="text-right">
-                    <div class="font-medium text-dark text-lg">
-                      {testimonial.author}
-                    </div>
-                    <div class="text-[#014F7A] dark:text-dark">
-                      {testimonial.position}
-                    </div>
-                  </div>
+                <div class="border-t border-primary dark:border-primary-dark text-right ">
+                    <p class="!pb-0">{testimonial.author}</p>
+                    <p class="!text-primary dark:!text-primary-dark">
+                      {testimonial.role}
+                    </p>
+
                 </div>
               </div>
             ))}
@@ -207,7 +204,7 @@ const testimonials: Testimonial[] = [
   /* Style pour assurer une transition fluide entre les témoignages */
   .testimonial-container {
     min-height: 300px; /* Hauteur minimum pour éviter le redimensionnement */
-    position: relative;
+    role: relative;
     overflow: hidden;
   }
 
