@@ -99,7 +99,7 @@ a {
 
 /* Styles de boutons */
 .btn-primary {
-  @apply bg-primary dark:bg-primary-dark text-light dark:text-dark hover:bg-primary-dark hover:text-dark dark:hover:bg-primary dark:hover:text-light cursor-pointer rounded-lg py-1 text-center font-semibold transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md sm:px-6 sm:py-3;
+  @apply bg-primary dark:bg-primary-dark text-light dark:text-dark hover:bg-secondary dark:hover:bg-secondary-dark cursor-pointer rounded-lg py-1 text-center font-semibold transition-all duration-300 hover:-translate-y-[2px] hover:shadow-md sm:px-6 sm:py-3;
 }
 
 .btn-secondary {
