@@ -93,6 +93,81 @@ const navigationItems = [
       </div>
     </div>
 
+    <!-- Newsletter Section -->
+    <div
+      class="bg-dark-background dark:bg-dark-lighter/20 mt-12 mb-12 rounded-2xl p-8"
+    >
+      <div class="mx-auto max-w-2xl text-center">
+        <h3 class="!text-primary-dark dark:text-light mb-4 !text-2xl">
+          Abonnez-vous à la newsletter
+        </h3>
+        <p class="!text-light dark:text-light/70 mb-6">
+          Recevez les dernières actualités et fonctionnalités d'EduXcoM
+          directement dans votre boîte mail.
+        </p>
+        <div
+          id="form-newsletter-success"
+          class="text-success dark:bg-success/10 dark:!text-success-dark my-3 hidden rounded bg-green-100 p-3"
+        >
+          Message envoyé avec succès !
+        </div>
+        <div
+          id="form-newsletter-error"
+          class="text-error dark:text-error-dark my-3 hidden rounded bg-red-100 p-3"
+        >
+          Une erreur s'est produite. Veuillez réessayer.
+        </div>
+        <form
+          id="contact-newsletter-form"
+          name="contact form"
+          class="flex flex-col gap-4 sm:flex-row"
+        >
+          <!-- Ajouter ce champ honeypot invisible pour détecter les bots -->
+          <input type="text" name="emai" style="display:none" />
+
+          <input
+            type="email"
+            placeholder="Votre adresse email"
+            name="email"
+            id="contact-email"
+            class="border-dark/20 bg-light/10 text-light placeholder:text-light/50 focus:border-secondary-dark focus:ring-secondary-dark dark:border-light/10 flex-1 rounded-full border px-5 py-3 focus:ring-2"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-secondary-dark hover:bg-primary-dark text-dark rounded-full px-8 py-3 font-medium transition-colors hover:cursor-pointer"
+            id="submit-newsletter-button"
+          >
+            <span id="button-newsletter-text" class="dark:!text-dark"
+              >S'abonner</span
+            >
+            <span id="button-newsletter-loader" class="hidden">
+              <svg
+                class="mr-1 inline-block h-5 w-5 animate-spin"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+              En cours...
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+
     <!-- Divider -->
     <div class="border-secondary-dark mt-12 border-t pt-6">
       <div
@@ -120,3 +195,84 @@ const navigationItems = [
     </div>
   </div>
 </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Le script est chargé");
+    const form = document.getElementById(
+      "contact-newsletter-form"
+    ) as HTMLFormElement;
+    const successMessage = document.getElementById(
+      "form-newsletter-success"
+    ) as HTMLDivElement;
+    const errorMessage = document.getElementById(
+      "form-newsletter-error"
+    ) as HTMLDivElement;
+    const submitButton = document.getElementById(
+      "submit-newsletter-button"
+    ) as HTMLButtonElement;
+    const buttonText = document.getElementById(
+      "button-newsletter-text"
+    ) as HTMLSpanElement;
+    const buttonLoader = document.getElementById(
+      "button-newsletter-loader"
+    ) as HTMLSpanElement;
+
+    // Fonction pour réinitialiser les messages
+    function resetMessages() {
+      successMessage.classList.add("hidden");
+      errorMessage.classList.add("hidden");
+    }
+
+    // Fonction pour afficher l'état de chargement
+    function setLoading(isLoading: boolean) {
+      if (isLoading) {
+        buttonText.classList.add("hidden");
+        buttonLoader.classList.remove("hidden");
+        submitButton.disabled = true;
+      } else {
+        buttonText.classList.remove("hidden");
+        buttonLoader.classList.add("hidden");
+        submitButton.disabled = false;
+      }
+    }
+
+    form?.addEventListener("submit", async e => {
+      e.preventDefault();
+      resetMessages();
+      setLoading(true);
+
+      try {
+        const formData = new FormData(form);
+
+        const response = await fetch("/newsletter", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          successMessage.textContent =
+            result.statusText || "Message envoyé avec succès !";
+          successMessage.classList.remove("hidden");
+          form.reset();
+        }
+        // Afficher le message d'erreur
+        else {
+          errorMessage.textContent =
+            result.statusText ||
+            "Une erreur s'est produite. Veuillez réessayer.";
+          errorMessage.classList.remove("hidden");
+        }
+      } catch (error) {
+        console.error("Erreur lors de l'envoi du formulaire:", error);
+        errorMessage.textContent =
+          "Une erreur s'est produite. Veuillez réessayer.";
+        errorMessage.classList.remove("hidden");
+      } finally {
+        setLoading(false);
+      }
+    });
+  });
+</script>
