@@ -9,9 +9,11 @@ import Testimonials from "@/components/atoms/Testimonials.astro";
 import CTA from "@/components/atoms/CTA.astro";
 import FAQ from "@/components/organisms/FAQ.astro";
 import muslimgirls from "@/assets/pictures/muslim-child-girls.webp";
+import muslimwoman from "@/assets/pictures/muslim-woman-back.webp";
 import muslimboy from "@/assets/pictures/muslim-child-boy.webp";
 import Pricing from "@/components/molecules/Pricing.astro";
 import Demo from "@/components/atoms/ContactForm.astro";
+import FounderStory from "@/components/atoms/FounderStory.astro";
 
 const pageTitle =
   "Accueil | EduXcoM - Plateforme de gestion scolaire open source";
@@ -24,6 +26,8 @@ const pageTitle =
       <Hero />
     </div>
   </section>
+
+  <FounderStory />
 
   <section id="features" class="container mx-auto px-4">
     <BeforeAfterComparison />
@@ -48,6 +52,14 @@ const pageTitle =
       btn="Réserver un appel découverte (15min)"
       imageUrl={muslimboy}
       alt="Petit garçon musulman"
+    />
+  </section>
+  <section>
+    <CTA
+      title="Plus de temps pour l’essentiel"
+      btn="Réserver un appel découverte (15min)"
+      imageUrl={muslimwoman}
+      alt="Femme musulmane de dos"
     />
   </section>
 
