@@ -1,6 +1,8 @@
 ---
 import FooterList from "@/components/atoms/FooterList.astro";
+
 import { Icon } from "astro-icon/components";
+
 import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
 
 const currentYear = new Date().getFullYear();
@@ -8,80 +10,72 @@ const currentYear = new Date().getFullYear();
 const blogNavigationItems = [
   {
     name: "Accueil Blog",
+
     href: "/blog",
   },
+
   {
     name: "Site Principal",
+
     href: "/",
   },
 ];
 
-// const categoriesItems = [
-//   {
-//     name: "Contenus Educatifs",
-//     href: "/blog/categories/gestion-scolaire",
-//   },
-//   {
-//     name: "Focus Utilisateurs",
-//     href: "/blog/categories/education-numerique",
-//   },
-//   {
-//     name: "Tech & Open Source",
-//     href: "/blog/categories/bonnes-pratiques",
-//   },
-//   {
-//     name: "Actus & Tendances",
-//     href: "/blog/categories/temoignages",
-//   },
-// ];
+const aboutAndMentions = [
+  {
+    name: "Mentions légales",
 
-// Articles populaires pour la section dédiée
-// const popularArticles = [
-//   {
-//     name: "Optimiser la gestion scolaire",
-//     href: "/blog/optimiser-la-gestion-scolaire",
-//   },
-//   {
-//     name: "Les tendances EdTech 2025",
-//     href: "/blog/tendances-edtech-2025",
-//   },
-//   {
-//     name: "Guide pratique de la scolarité numérique",
-//     href: "/blog/guide-scolarite-numerique",
-//   },
-// ];
+    href: "/mentions-legales",
+  },
+
+  {
+    name: "Protection des données",
+
+    href: "/rgpd",
+  },
+
+  {
+    name: "Contact",
+
+    href: "mailto:contact@dix31.com",
+  },
+];
 ---
 
-<footer class="text-light bg-dark mt-12 pt-16 pb-6 dark:bg-gray-700">
+<footer class="bg-dark text-light mt-12 pt-16 pb-6 dark:bg-gray-700">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-8 lg:grid-cols-9 xl:grid-cols-12">
+    <div class="grid grid-cols-1 gap-10 md:grid-cols-4">
       <!-- Logo et description -->
-      <div class="md:col-span-5 lg:col-span-3 xl:col-span-4">
+
+      <div class="md:col-span-1">
         <div class="flex items-center">
-          <h2 class="!text-primary-dark">Edu</h2>
+          <h2 class="!text-primary-dark font-bold">Edu</h2>
           <h2 class="!text-secondary-dark">XcoM</h2>
-          <figure class="ml-4">
-            <div class="bg-primary-dark/55 rounded-md p-2">
-              <span class="!text-light !text-2xl !font-medium">Blog</span>
-            </div>
-          </figure>
+          <span
+            class="!text-light dark:!text-dark bg-primary/85 dark:bg-primary-dark/80 ml-2 hidden rounded-xl p-3 !text-lg !font-medium md:block md:!text-2xl"
+            >Blog</span
+          >
         </div>
+
         <p class="!text-light mb-6 text-sm">
           Découvrez nos articles, conseils et actualités sur la gestion
           scolaire, l'éducation numérique et les meilleures pratiques pour les
           établissements d'enseignement.
         </p>
+
         <div class="flex space-x-4">
           <a
             href="https://github.com/koala819/"
             target="_blank"
             aria-label="Voir
+
           le profil GitHub"
             rel="noopener noreferrer"
             class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
           >
             <Icon name="github" class="text-base md:text-3xl" />
           </a>
+
           <a
             href="https://www.linkedin.com/in/xavier-genolhac/"
             target="_blank"
@@ -91,27 +85,55 @@ const blogNavigationItems = [
           >
             <Icon name="linkedin" class="text-base md:text-3xl" />
           </a>
+
           <!-- <a
+
             href="/rss.xml"
+
             target="_blank"
+
             aria-label="S'abonner au flux RSS"
+
             rel="noopener noreferrer"
+
             class="hover:bg-secondary-dark hover:text-dark rounded-full p-2 transition-colors"
+
           >
+
             <Icon name="rss" class="text-base md:text-3xl" />
+
           </a> -->
+
           <div class="p-2">
             <ToggleTheme name="theme-toggle-blog-footer" />
           </div>
         </div>
       </div>
 
-      <!-- Navigation du blog -->
-      <div
-        class="flex flex-col items-center md:col-span-3 lg:col-span-2 xl:col-span-3"
-      >
-        <h3 class="!text-primary-dark mb-4">Navigation</h3>
+      <!-- VIDE -->
+
+      <div class="flex flex-col items-center">
+        <h3 class="!text-primary-dark mb-4">&nbsp;</h3>
+
         <ul class="space-y-3">
+          <!-- {
+
+            categoriesItems.map(item => (
+
+              <FooterList link={item.href} text={item.name} />
+
+            ))
+
+          } -->
+        </ul>
+      </div>
+
+      <!-- Navigation  -->
+
+      <div class="flex flex-col">
+        <h3 class="!text-primary-dark mb-4">Navigation</h3>
+
+        <ul class="w-full space-y-3">
           {
             blogNavigationItems.map(item => (
               <FooterList link={item.href} text={item.name} />
@@ -120,209 +142,33 @@ const blogNavigationItems = [
         </ul>
       </div>
 
-      <!-- Catégories -->
-      <!-- <div class="flex flex-col items-center">
-        <h3 class="!text-primary-dark mb-4">Catégories</h3>
-        <ul class="space-y-3">
+      <!-- Mentions legales -->
+
+      <div class="flex flex-col">
+        <h3 class="!text-primary-dark mb-4">A propos & Mentions légales</h3>
+
+        <ul class="w-full space-y-3">
           {
-            categoriesItems.map(item => (
+            aboutAndMentions.map(item => (
               <FooterList link={item.href} text={item.name} />
             ))
           }
         </ul>
-      </div> -->
-
-      <!-- Articles populaires -->
-      <div class="flex w-full items-center lg:col-span-4 xl:col-span-5">
-        <!-- <h3 class="!text-primary-dark mb-4">Articles Populaires</h3>
-        <ul class="space-y-3">
-          {
-            popularArticles.map(item => (
-              <FooterList link={item.href} text={item.name} />
-            ))
-          }
-        </ul> -->
-        <!-- Newsletter Section -->
-        <div
-          class="bg-dark-background dark:bg-dark-lighter/20 mt-12 mb-12 rounded-2xl p-8"
-        >
-          <div class="mx-auto max-w-2xl text-center">
-            <h3 class="!text-primary-dark dark:text-light mb-4 !text-2xl">
-              Abonnez-vous à la newsletter
-            </h3>
-            <p class="!text-light dark:text-light/70 mb-6">
-              Recevez les dernières actualités et fonctionnalités d'EduXcoM
-              directement dans votre boîte mail.
-            </p>
-            <div
-              id="form-newsletter-success"
-              class="text-success dark:bg-success/10 dark:!text-success-dark my-3 hidden rounded bg-green-100 p-3"
-            >
-              Message envoyé avec succès !
-            </div>
-            <div
-              id="form-newsletter-error"
-              class="text-error dark:text-error-dark my-3 hidden rounded bg-red-100 p-3"
-            >
-              Une erreur s'est produite. Veuillez réessayer.
-            </div>
-            <form
-              id="contact-newsletter-form"
-              name="contact form"
-              class="flex flex-col gap-4 sm:flex-row"
-            >
-              <!-- Ajouter ce champ honeypot invisible pour détecter les bots -->
-              <input type="text" name="emai" style="display:none" />
-
-              <input
-                type="email"
-                placeholder="Votre adresse email"
-                name="email"
-                id="contact-email"
-                class="border-dark/20 bg-light/10 text-light placeholder:text-light/50 focus:border-secondary-dark focus:ring-secondary-dark dark:border-light/10 flex-1 rounded-full border px-5 py-3 focus:ring-2"
-                required
-              />
-              <button
-                type="submit"
-                class="bg-secondary-dark hover:bg-primary-dark text-dark rounded-full px-8 py-3 font-medium transition-colors hover:cursor-pointer"
-                id="submit-newsletter-button"
-              >
-                <span id="button-newsletter-text" class="dark:!text-dark"
-                  >S'abonner</span
-                >
-                <span id="button-newsletter-loader" class="hidden">
-                  <svg
-                    class="mr-1 inline-block h-5 w-5 animate-spin"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      class="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      stroke-width="4"></circle>
-                    <path
-                      class="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  En cours...
-                </span>
-              </button>
-            </form>
-          </div>
-        </div>
       </div>
     </div>
 
     <!-- Divider -->
+
     <div class="border-secondary-dark mt-12 border-t pt-6">
       <div
         class="text-light flex flex-col items-center justify-between text-sm md:flex-row"
       >
         <p class="!text-light inline-flex items-center">
           <Icon name="copyleft" class="mr-4 text-base md:text-3xl" />
+
           {currentYear} EduXcoM. Publié sous licence libre
         </p>
-        <div class="mt-4 flex gap-6 md:mt-0">
-          <a
-            href="/mentions-legales"
-            class="hover:text-primary-dark transition-colors"
-            >Mentions légales</a
-          >
-        </div>
-        <a href="/contact" class="hover:text-primary-dark transition-colors"
-          >Contact</a
-        >
-        <a href="/rgpd" class="hover:text-primary-dark transition-colors"
-          >Protection des données
-        </a>
       </div>
     </div>
   </div>
 </footer>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    console.log("Le script est chargé");
-    const form = document.getElementById(
-      "contact-newsletter-form"
-    ) as HTMLFormElement;
-    const successMessage = document.getElementById(
-      "form-newsletter-success"
-    ) as HTMLDivElement;
-    const errorMessage = document.getElementById(
-      "form-newsletter-error"
-    ) as HTMLDivElement;
-    const submitButton = document.getElementById(
-      "submit-newsletter-button"
-    ) as HTMLButtonElement;
-    const buttonText = document.getElementById(
-      "button-newsletter-text"
-    ) as HTMLSpanElement;
-    const buttonLoader = document.getElementById(
-      "button-newsletter-loader"
-    ) as HTMLSpanElement;
-
-    // Fonction pour réinitialiser les messages
-    function resetMessages() {
-      successMessage.classList.add("hidden");
-      errorMessage.classList.add("hidden");
-    }
-
-    // Fonction pour afficher l'état de chargement
-    function setLoading(isLoading: boolean) {
-      if (isLoading) {
-        buttonText.classList.add("hidden");
-        buttonLoader.classList.remove("hidden");
-        submitButton.disabled = true;
-      } else {
-        buttonText.classList.remove("hidden");
-        buttonLoader.classList.add("hidden");
-        submitButton.disabled = false;
-      }
-    }
-
-    form?.addEventListener("submit", async e => {
-      e.preventDefault();
-      resetMessages();
-      setLoading(true);
-
-      try {
-        const formData = new FormData(form);
-
-        const response = await fetch("/newsletter", {
-          method: "POST",
-          body: formData,
-        });
-
-        const result = await response.json();
-
-        if (response.ok) {
-          successMessage.textContent =
-            result.statusText || "Message envoyé avec succès !";
-          successMessage.classList.remove("hidden");
-          form.reset();
-        }
-        // Afficher le message d'erreur
-        else {
-          errorMessage.textContent =
-            result.statusText ||
-            "Une erreur s'est produite. Veuillez réessayer.";
-          errorMessage.classList.remove("hidden");
-        }
-      } catch (error) {
-        console.error("Erreur lors de l'envoi du formulaire:", error);
-        errorMessage.textContent =
-          "Une erreur s'est produite. Veuillez réessayer.";
-        errorMessage.classList.remove("hidden");
-      } finally {
-        setLoading(false);
-      }
-    });
-  });
-</script>

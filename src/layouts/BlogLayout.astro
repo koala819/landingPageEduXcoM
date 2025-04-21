@@ -4,14 +4,13 @@ import Head from "@/components/atoms/Head.astro";
 import NavbarBlog from "@/components/blog/molecules/NavbarBlog.astro";
 import FooterBlog from "@/components/blog/atoms/FooterBlog.astro";
 import LightBox from "@/components/atoms/LightBox.astro";
-import Wave from "@/components/blog/atoms/Wave.astro";
 
 interface Props {
   pageTitle: string;
-  displayWave: boolean;
+  displayWave?: boolean;
 }
 
-const { pageTitle,displayWave } = Astro.props;
+const { pageTitle } = Astro.props;
 
 // Préparer des propriétés enrichies pour le blog
 const enrichedProps = {
@@ -27,9 +26,8 @@ const enrichedProps = {
   <body
     class="bg-primary dark:bg-primary-dark text-dark dark:text-light overflow-x-hidden rounded-md leading-relaxed"
   >
-
     <NavbarBlog />
-    {displayWave && (
+    <!-- {displayWave && (
     <div class="bg-light dark:bg-dark relative h-52 md:h-96">
       <div class="absolute bottom-0 left-1/2 z-20 -translate-x-1/2 pb-8 md:pb-6">
         <a
@@ -41,7 +39,7 @@ const enrichedProps = {
       </div>
     </div>
     <Wave color="bg-light" darkColor="dark:bg-dark" />
-    )}
+    )} -->
     <main
       class="blog-container bg-light dark:bg-dark relative z-10 mx-auto mt-32 max-w-7xl rounded-lg p-6 shadow-md"
     >

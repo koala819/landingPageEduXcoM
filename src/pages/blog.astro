@@ -1,7 +1,10 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
-import BlogPost from "@/components/blog/atoms/BlogPost.astro";
-import { slugifyTitle } from "@/scripts/slugify";
+// import BlogPost from "@/components/blog/atoms/BlogPost.astro";
+// import { slugifyTitle } from "@/scripts/slugify";
+import { Icon } from "astro-icon/components";
+import XavierGenolhac from "@/assets/pictures/Xavier-Genolhac.webp";
+import { Image } from "astro:assets";
 
 // Récupérer les articles
 const allPosts = Object.values(
@@ -47,128 +50,381 @@ const pageTitle =
 ---
 
 <BlogLayout pageTitle={pageTitle} displayWave={true}>
-  <div class="mx-auto max-w-5xl px-4">
-    <header class="py-12 text-center">
-      <h1 class="mb-4 text-4xl font-bold">
-        {pageTitle}
-      </h1>
-      <p class="mx-auto mb-8 max-w-2xl text-lg">
-        Découvrez comment les établissements scolaires innovants utilisent
-        EduXcoM pour gagner du temps, améliorer la communication et rester en
-        conformité avec le RGPD
-      </p>
-    </header>
+  <section class="py-16">
+    <div class="container mx-auto px-4">
+      <h1 class="mb-12 text-center">{pageTitle}</h1>
 
-    <!-- Menu Tags -->
-    <!-- <div class="mb-12">
-      <h2 class="mb-5 text-2xl font-bold text-gray-800 dark:text-white">
-        Explorez par tags
-      </h2>
-      <div class="flex flex-wrap gap-3">
-        {
-          uniqueTags.map(tag => (
-            <a
-              href={`/tags/${tag}`}
-              class="hover:bg-primary dark:hover:bg-primary rounded-full bg-gray-100 px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-white dark:bg-gray-800 dark:text-gray-200"
+      <div class="flex flex-col gap-8 lg:flex-row">
+        <!-- Colonne principale (70% sur desktop) -->
+        <div class="w-full lg:w-[70%]">
+          <!-- Message "Bientôt disponible" -->
+          <div
+            class="bg-light-dark dark:bg-dark-background rounded-xl p-8 text-center"
+          >
+            <svg
+              class="text-primary dark:text-primary-dark mx-auto mb-4 h-16 w-16"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              #{tag}
-            </a>
-          ))
-        }
-      </div>
-    </div> -->
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+              ></path>
+            </svg>
 
-    <!-- Articles  -->
-    <div class="mb-16">
-      <h2 class="mb-5 !text-xl sm:!text-3xl lg:!text-4xl">
-        Digitaliser votre établissement
-      </h2>
-      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {
-          combinedPosts.slice(0, 3).map((post: any) => {
-            return (
-              <BlogPost
-                url={`/posts/${slugifyTitle(post.frontmatter.title)}`}
-                title={post.frontmatter.title}
-                date={post.frontmatter.date}
-                description={post.frontmatter.description}
-                tags={post.frontmatter.tags}
-                image={post.frontmatter.image}
-                readTime={post.frontmatter.readTime}
-                author={post.frontmatter.author}
+            <h2
+              class="text-primary dark:text-primary-dark mb-4 text-2xl font-bold"
+            >
+              Le blog arrive bientôt !
+            </h2>
+
+            <p class="text-dark dark:text-dark-lighter mx-auto mb-6 max-w-lg">
+              Nous préparons des articles de qualité pour vous aider à tirer le
+              meilleur parti d'EduXcoM. Revenez prochainement ou inscrivez-vous
+              à notre newsletter pour être informé des nouvelles publications.
+            </p>
+
+            <div class="flex flex-col justify-center gap-4 sm:flex-row">
+              <a
+                href="/"
+                class="btn-secondary inline-flex items-center justify-center"
+              >
+                Retour à l'accueil
+              </a>
+            </div>
+          </div>
+          <!--<h2 class="mb-8">Articles récents</h2>
+
+          <div class="space-y-12">
+           <article
+              class="border-primary dark:border-primary-dark border-b pb-12"
+            >
+              <a href="" class="hover:underline">
+                <h3 class="text-primary dark:text-primary-dark mb-3">
+                  Pourquoi passer à un logiciel de gestion scolaire en 2025 ?
+                </h3>
+              </a>
+
+              <div
+                class="dark:text-light mb-4 flex items-center gap-x-2 text-black"
+              >
+                <span class="!text-sm">18 avril 2025</span>
+                <span>&bull;</span>
+                <span class="!text-sm">8 min de lecture</span>
+                <span>&bull;</span>
+                <div
+                  class="bg-secondary dark:bg-secondary-dark inline-block rounded px-2 py-1"
+                >
+                  <span class="!text-light dark:!text-dark !text-sm"
+                    >Digitalisation</span
+                  >
+                </div>
+              </div>
+
+              <p class="text-dark dark:text-dark-lighter mb-4">
+                Découvrez pourquoi 76 % des établissements performants adoptent
+                un logiciel open source comme EduXcoM.
+              </p>
+
+              <a
+                href="/blog/pourquoi-passer-logiciel-gestion-scolaire-2025"
+                class="text-primary dark:text-primary-dark inline-flex items-center font-medium hover:underline"
+              >
+                Lire la suite
+                <Icon
+                  name="arrow-right"
+                  class="!text-primary dark:!text-primary-dark mr-3 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
+                />
+              </a>
+            </article>
+          </div>-->
+        </div>
+
+        <!-- Sidebar (30% sur desktop) -->
+        <aside class="w-full space-y-8 lg:w-[30%]">
+          <!-- Widget newsletter -->
+          <div class="bg-light-dark dark:bg-dark-background rounded-xl p-6">
+            <h3
+              class="text-primary dark:text-primary-dark mb-3 text-lg font-bold"
+            >
+              Abonnez-vous à notre newsletter
+            </h3>
+            <p class="text-dark dark:text-light-dark mb-4 text-sm">
+              Recevez nos meilleures pratiques et actualités EduXcoM. Pas de
+              spam.
+            </p>
+            <div
+              id="form-newsletter-success"
+              class="text-success dark:text-success-dark my-3 hidden rounded bg-green-100 p-3"
+            >
+              Message envoyé avec succès !
+            </div>
+            <div
+              id="form-newsletter-error"
+              class="text-error dark:text-error-dark my-3 hidden rounded bg-red-100 p-3"
+            >
+              Une erreur s'est produite. Veuillez réessayer.
+            </div>
+            <form
+              id="contact-newsletter-form"
+              name="contact form"
+              class="space-y-2"
+            >
+              <!-- Ajouter ce champ honeypot invisible pour détecter les bots -->
+              <input type="text" name="emai" style="display:none" />
+
+              <input
+                type="email"
+                placeholder="Votre email"
+                class="form_input w-full"
+                name="email"
+                id="contact-email"
+                required
               />
-            );
-          })
-        }
+              <button
+                id="submit-newsletter-button"
+                type="submit"
+                class="btn-primary flex w-full items-center justify-center px-4 py-2 whitespace-nowrap"
+              >
+                <div
+                  id="button-newsletter-text"
+                  class="flex items-center space-x-2"
+                >
+                  <span class="!text-light dark:!text-dark">Je m'abonne</span>
+                  <Icon
+                    name="arrow-right"
+                    class="!text-light dark:!text-dark mr-3 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
+                  />
+                </div>
+                <span
+                  id="button-newsletter-loader"
+                  class="!text-light dark:!text-dark hidden"
+                >
+                  <svg
+                    class="mr-1 inline-block h-5 w-5 animate-spin"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
+                  </svg>
+                  En cours...
+                </span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Widget auteur -->
+          <div class="dark:bg-dark rounded-xl bg-white p-6 shadow-sm">
+            <div class="mb-4 flex items-center gap-4">
+              <Image
+                src={XavierGenolhac}
+                alt="Photo de Xavier"
+                widths={[200, 400]}
+                sizes="(max-width: 767px) 90vw, calc(50vw - 24px)"
+                quality={70}
+                format="webp"
+                loading="lazy"
+                class="h-16 w-16 rounded-full object-cover"
+              />
+
+              <div>
+                <h3 class="text-primary dark:text-primary-dark">
+                  Xavier Genolhac
+                </h3>
+                <p class="!my-0 !text-sm">CEO & fondateur</p>
+              </div>
+            </div>
+            <p class="mb-4 !text-sm">
+              Développeur et bénévole, je partage mes retours d'expérience sur
+              la digitalisation scolaire.
+            </p>
+            <a
+              href="https://www.linkedin.com/in/xavier-genolhac/"
+              target="_blank"
+              class="text-primary dark:text-primary-dark inline-flex items-center !text-sm hover:underline"
+            >
+              Voir mon profil
+              <Icon
+                name="arrow-right"
+                class="!text-primary dark:!text-primary-dark ml-1 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
+              />
+            </a>
+          </div>
+
+          <!-- CTA promotion -->
+          <div class="bg-light-dark dark:bg-dark-background rounded-xl p-6">
+            <h3 class="mb-4">Prêt à transformer votre établissement ?</h3>
+            <div class="flex">
+              <a
+                href="/#demo"
+                class="btn-secondary group flex w-full justify-center"
+              >
+                Je réserve ma démo
+                <Icon
+                  name="arrow-right"
+                  class="text-light dark:text-dark group-hover:text-dark dark:group-hover:text-light ml-1 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
+                />
+              </a>
+            </div>
+            <p class="mt-4 text-center !text-xs">
+              Réponse sous 24 h • 7 jours gratuits • Sans engagement
+            </p>
+          </div>
+
+          <!-- Catégories (widget supplémentaire optionnel) -->
+          <!-- <div class="dark:bg-dark rounded-xl bg-white p-6 shadow-sm">
+            <h3 class="text-primary dark:text-primary-dark mb-4 font-bold">
+              Catégories
+            </h3>
+            <ul class="space-y-2">
+              <li>
+                <a
+                  href="/blog/categorie/digitalisation"
+                  class="hover:text-primary flex items-center justify-between"
+                >
+                  <span>Digitalisation</span>
+                  <span
+                    class="rounded-full bg-gray-200 px-2 py-1 text-xs dark:bg-gray-700"
+                    >8</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/blog/categorie/conformite"
+                  class="hover:text-primary flex items-center justify-between"
+                >
+                  <span>Conformité</span>
+                  <span
+                    class="rounded-full bg-gray-200 px-2 py-1 text-xs dark:bg-gray-700"
+                    >5</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/blog/categorie/communication"
+                  class="hover:text-primary flex items-center justify-between"
+                >
+                  <span>Communication</span>
+                  <span
+                    class="rounded-full bg-gray-200 px-2 py-1 text-xs dark:bg-gray-700"
+                    >4</span
+                  >
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/blog/categorie/bonnes-pratiques"
+                  class="hover:text-primary flex items-center justify-between"
+                >
+                  <span>Bonnes pratiques</span>
+                  <span
+                    class="rounded-full bg-gray-200 px-2 py-1 text-xs dark:bg-gray-700"
+                    >6</span
+                  >
+                </a>
+              </li>
+            </ul>
+          </div> -->
+        </aside>
       </div>
     </div>
-
-    <!-- Pagination -->
-    <!-- <div class="mt-16 mb-8 flex justify-center">
-      <nav class="inline-flex rounded-md shadow-sm" aria-label="Pagination">
-        <a
-          href="#"
-          class="relative inline-flex items-center rounded-l-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-        >
-          Précédent
-        </a>
-        <a
-          href="#"
-          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-        >
-          1
-        </a>
-        <a
-          href="#"
-          class="bg-primary relative inline-flex items-center px-4 py-2 text-sm font-medium text-white"
-        >
-          2
-        </a>
-        <a
-          href="#"
-          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-        >
-          3
-        </a>
-        <span
-          class="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300"
-        >
-          ...
-        </span>
-        <a
-          href="#"
-          class="relative inline-flex items-center rounded-r-md px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
-        >
-          Suivant
-        </a>
-      </nav>
-    </div> -->
-
-    <!-- Newsletter -->
-    <!-- <div class="mb-16 rounded-2xl bg-gray-100 p-8 dark:bg-gray-800">
-      <div class="mx-auto max-w-2xl text-center">
-        <h3 class="mb-4 text-2xl font-bold text-gray-800 dark:text-white">
-          Abonnez-vous à la newsletter
-        </h3>
-        <p class="mb-6 text-gray-600 dark:text-gray-300">
-          Recevez les derniers articles et actualités directement dans votre
-          boîte mail.
-        </p>
-        <form class="flex flex-col gap-4 sm:flex-row">
-          <input
-            type="email"
-            placeholder="Votre adresse email"
-            class="focus:ring-primary flex-1 rounded-full border border-gray-300 px-5 py-3 focus:border-transparent focus:ring-2 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
-            required
-          />
-          <button
-            type="submit"
-            class="bg-primary hover:bg-primary-dark rounded-full px-8 py-3 font-medium text-white transition-colors"
-          >
-            S'abonner
-          </button>
-        </form>
-      </div>
-    </div> -->
-  </div>
+  </section>
 </BlogLayout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    console.log("Le script est chargé");
+    const form = document.getElementById(
+      "contact-newsletter-form"
+    ) as HTMLFormElement;
+    const successMessage = document.getElementById(
+      "form-newsletter-success"
+    ) as HTMLDivElement;
+    const errorMessage = document.getElementById(
+      "form-newsletter-error"
+    ) as HTMLDivElement;
+    const submitButton = document.getElementById(
+      "submit-newsletter-button"
+    ) as HTMLButtonElement;
+    const buttonText = document.getElementById(
+      "button-newsletter-text"
+    ) as HTMLSpanElement;
+    const buttonLoader = document.getElementById(
+      "button-newsletter-loader"
+    ) as HTMLSpanElement;
+
+    // Fonction pour réinitialiser les messages
+    function resetMessages() {
+      successMessage.classList.add("hidden");
+      errorMessage.classList.add("hidden");
+    }
+
+    // Fonction pour afficher l'état de chargement
+    function setLoading(isLoading: boolean) {
+      if (isLoading) {
+        buttonText.classList.add("hidden");
+        buttonLoader.classList.remove("hidden");
+        submitButton.disabled = true;
+      } else {
+        buttonText.classList.remove("hidden");
+        buttonLoader.classList.add("hidden");
+        submitButton.disabled = false;
+      }
+    }
+
+    form?.addEventListener("submit", async e => {
+      e.preventDefault();
+      resetMessages();
+      setLoading(true);
+
+      try {
+        const formData = new FormData(form);
+
+        const response = await fetch("/newsletter", {
+          method: "POST",
+          body: formData,
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          successMessage.textContent =
+            result.statusText || "Message envoyé avec succès !";
+          successMessage.classList.remove("hidden");
+          form.reset();
+        }
+        // Afficher le message d'erreur
+        else {
+          errorMessage.textContent =
+            result.statusText ||
+            "Une erreur s'est produite. Veuillez réessayer.";
+          errorMessage.classList.remove("hidden");
+        }
+      } catch (error) {
+        console.error("Erreur lors de l'envoi du formulaire:", error);
+        errorMessage.textContent =
+          "Une erreur s'est produite. Veuillez réessayer.";
+        errorMessage.classList.remove("hidden");
+      } finally {
+        setLoading(false);
+      }
+    });
+  });
+</script>
