@@ -8,7 +8,7 @@ import FeatureAdmin from "@/components/atoms/FeatureAdmin.astro";
 import Testimonials from "@/components/atoms/Testimonials.astro";
 import CTA from "@/components/atoms/CTA.astro";
 import FAQ from "@/components/organisms/FAQ.astro";
-import muslimgirls from "@/assets/pictures/muslim-child-girls.webp";
+// import muslimgirls from "@/assets/pictures/muslim-child-girls.webp";
 import muslimwoman from "@/assets/pictures/muslim-woman-back.webp";
 import muslimboy from "@/assets/pictures/muslim-child-boy.webp";
 import Pricing from "@/components/molecules/Pricing.astro";
@@ -28,16 +28,16 @@ const pageTitle =
 
   <FounderStory />
 
-  <CTA
-    title="Gérez votre école en toute simplicité"
-    btn="Réserver un appel découverte (15min)"
-    imageUrl={muslimboy}
-    alt="Petit garçon musulman"
-  />
-
   <section id="features" class="container mx-auto px-4">
     <BeforeAfterComparison />
   </section>
+
+  <CTA
+    title="Gérez votre école en toute simplicité"
+    btn="Je réserve ma démo"
+    imageUrl={muslimboy}
+    alt="Petit garçon musulman"
+  />
 
   <section class="container mx-auto px-4">
     <FeatureTeacher />
@@ -51,14 +51,14 @@ const pageTitle =
     <FeatureAdmin />
   </section>
 
-  <section>
+  <!-- <section>
     <CTA
       title="Plus de temps pour l’essentiel"
       btn="Réserver un appel découverte (15min)"
-      imageUrl={muslimwoman}
-      alt="Femme musulmane de dos"
+      imageUrl={muslimgirls}
+      alt="Groupe de filles musulmanes"
     />
-  </section>
+  </section> -->
 
   <section id="testimonials" class="container mx-auto px-4">
     <Testimonials />
@@ -74,9 +74,9 @@ const pageTitle =
 
   <CTA
     title="Votre école. Simplifiée. Dès aujourd’hui."
-    btn="Demander une démo gratuite"
-    imageUrl={muslimgirls}
-    alt="groupe filles musulmanes"
+    btn="Je réserve ma démo"
+    imageUrl={muslimwoman}
+    alt="Femme musulmane de dos"
   />
 
   <section id="faq" class="container mx-auto px-4">
