@@ -1,18 +1,20 @@
 ---
 import ToggleTheme from "@/components/atoms/ToggleTheme.astro";
 
+const isHomePage = Astro.url.pathname === "/";
+
 const items = [
   {
     name: "Accueil",
-    link: "#home",
+    link: isHomePage ? "#home" : "/#home",
   },
   {
     name: "Fonctionnalités",
-    link: "#features",
+    link: isHomePage ? "#features" : "/#features",
   },
   {
     name: "Tarif",
-    link: "#pricing",
+    link: isHomePage ? "#pricing" : "/#pricing",
   },
   {
     name: "Blog",
@@ -27,8 +29,6 @@ const items = [
   //   link: "#faq",
   // },
 ];
-
-const isHomePage = Astro.url.pathname === "/";
 ---
 
 <!-- Navigation Links -->
@@ -36,7 +36,7 @@ const isHomePage = Astro.url.pathname === "/";
   {
     items.map(item => (
       <a
-        href={isHomePage ? `${item.link}` : `/${item.link}`}
+        href={item.link}
         class="nav-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark relative !text-sm font-medium tracking-wide transition-colors duration-300 lg:!text-base xl:!text-lg"
         data-section={item.link.replace("#", "")}
       >
