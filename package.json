@@ -1,7 +1,8 @@
 {
-  "name": "website-eduroots",
+  "name": "eduroots-website",
   "type": "module",
   "version": "0.0.1",
+  "license": "AGPL-3.0-or-later",
   "scripts": {
     "lint": "eslint .",
     "dev": "astro dev",
