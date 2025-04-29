@@ -1,13 +1,13 @@
 ---
 import { Icon } from "astro-icon/components";
 
-const beforeEduXcoM = [
+const beforeEduRootS = [
   "Un fichier Excel par classe",
   "Des appels à 22h pour retrouver un élève absent",
   "Des infos éparpillées entre WhatsApp, mails, SMS",
 ];
 
-const afterEduXcoM = [
+const afterEduRootS = [
   "Tout est centralisé, visible, fluide",
   "Suivi des absences, notes, devoirs en 1 clic",
   "Communication instantanée entre les équipes et les familles",
@@ -17,7 +17,7 @@ const afterEduXcoM = [
 <section class="w-full px-4 sm:px-6 lg:px-8">
   <div class="mx-auto">
     <h2 class="mb-4 text-center md:mb-8">
-      Ce que vivent les écoles AVANT / APRÈS EduXcoM
+      Ce que vivent les écoles AVANT / APRÈS EduRootS
     </h2>
 
     <div class="mb-8 lg:mb-0 lg:grid lg:grid-cols-2 lg:gap-8">
@@ -26,11 +26,11 @@ const afterEduXcoM = [
         class="bg-light-dark/25 dark:bg-dark-background mb-8 rounded-lg p-8 text-center lg:mb-0"
       >
         <h3 class="!text-error dark:!text-error-dark mb-4 font-bold lg:mb-6">
-          Sans EduXcoM :
+          Sans EduRootS :
         </h3>
         <ul class="space-y-3 lg:space-y-4">
           {
-            beforeEduXcoM.map(feature => (
+            beforeEduRootS.map(feature => (
               <li class="flex items-center py-8">
                 <Icon
                   name="x-circle"
@@ -48,11 +48,11 @@ const afterEduXcoM = [
         <h3
           class="!text-success dark:!text-success-dark mb-4 text-center lg:mb-6"
         >
-          Avec EduXcoM :
+          Avec EduRootS :
         </h3>
         <ul class="space-y-3 lg:space-y-4">
           {
-            afterEduXcoM.map(feature => (
+            afterEduRootS.map(feature => (
               <li class="flex items-center py-8">
                 <Icon
                   name="check-circle"

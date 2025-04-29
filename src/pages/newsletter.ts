@@ -6,7 +6,7 @@ export const prerender = false;
 function mailContact(email: string) {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #333;">Nouveau message inscription à la newsletter de EduXcoM</h2>
+      <h2 style="color: #333;">Nouveau message inscription à la newsletter de EduRootS</h2>
 
       <p><strong>Email:</strong> ${email}</p>
 
@@ -79,7 +79,7 @@ export const POST: APIRoute = async ({ request }) => {
       from: "contact@dix31.com",
       to: "contact@dix31.com",
       bcc: "x.genolhac@gmail.com",
-      subject: `📧 EduXcoM nouvel inscrit à la newsletter`,
+      subject: `📧 EduRootS nouvel inscrit à la newsletter`,
       text: `Adresse mail ${contactEmail} pour répondre.`,
       html: mailContact(contactEmail),
     };
