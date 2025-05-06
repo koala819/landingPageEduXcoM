@@ -1,7 +1,7 @@
-# EduRootS Landing Page
+# Eduroots Landing Page
 
 Welcome! 🚀
-This is the official landing page for **EduRootS** — a modern, open-source educational platform.
+This is the official landing page for **Eduroots** — a modern, open-source educational platform.
 Simple, fast, and built for everyone who believes in accessible education.
 
 ## ✨ Features
@@ -17,7 +17,7 @@ Simple, fast, and built for everyone who believes in accessible education.
 Clone the repo and install dependencies:
 
 ```sh
-git clone git@github.com:koala819/EduRootS_website.git
+git clone git@github.com:koala819/Eduroots_website.git
 cd eduroots-landing
 pnpm install
 ```
@@ -58,6 +58,6 @@ You are free to use, modify, and share — just keep it open!
 
 ---
 
-**Made with ❤️ by the EduRootS team.**
+**Made with ❤️ by the Eduroots team.**
 
 ---

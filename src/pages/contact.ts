@@ -6,7 +6,7 @@ export const prerender = false;
 function mailContact(firstName: string, message: string, email: string) {
   return `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-      <h2 style="color: #333;">Nouveau message concernant EduRootS</h2>
+      <h2 style="color: #333;">Nouveau message concernant Eduroots</h2>
       <p><strong>Nom:</strong> ${firstName}</p>
       <p><strong>Email:</strong> ${email}</p>
       <div style="background-color: #f5f5f5; padding: 15px; border-radius: 5px; margin: 20px 0;">
