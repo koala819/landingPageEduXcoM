@@ -5,16 +5,32 @@ import NavbarBlog from "@/components/blog/molecules/NavbarBlog.astro";
 import FooterBlog from "@/components/blog/atoms/FooterBlog.astro";
 import LightBox from "@/components/atoms/LightBox.astro";
 
+interface Frontmatter {
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+  readTime: number;
+}
+
 interface Props {
   pageTitle: string;
   displayWave?: boolean;
+  frontmatter?: Frontmatter;
 }
 
-const { pageTitle } = Astro.props;
+const { pageTitle, frontmatter } = Astro.props;
 
 // Préparer des propriétés enrichies pour le blog
 const enrichedProps = {
-  title: pageTitle ? `${pageTitle} | Eduroots Blog` : "Eduroots Blog",
+  title: frontmatter?.title
+    ? `${frontmatter.title} | Eduroots Blog`
+    : pageTitle
+      ? `${pageTitle} | Eduroots Blog`
+      : "Eduroots Blog",
+  description: frontmatter?.description,
+  image: frontmatter?.image,
+  canonicalUrl: `https://eduroots.org${Astro.url.pathname}`,
 };
 ---
 

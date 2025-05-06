@@ -1,11 +1,11 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
 // import BlogPost from "@/components/blog/atoms/BlogPost.astro";
-// import { slugifyTitle } from "@/scripts/slugify";
+import { slugifyTitle } from "@/scripts/slugify";
 import { Icon } from "astro-icon/components";
 import XavierGenolhac from "@/assets/pictures/Xavier-Genolhac.webp";
 import { Image } from "astro:assets";
-
+// import logoEduroots from "@/icons/logo-eduroots.svg";
 // Récupérer les articles
 const allPosts = Object.values(
   import.meta.glob("./posts/*.md", { eager: true })
@@ -13,9 +13,11 @@ const allPosts = Object.values(
 const cocon1 = Object.values(
   import.meta.glob("./posts/Actus_Tendances/*.md", { eager: true })
 );
+const cocon2 = Object.values(
+  import.meta.glob("./posts/Contenus_Educatif/*.md", { eager: true })
+);
 
-const combinedPosts = [...allPosts, ...cocon1];
-
+const combinedPosts = [...allPosts, ...cocon1, ...cocon2];
 // Trier les articles par date si la date est disponible
 combinedPosts.sort((a: any, b: any) => {
   const dateA = a.frontmatter?.date
@@ -58,7 +60,7 @@ const pageTitle =
         <!-- Colonne principale (70% sur desktop) -->
         <div class="w-full lg:w-[70%]">
           <!-- Message "Bientôt disponible" -->
-          <div
+          <!-- <div
             class="bg-light-dark dark:bg-dark-background rounded-xl p-8 text-center"
           >
             <svg
@@ -95,52 +97,61 @@ const pageTitle =
                 Retour à l'accueil
               </a>
             </div>
-          </div>
-          <!--<h2 class="mb-8">Articles récents</h2>
-
-          <div class="space-y-12">
-           <article
-              class="border-primary dark:border-primary-dark border-b pb-12"
-            >
-              <a href="" class="hover:underline">
-                <h3 class="text-primary dark:text-primary-dark mb-3">
-                  Pourquoi passer à un logiciel de gestion scolaire en 2025 ?
-                </h3>
-              </a>
-
-              <div
-                class="dark:text-light mb-4 flex items-center gap-x-2 text-black"
-              >
-                <span class="!text-sm">18 avril 2025</span>
-                <span>&bull;</span>
-                <span class="!text-sm">8 min de lecture</span>
-                <span>&bull;</span>
-                <div
-                  class="bg-secondary dark:bg-secondary-dark inline-block rounded px-2 py-1"
+          </div> -->
+          <h2 class="mb-8">Articles récents</h2>
+          <div class="blog-list space-y-12">
+            {
+              combinedPosts.map((post: any) => (
+                <a
+                  href={`/posts/${slugifyTitle(post.frontmatter.title)}`}
+                  class="group block"
+                  style="text-decoration: none;"
                 >
-                  <span class="!text-light dark:!text-dark !text-sm"
-                    >Digitalisation</span
-                  >
-                </div>
-              </div>
-
-              <p class="text-dark dark:text-dark-lighter mb-4">
-                Découvrez pourquoi 76 % des établissements performants adoptent
-                un logiciel open source comme Eduroots.
-              </p>
-
-              <a
-                href="/blog/pourquoi-passer-logiciel-gestion-scolaire-2025"
-                class="text-primary dark:text-primary-dark inline-flex items-center font-medium hover:underline"
-              >
-                Lire la suite
-                <Icon
-                  name="arrow-right"
-                  class="!text-primary dark:!text-primary-dark mr-3 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
-                />
-              </a>
-            </article>
-          </div>-->
+                  <article class="blog-card border-primary dark:border-primary-dark flex cursor-pointer flex-col items-center gap-6 rounded-xl border p-6 transition-shadow duration-200 hover:shadow-lg md:flex-row">
+                    <div class="flex w-full items-center justify-center md:w-56">
+                      {post.frontmatter.image ? (
+                        <img
+                          src={post.frontmatter.image}
+                          alt={post.frontmatter.title}
+                          class="blog-card-img h-40 w-full self-center rounded object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <Icon
+                          name="logo-Eduroots"
+                          class="text-primary dark:text-primary-dark flex h-40 w-full items-center justify-center self-center"
+                        />
+                      )}
+                    </div>
+                    <div class="flex h-full flex-1 flex-col justify-between">
+                      <div>
+                        <h3 class="blog-card-title mb-2 group-hover:underline">
+                          {post.frontmatter.title}
+                        </h3>
+                        <span class="mb-2 block text-xs text-gray-500">
+                          {new Date(post.frontmatter.date).toLocaleDateString(
+                            "fr-FR",
+                            {
+                              day: "2-digit",
+                              month: "long",
+                              year: "numeric",
+                            }
+                          )}
+                        </span>
+                        <p class="blog-card-desc mb-4">
+                          {post.frontmatter.description}
+                        </p>
+                      </div>
+                      <span class="btn-primary mt-2 inline-flex items-center gap-2">
+                        Lire la suite
+                        <Icon name="arrow-right" class="icon-arrow-right" />
+                      </span>
+                    </div>
+                  </article>
+                </a>
+              ))
+            }
+          </div>
         </div>
 
         <!-- Sidebar (30% sur desktop) -->
@@ -350,7 +361,6 @@ const pageTitle =
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    console.log("Le script est chargé");
     const form = document.getElementById(
       "contact-newsletter-form"
     ) as HTMLFormElement;

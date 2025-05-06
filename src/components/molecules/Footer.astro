@@ -40,7 +40,7 @@ const navigationItems = [
       <aside class="md:col-span-3">
         <div class="flex items-center">
           <h2 class="!text-primary-dark !text-4xl font-bold">Edu</h2>
-          <h2 class="!text-secondary-dark !text-4xl">RootS</h2>
+          <h2 class="!text-secondary-dark !text-4xl">roots</h2>
         </div>
 
         <p class="!text-light mb-6 text-sm">
@@ -187,7 +187,11 @@ const navigationItems = [
       >
         <p class="!text-light inline-flex items-center">
           <Icon name="copyleft" class="mr-4 text-base md:text-3xl" />
-          {currentYear} Eduroots. Code source sous licence <a href="https://www.gnu.org/licenses/agpl-3.0.html" target="_blank" rel="noopener">AGPL v3</a>
+          {currentYear} Eduroots. Code source sous licence <a
+            href="https://www.gnu.org/licenses/agpl-3.0.html"
+            target="_blank"
+            rel="noopener">AGPL v3</a
+          >
         </p>
         <div class="mt-4 flex gap-6 md:mt-0">
           <a
@@ -210,7 +214,6 @@ const navigationItems = [
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    console.log("Le script est chargé");
     const form = document.getElementById(
       "contact-newsletter-form"
     ) as HTMLFormElement;

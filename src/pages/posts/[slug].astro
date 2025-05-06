@@ -11,6 +11,16 @@ interface Frontmatter {
   // Ajoutez les autres champs de  frontmatter
 }
 
+function formatDateFR(dateString: string) {
+  if (!dateString) return "";
+  const date = new Date(dateString);
+  return date.toLocaleDateString("fr-FR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+  });
+}
+
 export async function getStaticPaths() {
   const allPosts = await import.meta.glob<MarkdownInstance<Frontmatter>>(
     "@/pages/posts/*.md",
@@ -20,8 +30,16 @@ export async function getStaticPaths() {
     "@/pages/posts/Actus_Tendances/*.md",
     { eager: true }
   );
+  const cocon2 = await import.meta.glob<MarkdownInstance<Frontmatter>>(
+    "@/pages/posts/Contenus_Educatif/*.md",
+    { eager: true }
+  );
 
-  const postModules = [...Object.values(allPosts), ...Object.values(cocon1)];
+  const postModules = [
+    ...Object.values(allPosts),
+    ...Object.values(cocon1),
+    ...Object.values(cocon2),
+  ];
 
   const postsData = postModules
     .map(postModule => {
@@ -93,6 +111,7 @@ const frontmatter = post?.frontmatter;
 
 <Layout
   pageTitle={frontmatter?.title ?? "Titre Indisponible"}
+  frontmatter={frontmatter}
   displayWave={false}
 >
   <article
@@ -102,8 +121,8 @@ const frontmatter = post?.frontmatter;
       frontmatter ? (
         <header class="mb-10 border-b pb-4">
           <p class="mt-2">
-            Publié le {frontmatter.date ?? "N/A"} · Temps de lecture :{" "}
-            {frontmatter.readTime ?? "?"} min
+            Publié le {formatDateFR(frontmatter.date ?? "")} · Temps de lecture
+            : {frontmatter.readTime ?? "?"} min
           </p>
         </header>
       ) : (
@@ -114,10 +133,10 @@ const frontmatter = post?.frontmatter;
     <MarkdownRenderer content={rawMarkdownContent} />
     <div class="bg-primary dark:bg-primary-dark mt-4 h-px w-full"></div>
     <p>
-      Eduroots est une plateforme éducative open source qui connecte enseignants,
-      élèves et parents pour une gestion d'école en ligne fluide et efficace.
-      Notre solution tout-en-un simplifie le quotidien des établissements
-      scolaires tout en renforçant la qualité pédagogique._
+      Eduroots est une plateforme éducative open source qui connecte
+      enseignants, élèves et parents pour une gestion d'école en ligne fluide et
+      efficace. Notre solution tout-en-un simplifie le quotidien des
+      établissements scolaires tout en renforçant la qualité pédagogique._
     </p>
   </article>
 </Layout>
