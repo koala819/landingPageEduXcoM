@@ -7,10 +7,12 @@ import LightBox from "@/components/atoms/LightBox.astro";
 
 interface Frontmatter {
   title: string;
-  description: string;
-  image: string;
   date: string;
+  description: string;
+  tags: string[];
+  author: string;
   readTime: number;
+  image: string;
 }
 
 interface Props {

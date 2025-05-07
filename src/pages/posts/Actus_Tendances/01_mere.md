@@ -15,6 +15,7 @@ image:
   alt: "Environnement éducatif moderne"
 author: "Xavier Genolhac"
 readTime: 8
+published: false
 ---
 
 # Pourquoi passer à un logiciel de gestion scolaire en 2025 ?

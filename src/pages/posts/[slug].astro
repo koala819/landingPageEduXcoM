@@ -6,9 +6,12 @@ import type { MarkdownInstance } from "astro";
 
 interface Frontmatter {
   title: string;
-  date?: string;
-  readTime?: number;
-  // Ajoutez les autres champs de  frontmatter
+  date: string;
+  description: string;
+  tags: string[];
+  author: string;
+  readTime: number;
+  image: string;
 }
 
 function formatDateFR(dateString: string) {
@@ -111,7 +114,15 @@ const frontmatter = post?.frontmatter;
 
 <Layout
   pageTitle={frontmatter?.title ?? "Titre Indisponible"}
-  frontmatter={frontmatter}
+  frontmatter={{
+    title: frontmatter?.title ?? "",
+    description: frontmatter?.description ?? "",
+    tags: Array.isArray(frontmatter?.tags) ? frontmatter.tags : [],
+    author: frontmatter?.author ?? "",
+    image: frontmatter?.image ?? "",
+    date: frontmatter?.date ?? "",
+    readTime: frontmatter?.readTime ?? 0,
+  }}
   displayWave={false}
 >
   <article
