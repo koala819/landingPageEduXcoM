@@ -2,29 +2,52 @@
 import GreenCheck from "@/components/atoms/GreenCheck.astro";
 import Avantage from "@/components/atoms/PricingAvantages.astro";
 import PricingGarantie from "@/components/atoms/PricingGarantie.astro";
+import { Icon } from "astro-icon/components";
 
-const inclus = [
+const libre = [
   {
-    text: "Utilisateurs illimités",
+    text: "Vous l'installez vous-même",
   },
   {
-    text: "Toutes les fonctionnalités incluses",
+    text: "Code ouvert disponible sur GitHub",
   },
   {
-    text: "Mises à jour régulières",
+    text: "Bénéficiez du soutien de la communauté via les issues & pull requests",
   },
   {
-    text: "Support technique 6j/7",
-  },
-  {
-    text: "Formation incluse",
-  },
-  {
-    text: "Documentation détaillée",
+    text: "Parfait pour les projets autonomes ou expérimentaux",
   },
 ];
 
-// Suppression de la variable support qui n'est plus utilisée
+const accompagnement = [
+  {
+    text: "Hébergement, sauvegardes, support inclus",
+  },
+  {
+    text: "Mises à jour automatiques",
+  },
+  {
+    text: "Formation et assistance 6j/7",
+  },
+  {
+    text: "Engagement mensuel, sans surprise",
+  },
+];
+
+const solidaire = [
+  {
+    text: "Toutes les fonctionnalités de l’offre précédente",
+  },
+  {
+    text: "Priorité sur les demandes de fonctionnalités",
+  },
+  {
+    text: "Votre contribution aide à financer le développement",
+  },
+  {
+    text: "Les excédents sont reversés sous forme de sadaqa",
+  },
+];
 
 const beneficesConcrets = [
   {
@@ -86,11 +109,13 @@ const Garanties = [
     <div class="my-4 grid grid-cols-1 gap-4 md:my-16 md:grid-cols-3 md:gap-8">
       {
         beneficesConcrets.map(benefice => (
-          <Avantage
-            iconName={benefice.icon}
-            title={benefice.title}
-            description={benefice.text}
-          />
+          <div>
+            <Avantage
+              iconName={benefice.icon}
+              title={benefice.title}
+              description={benefice.text}
+            />
+          </div>
         ))
       }
     </div>
@@ -106,60 +131,109 @@ const Garanties = [
     </div>
 
     <div class="mx-auto max-w-4xl">
-      <!-- Carte -->
-      <div class="border-primary rounded-2xl border-1 shadow-xl">
-        <!-- Entête -->
+      <!-- Carte Eduroots Libre -->
+      <div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
         <div class="px-6 pt-8 pb-6 text-center md:px-10">
-          <h3 class="!text-3xl">49€ / mois</h3>
-          <p>
-            Sans engagement, facturation mensuelle. Profitez de tout ce dont
-            vous avez besoin pour gérer votre établissement : utilisateurs
-            illimités, mises à jour régulières, support technique, et bien plus.
-          </p>
-        </div>
-
-        <!-- Call to action -->
-        <div class="dark:bg-dark-background bg-light-dark p-2">
-          <div class="flex w-full rounded-lg px-6 py-4 pt-4 text-lg">
-            <a
-              href="#demo"
-              class="btn-primary block w-full !px-6 !py-4 text-center"
-              >Demander ma démo gratuite</a
-            >
+          <div class="flex items-center justify-center gap-2">
+            <Icon name="tux" class="h-16 w-16" />
+            <h3>Eduroots Libre</h3>
           </div>
-          <p class="mt-2 text-center !text-xs md:!text-sm">
-            Profitez de 7 jours gratuits pour tester toutes les fonctionnalités
-            sans risque. Annulation facile en un clic.
-          </p>
-        </div>
+          <p>Pour les développeurs et bénévoles techniques</p>
+          <span
+            class="!text-primary dark:!text-primary-dark !text-3xl !font-bold"
+            >0 € / mois</span
+          >
 
-        <!-- Fonctionnalités -->
-        <div
-          class="bg-light dark:bg-dark-background flex flex-col items-center space-y-8 rounded-lg p-4 md:p-6"
-        >
-          <aside class="max-w-sm flex-1 text-center lg:max-w-none lg:text-left">
-            <h3>Inclus dans votre abonnement</h3>
-            <ul class="inline-block space-y-3 text-left">
-              {
-                inclus.map(item => (
-                  <li class="flex items-start">
-                    <span class="mt-1 flex-shrink-0">
-                      <GreenCheck />
-                    </span>
-                    <span class="text-dark dark:text-dark-lighter ml-2 break-words">
-                      {item.text}
-                    </span>
-                  </li>
-                ))
-              }
-            </ul>
-          </aside>
+          {
+            libre.map(item => (
+              <ul>
+                <li class="flex items-start">
+                  <span class="mt-1 flex">
+                    <GreenCheck />
+                  </span>
+                  <span class="text-dark dark:text-dark-lighter ml-2 break-words">
+                    {item.text}
+                  </span>
+                </li>
+              </ul>
+            ))
+          }
+
+          <a
+            href="https://github.com/koala819/Eduroots"
+            class="!text-primary dark:!text-primary-dark my-3 hover:underline md:my-4"
+            >Accéder au GitHub</a
+          >
+        </div>
+      </div>
+
+      <!-- Carte Eduroots Accompagnement -->
+      <div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
+        <div class="px-6 pt-8 pb-6 text-center md:px-10">
+          <div class="flex items-center justify-center gap-2">
+            <Icon name="handshake" class="h-16 w-16" />
+            <h3>Eduroots Accompagnement</h3>
+          </div>
+          <p>
+            Pour les écoles et mosquées qui veulent se concentrer sur la
+            pédagogie
+          </p>
+          <span
+            class="!text-primary dark:!text-primary-dark !text-3xl !font-bold"
+            >59 € / mois</span
+          >
+          {
+            accompagnement.map(item => (
+              <li class="flex items-start">
+                <span class="mt-1 flex">
+                  <GreenCheck />
+                </span>
+                <span class="text-dark dark:text-dark-lighter ml-2 break-words">
+                  {item.text}
+                </span>
+              </li>
+            ))
+          }
+
+          <p>Idéal pour 95 % des structures</p>
+        </div>
+      </div>
+
+      <!-- Carte Eduroots Solidaire -->
+      <div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
+        <div class="px-6 pt-8 pb-6 text-center md:px-10">
+          <div class="flex items-center justify-center gap-2">
+            <Icon name="heart-handshake" class="h-16 w-16" />
+            <h3>Eduroots Solidaire</h3>
+          </div>
+          <p>Pour celles et ceux qui veulent soutenir le projet</p>
+          <span
+            class="!text-primary dark:!text-primary-dark !text-3xl !font-bold"
+            >99 € / mois</span
+          >
+          {
+            solidaire.map(item => (
+              <li class="flex items-start">
+                <span class="mt-1 flex">
+                  <GreenCheck />
+                </span>
+                <span class="text-dark dark:text-dark-lighter ml-2 break-words">
+                  {item.text}
+                </span>
+              </li>
+            ))
+          }
+
+          <p>
+            Un abonnement qui compte double : pour votre école, et pour la
+            communauté.
+          </p>
         </div>
       </div>
     </div>
 
     <!-- Section Open Source -->
-    <div class="open-source-section mt-16 text-center">
+    <!-- <div class="open-source-section mt-16 text-center">
       <div
         class="bg-light dark:bg-dark border-primary border-opacity-10 dark:border-primary-dark inline-flex items-center justify-center rounded-xl border px-6 py-3"
       >
@@ -170,7 +244,7 @@ const Garanties = [
           transparence et sécurité
         </span>
       </div>
-    </div>
+    </div> -->
 
     <!-- Témoignages avant garanties -->
     <div class="my-8 md:my-16">
@@ -198,10 +272,12 @@ const Garanties = [
     >
       {
         Garanties.map(garantie => (
-          <PricingGarantie
-            iconName={garantie.icon}
-            description={garantie.title}
-          />
+          <div>
+            <PricingGarantie
+              iconName={garantie.icon}
+              description={garantie.title}
+            />
+          </div>
         ))
       }
     </div>
