@@ -9,7 +9,7 @@ tags:
   - présence
   - école associative
   - Eduroots
-published: false
+published: true
 author: "Xavier Genolhac"
 readTime: 3
 image: "https://res.cloudinary.com/dltiyerih/image/upload/v1746558006/Eduroots/Smartphone_Etoiles_zsblmy.webp"
