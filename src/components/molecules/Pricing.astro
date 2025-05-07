@@ -1,51 +1,72 @@
 ---
-import GreenCheck from "@/components/atoms/GreenCheck.astro";
 import Avantage from "@/components/atoms/PricingAvantages.astro";
 import PricingGarantie from "@/components/atoms/PricingGarantie.astro";
-import { Icon } from "astro-icon/components";
-
-const libre = [
+import PricingCard from "@/components/atoms/PricingCard.astro";
+const pricingCards = [
   {
-    text: "Vous l'installez vous-même",
+    title: "Eduroots Libre",
+    iconName: "tux",
+    subtitle: "Pour les développeurs et bénévoles techniques",
+    price: "0",
+    description: [
+      {
+        text: "Vous l'installez vous-même",
+      },
+      {
+        text: "Code ouvert disponible sur GitHub",
+      },
+      {
+        text: "Bénéficiez du soutien de la communauté via les issues & pull requests",
+      },
+      {
+        text: "Parfait pour les projets autonomes ou expérimentaux",
+      },
+    ],
+    link: "https://github.com/koala819/Eduroots",
+    text: "Accéder au GitHub",
   },
   {
-    text: "Code ouvert disponible sur GitHub",
+    title: "Eduroots Accompagnement",
+    iconName: "handshake",
+    subtitle:
+      "Pour les écoles et mosquées qui veulent se concentrer sur la pédagogie",
+    price: "59",
+    description: [
+      {
+        text: "Hébergement, sauvegardes, support inclus",
+      },
+      {
+        text: "Mises à jour automatiques",
+      },
+      {
+        text: "Formation et assistance 6j/7",
+      },
+      {
+        text: "Engagement mensuel, sans surprise",
+      },
+    ],
+    text: "Idéal pour 95 % des structures",
   },
   {
-    text: "Bénéficiez du soutien de la communauté via les issues & pull requests",
-  },
-  {
-    text: "Parfait pour les projets autonomes ou expérimentaux",
-  },
-];
-
-const accompagnement = [
-  {
-    text: "Hébergement, sauvegardes, support inclus",
-  },
-  {
-    text: "Mises à jour automatiques",
-  },
-  {
-    text: "Formation et assistance 6j/7",
-  },
-  {
-    text: "Engagement mensuel, sans surprise",
-  },
-];
-
-const solidaire = [
-  {
-    text: "Toutes les fonctionnalités de l’offre précédente",
-  },
-  {
-    text: "Priorité sur les demandes de fonctionnalités",
-  },
-  {
-    text: "Votre contribution aide à financer le développement",
-  },
-  {
-    text: "Les excédents sont reversés sous forme de sadaqa",
+    title: "Eduroots Solidaire",
+    iconName: "heart-handshake",
+    subtitle: "Pour celles et ceux qui veulent soutenir le projet",
+    price: "99",
+    description: [
+      {
+        text: "Toutes les fonctionnalités de l’offre précédente",
+      },
+      {
+        text: "Priorité sur les demandes de fonctionnalités",
+      },
+      {
+        text: "Votre contribution aide à financer le développement",
+      },
+      {
+        text: "Les excédents sont reversés sous forme de sadaqa",
+      },
+    ],
+    text: "Un abonnement qui compte double : pour votre école, et pour la communauté",
   },
 ];
 
@@ -130,106 +151,21 @@ const Garanties = [
       </p>
     </div>
 
+    <!-- Cards -->
     <div class="mx-auto max-w-4xl">
-      <!-- Carte Eduroots Libre -->
-      <div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
-        <div class="px-6 pt-8 pb-6 text-center md:px-10">
-          <div class="flex items-center justify-center gap-2">
-            <Icon name="tux" class="h-16 w-16" />
-            <h3>Eduroots Libre</h3>
-          </div>
-          <p>Pour les développeurs et bénévoles techniques</p>
-          <span
-            class="!text-primary dark:!text-primary-dark !text-3xl !font-bold"
-            >0 € / mois</span
-          >
-
-          {
-            libre.map(item => (
-              <ul>
-                <li class="flex items-start">
-                  <span class="mt-1 flex">
-                    <GreenCheck />
-                  </span>
-                  <span class="text-dark dark:text-dark-lighter ml-2 break-words">
-                    {item.text}
-                  </span>
-                </li>
-              </ul>
-            ))
-          }
-
-          <a
-            href="https://github.com/koala819/Eduroots"
-            class="!text-primary dark:!text-primary-dark my-3 hover:underline md:my-4"
-            >Accéder au GitHub</a
-          >
-        </div>
-      </div>
-
-      <!-- Carte Eduroots Accompagnement -->
-      <div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
-        <div class="px-6 pt-8 pb-6 text-center md:px-10">
-          <div class="flex items-center justify-center gap-2">
-            <Icon name="handshake" class="h-16 w-16" />
-            <h3>Eduroots Accompagnement</h3>
-          </div>
-          <p>
-            Pour les écoles et mosquées qui veulent se concentrer sur la
-            pédagogie
-          </p>
-          <span
-            class="!text-primary dark:!text-primary-dark !text-3xl !font-bold"
-            >59 € / mois</span
-          >
-          {
-            accompagnement.map(item => (
-              <li class="flex items-start">
-                <span class="mt-1 flex">
-                  <GreenCheck />
-                </span>
-                <span class="text-dark dark:text-dark-lighter ml-2 break-words">
-                  {item.text}
-                </span>
-              </li>
-            ))
-          }
-
-          <p>Idéal pour 95 % des structures</p>
-        </div>
-      </div>
-
-      <!-- Carte Eduroots Solidaire -->
-      <div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
-        <div class="px-6 pt-8 pb-6 text-center md:px-10">
-          <div class="flex items-center justify-center gap-2">
-            <Icon name="heart-handshake" class="h-16 w-16" />
-            <h3>Eduroots Solidaire</h3>
-          </div>
-          <p>Pour celles et ceux qui veulent soutenir le projet</p>
-          <span
-            class="!text-primary dark:!text-primary-dark !text-3xl !font-bold"
-            >99 € / mois</span
-          >
-          {
-            solidaire.map(item => (
-              <li class="flex items-start">
-                <span class="mt-1 flex">
-                  <GreenCheck />
-                </span>
-                <span class="text-dark dark:text-dark-lighter ml-2 break-words">
-                  {item.text}
-                </span>
-              </li>
-            ))
-          }
-
-          <p>
-            Un abonnement qui compte double : pour votre école, et pour la
-            communauté.
-          </p>
-        </div>
-      </div>
+      {
+        pricingCards.map(card => (
+          <PricingCard
+            title={card.title}
+            iconName={card.iconName}
+            subtitle={card.subtitle}
+            price={card.price}
+            description={card.description}
+            link={card.link}
+            text={card.text}
+          />
+        ))
+      }
     </div>
 
     <!-- Section Open Source -->

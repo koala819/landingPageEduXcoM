@@ -1,0 +1,60 @@
+---
+import { Icon } from "astro-icon/components";
+import GreenCheck from "@/components/atoms/GreenCheck.astro";
+
+interface Props {
+  iconName: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  description: {
+    text: string;
+  }[];
+  link?: string;
+  text?: string;
+}
+
+const { description, iconName, subtitle, title, price, link, text } =
+  Astro.props;
+---
+
+<div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
+  <div class="px-6 pt-8 pb-6 text-center md:px-10">
+    <div class="flex items-center justify-center gap-2">
+      <Icon name={iconName} class="h-16 w-16" />
+      <h3>{title}</h3>
+    </div>
+    <p>{subtitle}</p>
+    <span class="!text-primary dark:!text-primary-dark !text-3xl !font-bold"
+      >{price} € / mois</span
+    >
+
+    {
+      description.map(item => (
+        <ul>
+          <li class="flex items-start">
+            <span class="mt-1 flex">
+              <GreenCheck />
+            </span>
+            <span class="text-dark dark:text-dark-lighter ml-2 break-words">
+              {item.text}
+            </span>
+          </li>
+        </ul>
+      ))
+    }
+    {
+      link ? (
+        <a
+          href={link}
+          target="_blank"
+          class="!text-primary dark:!text-primary-dark my-3 hover:underline md:my-4"
+        >
+          {text}
+        </a>
+      ) : (
+        <p>{text}</p>
+      )
+    }
+  </div>
+</div>
