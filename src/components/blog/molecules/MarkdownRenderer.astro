@@ -1,7 +1,8 @@
 ---
 import { Markdown } from "astro-remote";
-import Heading from "@/components/blog/atoms/MDHeading.astro";
-import Subheading from "@/components/blog/atoms/MDSubheading.astro";
+import MDh2 from "@/components/blog/atoms/MDh2.astro";
+import MDh1 from "@/components/blog/atoms/MDh1.astro";
+import MDh3 from "@/components/blog/atoms/MDh3.astro";
 import Paragraph from "@/components/blog/atoms/MDParagraph.astro";
 import Image from "@/components/blog/atoms/MDImage.astro";
 import Link from "@/components/blog/atoms/MDLink.astro";
@@ -17,8 +18,9 @@ const { content } = Astro.props;
   content={content}
   sanitize={{ allowComponents: true }}
   components={{
-    h2: Heading,
-    h3: Subheading,
+    h1: MDh1,
+    h2: MDh2,
+    h3: MDh3,
     p: Paragraph,
     img: Image,
     a: Link,

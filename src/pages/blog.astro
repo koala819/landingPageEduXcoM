@@ -104,7 +104,7 @@ const pageTitle =
             </div>
           </div> -->
           <h2 class="mb-8">Articles récents</h2>
-          <div class="blog-list space-y-12">
+          <div class="blog-list space-y-8">
             {
               combinedPosts.map((post: any) => (
                 <a
@@ -112,28 +112,25 @@ const pageTitle =
                   class="group block"
                   style="text-decoration: none;"
                 >
-                  <article class="blog-card border-primary dark:border-primary-dark flex cursor-pointer flex-col items-center gap-6 rounded-xl border p-6 transition-shadow duration-200 hover:shadow-lg md:flex-row">
-                    <div class="flex w-full items-center justify-center md:w-56">
+                  <article class="blog-card border-primary dark:border-primary-dark flex cursor-pointer flex-col items-start gap-4 rounded-xl border p-4 transition-shadow duration-200 hover:shadow-lg md:flex-row md:items-center lg:gap-6 lg:p-5">
+                    <div class="flex w-full items-center justify-center md:w-48 lg:w-56">
                       {post.frontmatter.image ? (
                         <img
                           src={post.frontmatter.image}
                           alt={post.frontmatter.title}
-                          class="blog-card-img h-40 w-full self-center rounded object-cover"
+                          class="blog-card-img h-48 w-full rounded-lg object-cover md:h-36 lg:h-32"
                           loading="lazy"
                         />
                       ) : (
                         <Icon
                           name="logo-Eduroots"
-                          class="text-primary dark:text-primary-dark flex h-40 w-full items-center justify-center self-center"
+                          class="text-primary dark:text-primary-dark flex h-48 w-full items-center justify-center self-center md:h-36 lg:h-32"
                         />
                       )}
                     </div>
-                    <div class="flex h-full flex-1 flex-col justify-between">
+                    <div class="flex h-full flex-1 flex-col justify-between space-y-3 lg:space-y-2">
                       <div>
-                        <h3 class="blog-card-title mb-2 group-hover:underline">
-                          {post.frontmatter.title}
-                        </h3>
-                        <span class="mb-2 block text-xs text-gray-500">
+                        <span class="mb-1.5 block text-xs text-gray-500 lg:text-[13px]">
                           {new Date(post.frontmatter.date).toLocaleDateString(
                             "fr-FR",
                             {
@@ -143,13 +140,19 @@ const pageTitle =
                             }
                           )}
                         </span>
-                        <p class="blog-card-desc mb-4">
+                        <h3 class="blog-card-title mb-2 text-xl font-semibold group-hover:underline lg:text-lg">
+                          {post.frontmatter.title}
+                        </h3>
+                        <p class="blog-card-desc line-clamp-2 text-gray-600 lg:text-sm dark:text-gray-300">
                           {post.frontmatter.description}
                         </p>
                       </div>
-                      <span class="btn-primary mt-2 inline-flex items-center gap-2">
+                      <span class="btn-primary mt-2 inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm lg:mt-1 lg:px-3 lg:py-1.5">
                         Lire la suite
-                        <Icon name="arrow-right" class="icon-arrow-right" />
+                        <Icon
+                          name="arrow-right"
+                          class="icon-arrow-right h-4 w-4"
+                        />
                       </span>
                     </div>
                   </article>

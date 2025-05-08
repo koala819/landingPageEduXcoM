@@ -125,29 +125,33 @@ const frontmatter = post?.frontmatter;
   }}
   displayWave={false}
 >
-  <article
-    class="prose prose-lg dark:prose-invert mx-auto max-w-3xl px-4 py-12"
-  >
-    {
-      frontmatter ? (
-        <header class="mb-10 border-b pb-4">
-          <p class="mt-2">
-            Publié le {formatDateFR(frontmatter.date ?? "")} · Temps de lecture
-            : {frontmatter.readTime ?? "?"} min
-          </p>
-        </header>
-      ) : (
-        <p>Erreur: Frontmatter manquant.</p>
-      )
-    }
+  <article class="mx-auto max-w-3xl px-6 py-16 lg:px-8 lg:py-24">
+    <header class="mb-4 border-b border-gray-200 dark:border-gray-800">
+      <div
+        class="flex items-center gap-4 text-lg text-gray-600 dark:text-gray-400"
+      >
+        <time datetime={frontmatter?.date}>
+          {formatDateFR(frontmatter?.date ?? "")}
+        </time>
+        <span class="text-gray-300 dark:text-gray-700">•</span>
+        <span>{frontmatter?.readTime ?? "?"} min de lecture</span>
+      </div>
+    </header>
 
-    <MarkdownRenderer content={rawMarkdownContent} />
-    <div class="bg-primary dark:bg-primary-dark mt-4 h-px w-full"></div>
-    <p>
-      Eduroots est une plateforme éducative open source qui connecte
-      enseignants, élèves et parents pour une gestion d'école en ligne fluide et
-      efficace. Notre solution tout-en-un simplifie le quotidien des
-      établissements scolaires tout en renforçant la qualité pédagogique._
-    </p>
+    <div class="prose prose-lg dark:prose-invert mx-auto space-y-12">
+      <MarkdownRenderer content={rawMarkdownContent} />
+    </div>
+
+    <footer class="mt-16 border-t border-gray-200 pt-8 dark:border-gray-800">
+      <div class="rounded-xl bg-gray-50 p-8 dark:bg-gray-900">
+        <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
+          Eduroots est une plateforme éducative open source qui connecte
+          enseignants, élèves et parents pour une gestion d'école en ligne
+          fluide et efficace. Notre solution tout-en-un simplifie le quotidien
+          des établissements scolaires tout en renforçant la qualité
+          pédagogique.
+        </p>
+      </div>
+    </footer>
   </article>
 </Layout>
