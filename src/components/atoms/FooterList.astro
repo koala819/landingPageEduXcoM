@@ -8,5 +8,11 @@ const { link, text } = Astro.props;
 ---
 
 <li>
-  <a href={link} class="text-light hover:text-secondary-dark">{text}</a>
+  <a
+    href={link}
+    class="text-light hover:text-secondary-dark"
+    data-umami-event={`Footer Navigation click - ${text}`}
+  >
+    {text}
+  </a>
 </li>

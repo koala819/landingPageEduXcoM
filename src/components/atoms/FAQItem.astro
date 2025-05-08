@@ -1,35 +1,49 @@
 ---
 interface Props {
+  id: string;
+  title: string;
   items: {
     question: string;
     answer: string;
   }[];
 }
-const { items } = Astro.props;
+
+const { id, title, items } = Astro.props;
 ---
 
-<div class="space-y-3">
-  {
-    items.map(item => (
-      <div
-        class="group dark:bg-dark-background flex flex-col rounded-lg bg-white shadow-sm"
-        tabindex="0"
-      >
-        <div class="text-dark dark:text-dark-lighter hover:bg-primary hover:text-light flex cursor-pointer items-center justify-between p-6 text-lg font-medium transition-all duration-300">
-          <span>{item.question}</span>
-          <svg
-            class="h-6 min-w-6 transition-all duration-300 group-focus:rotate-45"
-            viewBox="0 0 24 24"
-            width="24"
-            height="24"
+<div id={id} class="mb-4">
+  <h3 class="pb-2">{title}</h3>
+  <div class="space-y-3">
+    {
+      items.map(item => (
+        <div
+          class="group dark:bg-dark-background flex flex-col rounded-lg bg-white shadow-sm"
+          tabindex="0"
+        >
+          <div
+            class="text-dark dark:text-dark-lighter hover:bg-primary group hover:text-light flex cursor-pointer items-center justify-between p-6 text-lg font-medium transition-all duration-300"
+            data-umami-event={`FAQ Item - ${item.question}`}
           >
-            <path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-          </svg>
+            {item.question}
+            <svg
+              class="h-6 min-w-6 transition-all duration-300 group-focus:rotate-45"
+              viewBox="0 0 24 24"
+              width="24"
+              height="24"
+            >
+              <path
+                fill="currentColor"
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              />
+            </svg>
+          </div>
+          <div class="bg-light-dark dark:bg-border/65 invisible max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-focus:visible group-focus:max-h-screen group-focus:opacity-100">
+            <p class="text-dark mt-2 px-6 pb-6 leading-relaxed">
+              {item.answer}
+            </p>
+          </div>
         </div>
-        <div class="bg-light-dark dark:bg-dark-lighter invisible max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out group-focus:visible group-focus:max-h-screen group-focus:opacity-100">
-          <p class="text-dark mt-2 px-6 pb-6 leading-relaxed">{item.answer}</p>
-        </div>
-      </div>
-    ))
-  }
+      ))
+    }
+  </div>
 </div>

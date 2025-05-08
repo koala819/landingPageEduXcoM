@@ -26,6 +26,7 @@ const { btn, title, imageUrl, alt } = Astro.props;
       <a
         href="#demo"
         class="btn-primary mt-6 inline-flex items-center justify-center !py-4"
+        data-umami-event=`CTA click - ${title}`
       >
         {btn}
         <div class="mr-4 sm:mr-0">

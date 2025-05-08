@@ -1,5 +1,5 @@
 ---
-import FAQGroup from "@/components/molecules/FAQGroup.astro";
+import FAQItem from "@/components/atoms/FAQItem.astro";
 
 interface FAQ {
   id: number;
@@ -143,7 +143,7 @@ const faqs: FAQ[] = [
 
     {
       faqs.map(faq => (
-        <FAQGroup
+        <FAQItem
           id={`faq-category-${faq.id}`}
           title={faq.title}
           items={faq.items}

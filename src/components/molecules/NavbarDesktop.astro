@@ -39,6 +39,7 @@ const items = [
         href={item.link}
         class="nav-link text-dark dark:text-light hover:text-primary dark:hover:text-primary-dark relative !text-sm font-medium tracking-wide transition-colors duration-300 lg:!text-base xl:!text-lg"
         data-section={item.link.replace("#", "")}
+        data-umami-event={`Navbar DESKTOP click - ${item.name}`}
       >
         {item.name}
         <span class="nav-indicator bg-primary dark:bg-primary-dark absolute bottom-[-16px] left-0 h-[2px] w-0 transition-all duration-300 ease-in-out" />
@@ -54,6 +55,7 @@ const items = [
   <a
     href={isHomePage ? "#demo" : "/#demo"}
     class="btn-primary flex items-center !text-xs lg:p-2 lg:!text-xl"
+    data-umami-event="CTA click from Navbar Desktop"
   >
     Je réserve ma démo
   </a>

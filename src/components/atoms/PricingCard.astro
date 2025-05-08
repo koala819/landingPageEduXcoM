@@ -16,6 +16,8 @@ interface Props {
 
 const { description, iconName, subtitle, title, price, link, text } =
   Astro.props;
+
+const isHomePage = Astro.url.pathname === "/";
 ---
 
 <div class="border-primary mb-8 rounded-2xl border-1 shadow-xl">
@@ -56,5 +58,15 @@ const { description, iconName, subtitle, title, price, link, text } =
         <p>{text}</p>
       )
     }
+
+    <div class="mt-4 flex w-full">
+      <a
+        href={isHomePage ? "#demo" : "/#demo"}
+        class="bg-primary dark:bg-primary-dark hover:bg-secondary dark:hover:bg-secondary-dark dark:text-dark flex w-full cursor-pointer justify-center rounded-lg px-6 py-3 text-center font-bold text-white transition-all transition-colors"
+        data-umami-event={`Select Plan - ${title}`}
+      >
+        Sélectionner cette offre
+      </a>
+    </div>
   </div>
 </div>

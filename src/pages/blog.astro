@@ -147,7 +147,10 @@ const pageTitle =
                           {post.frontmatter.description}
                         </p>
                       </div>
-                      <span class="btn-primary mt-2 inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm lg:mt-1 lg:px-3 lg:py-1.5">
+                      <span
+                        class="btn-primary mt-2 inline-flex w-fit items-center gap-2 rounded-lg px-4 py-2 text-sm lg:mt-1 lg:px-3 lg:py-1.5"
+                        data-umami-event={`Article Blog - ${post.frontmatter.title}`}
+                      >
                         Lire la suite
                         <Icon
                           name="arrow-right"
@@ -212,7 +215,12 @@ const pageTitle =
                   id="button-newsletter-text"
                   class="flex items-center space-x-2"
                 >
-                  <span class="!text-light dark:!text-dark">Je m'abonne</span>
+                  <span
+                    class="!text-light dark:!text-dark"
+                    data-umami-event="Newsletter Submit from BLOG"
+                  >
+                    Je m'abonne
+                  </span>
                   <Icon
                     name="arrow-right"
                     class="!text-light dark:!text-dark mr-3 h-5 w-5 flex-shrink-0 lg:h-6 lg:w-6"
@@ -276,6 +284,7 @@ const pageTitle =
               href="https://www.linkedin.com/in/xavier-genolhac/"
               target="_blank"
               class="text-primary dark:text-primary-dark inline-flex items-center !text-sm hover:underline"
+              data-umami-event="LinkedIn BLOG click"
             >
               Voir mon profil
               <Icon
@@ -292,6 +301,7 @@ const pageTitle =
               <a
                 href="/#demo"
                 class="btn-secondary group flex w-full justify-center"
+                data-umami-event="CTA BLOG click"
               >
                 Je réserve ma démo
                 <Icon
