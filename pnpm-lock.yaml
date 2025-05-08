@@ -29,9 +29,6 @@ importers:
       astro-icon:
         specifier: 1.1.5
         version: 1.1.5
-      astro-matomo:
-        specifier: 1.8.1
-        version: 1.8.1(astro@5.6.1(@types/node@22.15.16)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.2)(typescript@5.8.2))
       astro-remote:
         specifier: 0.3.4
         version: 0.3.4
@@ -1085,11 +1082,6 @@ packages:
 
   astro-icon@1.1.5:
     resolution: {integrity: sha512-CJYS5nWOw9jz4RpGWmzNQY7D0y2ZZacH7atL2K9DeJXJVaz7/5WrxeyIxO8KASk1jCM96Q4LjRx/F3R+InjJrw==}
-
-  astro-matomo@1.8.1:
-    resolution: {integrity: sha512-ifSyb6Pw57cWiAPQB8Y2+mIFaKBxBMCcwmu2U1bJpTrMYTdw8bDyP1YfpzMgXdvFhXXWiOBYzgMb4TAfZTAQYg==}
-    peerDependencies:
-      astro: ^2.0.0-beta.0 || ^3.0.0 || ^4.0.0 || ^5.0.0
 
   astro-remote@0.3.4:
     resolution: {integrity: sha512-jL5skNQLA0YBc1R3bVGXyHew3FqGqsT7AgLzWAVeTLzFkwVMUYvs4/lKJSmS7ygcF1GnHnoKG6++8GL9VtWwGQ==}
@@ -4048,10 +4040,6 @@ snapshots:
     transitivePeerDependencies:
       - debug
       - supports-color
-
-  astro-matomo@1.8.1(astro@5.6.1(@types/node@22.15.16)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.2)(typescript@5.8.2)):
-    dependencies:
-      astro: 5.6.1(@types/node@22.15.16)(jiti@2.4.2)(lightningcss@1.29.2)(rollup@4.40.2)(typescript@5.8.2)
 
   astro-remote@0.3.4:
     dependencies:
