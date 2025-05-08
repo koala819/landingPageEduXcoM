@@ -7,7 +7,7 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://landing-page-edu-x-com.vercel.app/',
+  site: 'https://www.eduroots.org/',
   integrations: [favicons(), icon()],
 
   vite: {
