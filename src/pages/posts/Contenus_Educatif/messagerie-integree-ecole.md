@@ -15,6 +15,7 @@ tags:
 author: "Xavier Genolhac"
 readTime: 2
 image: "https://res.cloudinary.com/dltiyerih/image/upload/v1746548181/Eduroots/Smartphone_Messagerie_xcd5yz.webp"
+published: true
 ---
 
 # Comment simplifier la communication entre familles, professeurs et administration grâce à Eduroots
@@ -48,7 +49,3 @@ Plus besoin de jongler entre emails, appels et SMS. Tout se passe au même endro
 ## Une communauté soudée autour de l'enfant
 
 Cette messagerie transforme le quotidien : plus de réactivité, moins de stress, une communauté soudée autour de l'enfant.
-
----
-
-<CTA text="👉 Vous voulez essayer la messagerie Eduroots dans votre établissement ? Contactez-nous pour une démonstration gratuite." btnTxt="Demandez une démonstration personnalisée" />

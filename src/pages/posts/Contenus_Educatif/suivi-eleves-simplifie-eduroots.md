@@ -54,7 +54,3 @@ Aujourd'hui, à Colomiers, un prof peut rapidement saisir les présences, noter 
 Plus besoin de chercher dans les papiers ou de se demander si le message passera.
 
 Eduroots s'adapte à vos besoins, que vous gériez une mosquée, une école ou une association.
-
----
-
-<CTA text="👉 Vous voulez essayer cette interface dans votre établissement ? Contactez-nous pour une démo gratuite." btnTxt="Demandez une démonstration personnalisée" />

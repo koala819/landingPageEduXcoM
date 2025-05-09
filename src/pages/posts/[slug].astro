@@ -3,6 +3,7 @@ import Layout from "@/layouts/BlogLayout.astro";
 import { slugifyTitle } from "@/scripts/slugify";
 import MarkdownRenderer from "@/components/blog/molecules/MarkdownRenderer.astro";
 import type { MarkdownInstance } from "astro";
+import CTA from "@/components/blog/atoms/MDCTA.astro";
 
 interface Frontmatter {
   title: string;
@@ -143,14 +144,19 @@ const frontmatter = post?.frontmatter;
     </div>
 
     <footer class="mt-16 border-t border-gray-200 pt-8 dark:border-gray-800">
-      <div class="rounded-xl bg-gray-50 p-8 dark:bg-gray-900">
+      <div class="bg-light-dark rounded-xl p-8 dark:bg-gray-900">
+        <h2
+          class="!text-dark dark:!text-light-dark border-secondary dark:border-secondary-dark mb-8 border-l-24 pl-6 text-3xl leading-tight font-bold lg:text-4xl"
+        >
+          Vous gérez une mosquée, une école ou une association ?
+        </h2>
         <p class="text-lg leading-relaxed text-gray-600 dark:text-gray-400">
-          Eduroots est une plateforme éducative open source qui connecte
-          enseignants, élèves et parents pour une gestion d'école en ligne
-          fluide et efficace. Notre solution tout-en-un simplifie le quotidien
-          des établissements scolaires tout en renforçant la qualité
-          pédagogique.
+          Si vous cherchez une solution simple, respectueuse du RGPD, et conçue
+          pour les structures éducatives musulmanes ou associatives, <b
+            >Eduroots peut vous faire gagner un temps précieux.</b
+          >
         </p>
+        <CTA btnTxt="Demandez une démonstration gratuite" />
       </div>
     </footer>
   </article>
