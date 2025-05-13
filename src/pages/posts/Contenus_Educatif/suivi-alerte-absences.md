@@ -7,7 +7,7 @@ tags:
   - gestion des absences
   - alertes absences
   - présence
-published: false
+published: true
 author: "Xavier Genolhac"
 readTime: 2
 image: "https://res.cloudinary.com/dltiyerih/image/upload/v1746730056/Eduroots/Laptop_Students_Often_Missed_zsoist.webp"
