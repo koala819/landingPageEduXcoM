@@ -15,7 +15,7 @@ tags:
 author: "Xavier Genolhac"
 readTime: 2
 image: "https://res.cloudinary.com/dltiyerih/image/upload/v1746548181/Eduroots/Smartphone_Messagerie_xcd5yz.webp"
-published: false
+published: true
 ---
 
 # Les messages perdus, c’est terminé avec une messagerie intégrée
