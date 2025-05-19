@@ -14,7 +14,7 @@ tags:
 author: "Xavier Genolhac"
 readTime: 3
 image: "/images/eduroots-tableau-bord-famille-mobile.webp"
-published: false
+published: true
 ---
 
 ---
